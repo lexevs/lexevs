@@ -26,6 +26,7 @@ import org.LexGrid.LexBIG.Impl.CodedNodeSetImplTest;
 import org.LexGrid.LexBIG.Impl.ServiceManagerTest;
 import org.LexGrid.LexBIG.Impl.Extensions.GenericExtensions.LexBIGServiceConvenienceMethodsImplTest;
 import org.LexGrid.LexBIG.Impl.Extensions.GenericExtensions.MappingExtensionImplTest;
+import org.LexGrid.LexBIG.Impl.Extensions.GenericExtensions.SearchExtensionImplTest;
 import org.LexGrid.LexBIG.Impl.Extensions.Search.AbstractSearchTest;
 import org.LexGrid.LexBIG.Impl.Extensions.Sort.AbstractSortTest;
 import org.LexGrid.LexBIG.Impl.History.NCIThesaurusHistoryServiceTest;
@@ -399,7 +400,8 @@ public class AllTestsNormalConfig {
         bugTests.addTestSuite(GForge22826.class);
         bugTests.addTestSuite(GForge20875.class);
         bugTests.addTestSuite(GForge23103.class);
-        bugTests.addTestSuite(GForge25067.class);
+        //No longer supporting the MSAccess load
+        //bugTests.addTestSuite(GForge25067.class);
         bugTests.addTestSuite(GForge26741.class);
         bugTests.addTestSuite(GForge29772.class);
         bugTests.addTestSuite(GForge29839.class);
@@ -419,7 +421,8 @@ public class AllTestsNormalConfig {
         featureRequestTests.addTestSuite(AddNamespaceToIndex.class);
         featureRequestTests.addTestSuite(ChangeConfigFileName.class);  
         featureRequestTests.addTestSuite(GForge17019.class);
-        featureRequestTests.addTestSuite(GForge24191.class);
+        //No longer supporting the MSAccess Load
+        //featureRequestTests.addTestSuite(GForge24191.class);
         mainSuite.addTest(featureRequestTests);
         
         //Mapping tests
@@ -429,6 +432,9 @@ public class AllTestsNormalConfig {
       
         //Mapping Extension tests
         mainSuite.addTestSuite(MappingExtensionImplTest.class);
+        
+        //Search Extesion tests
+        mainSuite.addTestSuite(SearchExtensionImplTest.class);
         
         //Association Authoring Mapping tests
         mainSuite.addTest(org.LexGrid.LexBIG.mapping.MappingAllTests.suite());

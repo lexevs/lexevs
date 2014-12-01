@@ -33,6 +33,7 @@ import org.LexGrid.relations.AssociationQualification;
 import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.AssociationTarget;
 import org.apache.commons.lang.StringUtils;
+import org.semanticweb.owlapi.model.OWLClassExpression;
 
 import edu.mayo.informatics.lexgrid.convert.Conversions.SupportedMappings;
 import edu.stanford.smi.protegex.owl.model.RDFProperty;
@@ -48,17 +49,12 @@ public class CreateUtils {
         return lgData;
     }
 
-    public static AssociationQualification createAssociationQualification(RDFProperty rdfProp, SupportedMappings lgSupportedMappings_) {
-        String brText = rdfProp.getBrowserText();
-        Collection labels = rdfProp.getLabels();
-        AssociationQualification lgQual = createAssociationQualification(brText, rdfProp.getURI(),
-                labels.isEmpty() ? brText : labels.iterator().next().toString(), lgSupportedMappings_);
-        return lgQual;
-    }
+ 
 
     public static AssociationQualification createAssociationQualification(String name, String uri, String descriptiveText, SupportedMappings lgSupportedMappings_) {
         AssociationQualification lgQual = new AssociationQualification();
         lgQual.setAssociationQualifier(name);
+        lgQual.setQualifierText(createText(descriptiveText));
         lgSupportedMappings_.registerSupportedAssociationQualifier(name, uri, descriptiveText, false);
         return lgQual;
     }

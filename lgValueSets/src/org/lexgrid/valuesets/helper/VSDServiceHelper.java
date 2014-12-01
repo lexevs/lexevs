@@ -44,6 +44,7 @@ import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.ActiveOption;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
 import org.LexGrid.LexBIG.Utility.Constructors;
+import org.LexGrid.LexBIG.Utility.ServiceUtility;
 import org.LexGrid.LexBIG.Utility.logging.LgMessageDirectorIF;
 import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.commonTypes.Property;
@@ -731,11 +732,12 @@ public class VSDServiceHelper {
 				.getValueSetDefinitionName()) ? codingSchemeUri : vsd
 				.getValueSetDefinitionName();
 
+
 		CodingScheme cs = null;
 
 		cs = new CodingScheme();
 
-		cs.setCodingSchemeName(codingSchemeName);
+
 		cs.setCodingSchemeURI(codingSchemeUri);
 		cs.setRepresentsVersion(codingSchemeVersion);
 		if (vsd.getEffectiveDate() != null)
@@ -744,10 +746,15 @@ public class VSDServiceHelper {
 			cs.setExpirationDate(vsd.getExpirationDate());
 		cs.setEntryState(vsd.getEntryState());
 		cs.setFormalName(codingSchemeName);
+		cs.setCodingSchemeName(truncateDefNameforCodingSchemeName(codingSchemeName));
 		cs.setIsActive(vsd.getIsActive());
 		cs.setMappings(vsd.getMappings());
 		cs.setOwner(vsd.getOwner());
-		cs.setProperties(vsd.getProperties());
+		if (vsd.getProperties()!= null) {
+		    cs.setProperties(vsd.getProperties());
+		} else {
+			cs.setProperties(new  org.LexGrid.commonTypes.Properties());
+		}
 		cs.setSource(vsd.getSource());
 		cs.setStatus(vsd.getStatus());
 
@@ -763,7 +770,7 @@ public class VSDServiceHelper {
 			PropertyQualifier pq = createPropertyQualifier(
 					LexEVSValueSetDefinitionServices.VERSION, acsvr.getCodingSchemeVersion());
 			prop.getPropertyQualifierAsReference().add(pq);
-			String csSourceName = getSupportedCodingSchemeNameForURI(cs,acsvr.getCodingSchemeURN());
+			String csSourceName= ServiceUtility.getCodingSchemeName(acsvr.getCodingSchemeURN(), acsvr.getCodingSchemeVersion());
 			if( csSourceName != null){
 				PropertyQualifier pQual = createPropertyQualifier(LexEVSValueSetDefinitionServices.CS_NAME, csSourceName);
 				prop.getPropertyQualifierAsReference().add(pQual);
@@ -781,6 +788,12 @@ public class VSDServiceHelper {
 				messager);
 	}
 
+	private String truncateDefNameforCodingSchemeName(String name){
+		if (StringUtils.isNotEmpty(name) && name.length() > 50) {
+			name = name.substring(0, 49);
+		}
+		return name;
+	}
 	private PropertyQualifier createPropertyQualifier(String name,  String value){
 		PropertyQualifier pq = new PropertyQualifier();
 		pq.setPropertyQualifierName(name);

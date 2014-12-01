@@ -57,6 +57,7 @@ import org.LexGrid.LexBIG.gui.load.LoaderExtensionShell;
 import org.LexGrid.LexBIG.gui.load.ManifestLoader;
 import org.LexGrid.LexBIG.gui.load.PostProcessorLauncher;
 import org.LexGrid.LexBIG.gui.load.ReIndexerLoader;
+import org.LexGrid.LexBIG.gui.load.ResolvedValueSetLoader;
 import org.LexGrid.LexBIG.gui.logging.LogViewer;
 import org.LexGrid.LexBIG.gui.restrictions.GraphRestrictionGUI;
 import org.LexGrid.LexBIG.gui.restrictions.RestrictionGUI;
@@ -102,6 +103,7 @@ import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexevs.system.constants.SystemVariables;
 import org.lexevs.system.service.SystemResourceService;
 import org.lexevs.system.utility.PropertiesUtility;
+import org.lexgrid.loader.ResolvedValueSetDefinitionLoaderImpl;
 
 /**
  * This is the GUI application for the LexBIG project.
@@ -1724,6 +1726,7 @@ public class LB_GUI {
 			exportItem_ = new MenuItem(mBar, SWT.CASCADE);
 			exportItem_.setText("&Export Terminology");
 			exportItem_.setEnabled(false);
+			
 		}
 
 		MenuItem helpItem = new MenuItem(mBar, SWT.CASCADE);
@@ -1845,7 +1848,7 @@ public class LB_GUI {
 		    try {
                 for(final ExtensionDescription extension : 
                     lbs_.getServiceManager(null).getExtensionRegistry().getLoadExtensions().getExtensionDescription()){
-
+                    if(extension.getName() != "ResolvedValueSetDefinitionLoader"){
                     MenuItem loadItem = new MenuItem(loadMenu, SWT.NONE);
                     loadItem.setText(extension.getName() + " - " + extension.getDescription());
                     loadItem.addSelectionListener(new SelectionListener() {
@@ -1865,7 +1868,24 @@ public class LB_GUI {
                         }
 
                     });
+                    }
                 }
+                    MenuItem loadRVSItem = new MenuItem(loadMenu, SWT.NONE);
+                    loadRVSItem.setText(ResolvedValueSetDefinitionLoaderImpl.NAME + " - " + "Resolves and persists value sets current in the terminology service");
+                    loadRVSItem.addSelectionListener(new SelectionListener() {
+
+                        public void widgetSelected(SelectionEvent arg0) {
+                            
+                            new ResolvedValueSetLoader(LB_GUI.this);
+                        }
+
+                        public void widgetDefaultSelected(SelectionEvent arg0) {
+                            // not used
+                        }
+
+                    });
+         
+
             } catch (LBException e) {
                 throw new RuntimeException(e);
             }

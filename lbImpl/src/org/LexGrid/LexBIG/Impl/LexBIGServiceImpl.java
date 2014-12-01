@@ -182,11 +182,17 @@ public class LexBIGServiceImpl implements LexBIGService {
     }
 
     /**
+     * IMPORTANT!!! - This constructor may only be called *ONCE* per JVM. If using this, make sure
+     * it is instantiated via a singleton factory or other mechanism to prevent multiple instantiations.
+     * 
+     * This constructor will be made private in a future release. Please change client code to use:
+     * {@link #defaultInstance()}, as this will guarantee only one instantiation.
+     * 
      * @throws LBInvocationException
      * @throws Exception
-     * 
      */
-    private LexBIGServiceImpl() throws LBException {
+    @Deprecated
+    public LexBIGServiceImpl() throws LBException {
         LexEvsServiceLocator r = LexEvsServiceLocator.getInstance();
 
         registerExtensions();
@@ -671,5 +677,20 @@ public class LexBIGServiceImpl implements LexBIGService {
         new SupplementExtensionImpl().register();
         new HierarchyCheckingPostProcessor().register();
         new SearchExtensionImpl().register();
+        
+        //Tree Extension
+        ExtensionDescription treeExt = new ExtensionDescription();
+        treeExt.setDescription("LexEVS Tree Utility");
+        treeExt.setExtensionBaseClass("org.lexevs.tree.service.TreeService");
+        treeExt.setExtensionClass("org.lexevs.tree.service.PathToRootTreeServiceImpl");
+        treeExt.setVersion("1.0");
+        treeExt.setName("tree-utility");
+        try {
+            ExtensionRegistryImpl.instance().registerGenericExtension(treeExt);
+
+        } catch (Exception e) {
+            getLogger().warn(treeExt.getName() + " is not on the classpath or could not be loaded as an Extension.",e);
+        }
+        
     }
 }

@@ -121,6 +121,15 @@ public class SearchExtensionImplTest extends LexBIGServiceTestCase {
 		assertTrue(itr.hasNext());
 	}
 	
+	public void testSearchAllEmptyIncludes() throws LBException {
+		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+		SearchExtension searchExtension = (SearchExtension) lbs.getGenericExtension("SearchExtension");
+	
+		ResolvedConceptReferencesIterator itr = searchExtension.search(null, null, MatchAlgorithm.LUCENE);
+		assertTrue(itr.hasNext());
+		assertTrue(itr.numberRemaining() > 10);
+	}
+	
 	public void testSearchInactive() throws LBException {
 		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
 		SearchExtension searchExtension = (SearchExtension) lbs.getGenericExtension("SearchExtension");
@@ -277,6 +286,24 @@ public class SearchExtensionImplTest extends LexBIGServiceTestCase {
 		SearchExtension searchExtension = (SearchExtension) lbs.getGenericExtension("SearchExtension");
 		
 		ResolvedConceptReferencesIterator itr = searchExtension.search("Anonymous-mobile", null, null, MatchAlgorithm.CODE_EXACT, false);
+		assertFalse(itr.hasNext());
+	}
+	
+	public void testSimpleSearchWithInactiveInclude() throws LBException {
+		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+		SearchExtension searchExtension = (SearchExtension) lbs.getGenericExtension("SearchExtension");
+		
+		ResolvedConceptReferencesIterator itr = searchExtension.search("73", null, null, MatchAlgorithm.CODE_EXACT, false, true);
+		assertTrue(itr.hasNext());
+		assertEquals("73", itr.next().getCode());
+		assertFalse(itr.hasNext());
+	}
+	
+	public void testSimpleSearchWithInactiveExclude() throws LBException {
+		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+		SearchExtension searchExtension = (SearchExtension) lbs.getGenericExtension("SearchExtension");
+		
+		ResolvedConceptReferencesIterator itr = searchExtension.search("73", null, null, MatchAlgorithm.CODE_EXACT, false, false);
 		assertFalse(itr.hasNext());
 	}
 	

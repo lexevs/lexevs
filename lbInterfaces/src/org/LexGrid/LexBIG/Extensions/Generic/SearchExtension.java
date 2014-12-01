@@ -48,6 +48,8 @@ public interface SearchExtension extends GenericExtension {
 	 *
 	 * @param text
 	 * 			The search text
+	 * @param matchAlgorithm
+	 * 			The match algorithm to use for matching
 	 * @return
 	 * 			A ResolvedConceptReferencesIterator
 	 * 
@@ -62,6 +64,8 @@ public interface SearchExtension extends GenericExtension {
 	 * 			The search text
 	 * @param codingSchemes
 	 * 			The coding schemes to include in the search
+	 * @param matchAlgorithm
+	 * 			The match algorithm to use for matching
 	 * @return 
 	 * 			A ResolvedConceptReferencesIterator
 	 * 
@@ -85,6 +89,8 @@ public interface SearchExtension extends GenericExtension {
 	 * 			The coding schemes to include in the search
 	 * @param codingSchemesToExclude
 	 * 			The coding schemes to include in the search
+	 * @param matchAlgorithm
+	 * 			The match algorithm to use for matching
 	 * @return 
 	 * 			A ResolvedConceptReferencesIterator
 	 * 
@@ -109,6 +115,13 @@ public interface SearchExtension extends GenericExtension {
 	 * 			The coding schemes to include in the search
 	 * @param codingSchemesToExclude
 	 * 			The coding schemes to include in the search
+	 * @param matchAlgorithm
+	 * 			The match algorithm to use for matching
+	 * @param includeAnonymous
+	 * 			Whether or not to include Anonymous Entities
+	 * 			Default: 'false'
+	 * 			NOTE: 'false' -> include "anonymous != 'true'"
+	 *                'true'  -> include all
 	 * @return 
 	 * 			A ResolvedConceptReferencesIterator
 	 * 
@@ -120,4 +133,44 @@ public interface SearchExtension extends GenericExtension {
 			Set<CodingSchemeReference> codingSchemesToExclude,
 			MatchAlgorithm matchAlgorithm,
 			boolean includeAnonymous) throws LBParameterException;
+	
+	
+	/**
+	 * Search based on a given text string over given coding schemes, excluding
+	 * the listed.
+	 * 
+	 * NOTE: If a coding scheme appears in both codingSchemesToInclude 
+	 * and codingSchemesToExclude, the exclude will be given priority.
+	 *
+	 * @param text
+	 * 			The search text
+	 * @param codingSchemesToInclude
+	 * 			The coding schemes to include in the search
+	 * @param codingSchemesToExclude
+	 * 			The coding schemes to include in the search
+	 * @param matchAlgorithm
+	 * 			The match algorithm to use for matching
+	 * @param includeAnonymous
+	 * 			Whether or not to include Anonymous Entities
+	 * 			Default: 'false'
+	 * 			NOTE: 'false' -> include "anonymous != 'true'"
+	 *                'true'  -> include all
+	 * 
+	 * @param includeInactive
+	 * 			Whether or not to include Inactive Entities
+	 * 			Default: 'false'
+	 * 			NOTE: 'false' -> include "active != 'true'"
+	 *                'true'  -> include all   
+	 * @return 
+	 * 			A ResolvedConceptReferencesIterator
+	 * 
+	 * @throws LBParameterException
+	 */
+	public ResolvedConceptReferencesIterator search(
+			String text, 
+			Set<CodingSchemeReference> codingSchemesToInclude,
+			Set<CodingSchemeReference> codingSchemesToExclude,
+			MatchAlgorithm matchAlgorithm,
+			boolean includeAnonymous,
+			boolean includeInactive) throws LBParameterException;
 }
