@@ -768,7 +768,7 @@ public class OwlApi2LG {
                         targetNameSpace = getNameSpace((OWLClass) fillerProp);
                     } else if (fillerProp instanceof OWLNamedIndividual) {
                         targetCode = resolveInstanceID((OWLNamedIndividual) fillerProp);
-                        targetNameSpace = getNameSpace((OWLClass) fillerProp);
+                        targetNameSpace = getNameSpace((OWLNamedIndividual) fillerProp);
                     } else {
                         opData = CreateUtils.createAssociationTextData(renderer.render(fillerProp));
                     }
