@@ -47,7 +47,7 @@ import org.lexevs.system.constants.SystemVariables;
 public class CodeSystemLabelProvider implements ITableLabelProvider {
 	private static SimpleDateFormat formatter = new SimpleDateFormat(
 			"h:mm:ss a 'on' MM/dd/yyyy");
-
+	
 	private boolean sortAscending = false;
 	private Listener sortListener;
 	
@@ -180,10 +180,10 @@ public class CodeSystemLabelProvider implements ITableLabelProvider {
 		tc.setText("Description");
 		tc.addListener(SWT.Selection, sortListener);
 		tc.setWidth(300);
+		
 	}
-
-private void setupSortListener(final Table table) {
-        
+	
+	private void setupSortListener(final Table table) {       
         sortListener = new Listener() {
             public void handleEvent(Event e) {
 
@@ -279,4 +279,5 @@ private void setupSortListener(final Table table) {
             
         };
     }
+
 }
