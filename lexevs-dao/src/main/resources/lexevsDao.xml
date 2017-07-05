@@ -698,6 +698,7 @@
 		<property name="databaseServiceManager" ref="databaseServiceManager"/>
 		<property name="entityIndexService" ref="luceneEntityIndexService"/>
 		<property name="metadataIndexService" ref="luceneMetadataIndexService"/>
+		<property name="codingSchemeWithTypeIndexService" ref="luceneCodingSchemeWithTypeIndexService"/>
 	</bean>
 	
 	<bean id="lexEvsSchemaInstallationSetup" class="org.lexevs.registry.setup.LexEvsSchemaInstallationSetup"
@@ -802,10 +803,17 @@
 		<property name="metadataIndexCreator" ref="luceneMetadataIndexCreator"/>
 	</bean>
 	
+	<bean id="luceneCodingSchemeWithTypeIndexService" 
+		class="org.lexevs.dao.index.service.codingschemewithtype.LuceneCodingSchemeWithTypeIndexService">
+		<property name="indexDaoManager" ref="indexDaoManager"/> 
+		<property name="codingSchemeWithTypeIndexCreator" ref="luceneCodingSchemeWithTypeIndexCreator"/>
+	</bean>
+	
 	<bean id="indexServiceManager" class="org.lexevs.dao.index.service.IndexServiceManager">
 		<property name="entityIndexService" ref="luceneEntityIndexService"/>
 		<property name="metadataIndexService" ref="luceneMetadataIndexService"/>
 		<property name="searchIndexService" ref="luceneSearchIndexService"/>
+		<property name="codingSchemeWithTypeIndexService" ref="luceneCodingSchemeWithTypeIndexService"/>
 	</bean>
 	
 	<bean id="indexDaoManager" class="org.lexevs.dao.index.access.IndexDaoManager">
@@ -821,6 +829,11 @@
 		<property name="metadataDaos">
 			<list>
 				<ref bean="luceneMetadataDao"/>
+			</list>
+		</property>
+		<property name="codingSchemeWithTypeDaos">
+			<list>
+				<ref bean="luceneCodingSchemeWithTypeDao"/>
 			</list>
 		</property>
 		<property name="searchDaos">
@@ -845,6 +858,26 @@
 	</bean>
 	
 	<bean id="baseMetaDataLoader" class="org.lexevs.dao.index.metadata.BaseMetaDataLoader" />
+
+
+
+
+	<bean id="luceneCodingSchemeWithTypeDao" class="org.lexevs.dao.index.lucene.v2013.search.LuceneCodingSchemeWithTypeDao">
+		<property name="baseCodingSchemeWithTypeLoader" ref="baseCodingSchemeWithTypeLoader"/>
+		<property name="luceneIndexTemplate" ref="luceneCodingSchemeWithTypeIndexTemplate"/>
+	</bean>
+
+	<bean id="luceneCodingSchemeWithTypeIndexCreator" class="org.lexevs.dao.index.indexer.LuceneCodingSchemeWithTypeIndexCreator">
+		<property name="baseCodingSchemeWithTypeLoader" ref="baseCodingSchemeWithTypeLoader"/>
+		<property name="indexDaoManager" ref="indexDaoManager"/>
+	</bean>
+	
+	<bean id="baseCodingSchemeWithTypeLoader" class="org.lexevs.dao.index.codingschemewithType.BaseCodingSchemeWithTypeLoader" />
+
+
+
+
+
 
 	<bean id="luceneIndexEntityDao" class="org.lexevs.dao.index.lucene.v2010.entity.LuceneEntityDao">
 		<property name="luceneIndexTemplate" ref="luceneMultiIndexTemplate"/>
@@ -899,8 +932,19 @@
 	<bean id="metadataIndexLocation" 
 		class="org.lexevs.dao.index.factory.MetadataIndexLocationFactory">
 		<property name="systemVariables" ref="systemVariables"/> 
-	</bean>
+	</bean>	
 		
+	<bean id="codingSchemeWithTypeIndexDirectory" parent="abstractDirectoryFactory">
+		<property name="luceneDirectoryCreator" ref="defaultLuceneDirectoryCreator"/>
+		<property name="indexDirectory" ref="codingSchemeWithTypeIndexLocation" />
+		<property name="indexName" value="CodingSchemeWithTypeIndex" />
+	</bean>
+	
+	<bean id="codingSchemeWithTypeIndexLocation" 
+		class="org.lexevs.dao.index.factory.CodingSchemeWithTypeIndexLocationFactory">
+		<property name="systemVariables" ref="systemVariables"/> 
+	</bean>	
+	
 	<bean id="searchIndexLocation" 
 		class="org.lexevs.dao.index.factory.IndexLocationFactory">
 		<property name="systemVariables" ref="systemVariables"/> 
@@ -924,6 +968,10 @@
 		<property name="namedDirectory" ref="metadataIndexDirectory"/>
 	</bean>
 	
+	<bean id="luceneCodingSchemeWithTypeIndexTemplate" class="org.lexevs.dao.index.lucenesupport.BaseLuceneIndexTemplate">
+		<property name="namedDirectory" ref="codingSchemeWithTypeIndexDirectory"/>
+	</bean>
+		
 	<bean id="luceneMultiIndexTemplate" class="org.lexevs.dao.index.lucenesupport.MultiBaseLuceneIndexTemplate">
 		<property name="metaDirectories" ref="concurrentCodingSchemeFactory"/>
 		<property name="indexReader" ref="multiReaderFactory"/>

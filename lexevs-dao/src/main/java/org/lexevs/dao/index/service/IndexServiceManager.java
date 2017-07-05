@@ -18,6 +18,7 @@
  */
 package org.lexevs.dao.index.service;
 
+import org.lexevs.dao.index.service.codingschemewithtype.CodingSchemeWithTypeIndexService;
 import org.lexevs.dao.index.service.entity.EntityIndexService;
 import org.lexevs.dao.index.service.metadata.MetadataIndexService;
 import org.lexevs.dao.index.service.search.SearchIndexService;
@@ -34,6 +35,8 @@ public class IndexServiceManager {
 	
 	/** The entity index service. */
 	private MetadataIndexService metadataIndexService;
+	
+	private CodingSchemeWithTypeIndexService codingSchemeWithTypeIndexService;
 	
 	private SearchIndexService searchIndexService;
 
@@ -63,6 +66,14 @@ public class IndexServiceManager {
 		return metadataIndexService;
 	}
 
+	public CodingSchemeWithTypeIndexService getCodingSchemeWithTypeIndexService() {
+		return codingSchemeWithTypeIndexService;
+	}
+
+	public void setCodingSchemeWithTypeIndexService(CodingSchemeWithTypeIndexService codingSchemeWithTypeIndexService) {
+		this.codingSchemeWithTypeIndexService = codingSchemeWithTypeIndexService;
+	}
+	
 	public SearchIndexService getSearchIndexService() {
 		return searchIndexService;
 	}

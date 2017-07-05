@@ -62,6 +62,7 @@ import org.apache.commons.lang.StringUtils;
 import org.lexevs.dao.database.operation.LexEvsDatabaseOperations.RootOrTail;
 import org.lexevs.dao.database.operation.LexEvsDatabaseOperations.TraverseAssociations;
 import org.lexevs.dao.database.service.exception.CodingSchemeAlreadyLoadedException;
+import org.lexevs.dao.index.service.codingschemewithtype.CodingSchemeWithTypeIndexService;
 import org.lexevs.dao.index.service.entity.EntityIndexService;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexevs.logging.LoggerFactory;
@@ -665,12 +666,23 @@ public abstract class BaseLoader extends AbstractExtendable implements Loader{
 
     private void buildIndex(AbsoluteCodingSchemeVersionReference[] references) throws Exception {
        EntityIndexService service = LexEvsServiceLocator.getInstance().
-            getIndexServiceManager().
-                getEntityIndexService();
+            getIndexServiceManager().getEntityIndexService();
+       
+       CodingSchemeWithTypeIndexService codingSchemWithTypeService = LexEvsServiceLocator.getInstance().
+               getIndexServiceManager().getCodingSchemeWithTypeIndexService();
        
        for(AbsoluteCodingSchemeVersionReference reference : references) {
            service.createIndex(reference);
+                      
+           // index the coding scheme information
+           codingSchemWithTypeService.indexCodingSchemeWithType(
+                   reference.getCodingSchemeURN(), 
+                   reference.getCodingSchemeVersion(), 
+                   "myCodingSchemeName", //codingSchemeName, 
+                   false,//isCodingSchemeResolvedValueSet, 
+                   resourceUri);
        } 
+       
     }
 
     public String getStringFromURI(URI uri) throws LBParameterException {

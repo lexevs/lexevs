@@ -40,6 +40,7 @@ import org.lexevs.dao.database.operation.LexEvsDatabaseOperations;
 import org.lexevs.dao.database.prefix.PrefixResolver;
 import org.lexevs.dao.database.scheme.PersistenceScheme;
 import org.lexevs.dao.database.service.DatabaseServiceManager;
+import org.lexevs.dao.index.service.codingschemewithtype.CodingSchemeWithTypeIndexService;
 import org.lexevs.dao.index.service.entity.EntityIndexService;
 import org.lexevs.dao.index.service.metadata.MetadataIndexService;
 import org.lexevs.exceptions.CodingSchemeParameterException;
@@ -85,6 +86,8 @@ public class LexEvsResourceManagingService
 	private EntityIndexService entityIndexService;
 	
 	private MetadataIndexService metadataIndexService;
+	
+	private CodingSchemeWithTypeIndexService codingSchemeWithTypeIndexService;
 	
 	/** The my class loader. */
 	private MyClassLoader myClassLoader;
@@ -251,6 +254,10 @@ public class LexEvsResourceManagingService
 		} catch (Exception e) {
 			this.getLogger().warn("No Coding Scheme Metadata to drop.");
 		}
+		
+		
+		// TODO CME: Need to call CodingSchemeWithTypeListService to remove indexes.
+		
 		this.readCodingSchemeAliasesFromServer();
 	}
 
@@ -835,6 +842,14 @@ public class LexEvsResourceManagingService
 
 	public MetadataIndexService getMetadataIndexService() {
 		return metadataIndexService;
+	}
+	
+	public CodingSchemeWithTypeIndexService getCodingSchemeWithTypeIndexService() {
+		return codingSchemeWithTypeIndexService;
+	}
+
+	public void setCodingSchemeWithTypeIndexService(CodingSchemeWithTypeIndexService codingSchemeWithTypeIndexService) {
+		this.codingSchemeWithTypeIndexService = codingSchemeWithTypeIndexService;
 	}
 
 	@Override
