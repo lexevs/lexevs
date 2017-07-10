@@ -47,12 +47,14 @@ import org.LexGrid.LexBIG.Impl.loaders.postprocessor.ApproxNumOfConceptsPostProc
 import org.LexGrid.LexBIG.Impl.loaders.postprocessor.HierarchyCheckingPostProcessor;
 import org.LexGrid.LexBIG.Impl.loaders.postprocessor.OntologyFormatAddingPostProcessor;
 import org.LexGrid.LexBIG.Impl.loaders.postprocessor.SupportedAttributePostProcessor;
+import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
 import org.LexGrid.LexBIG.Preferences.loader.LoadPreferences.LoaderPreferences;
 import org.LexGrid.LexBIG.Utility.Constructors;
 import org.LexGrid.LexBIG.Utility.logging.CachingMessageDirectorIF;
 import org.LexGrid.LexBIG.Utility.logging.LgLoggerIF;
 import org.LexGrid.LexOnt.CodingSchemeManifest;
 import org.LexGrid.codingSchemes.CodingScheme;
+import org.LexGrid.commonTypes.Property;
 import org.LexGrid.util.SimpleMemUsageReporter;
 import org.LexGrid.util.SimpleMemUsageReporter.Snapshot;
 import org.LexGrid.valueSets.PickListDefinition;
@@ -102,6 +104,8 @@ import edu.mayo.informatics.lexgrid.convert.validator.resolution.NullNamespaceRe
  * @version subversion $Revision: $ checked in on $Date: $
  */
 public abstract class BaseLoader extends AbstractExtendable implements Loader{
+    public static String RESOLVED_AGAINST_CODING_SCHEME_VERSION= "resolvedAgainstCodingSchemeVersion";
+    
     // TODO - loaders are not yet setting concept / relationship counts.
     // TODO - It would be nice if the loader would set the the approximate
     // concept count value when
@@ -673,16 +677,36 @@ public abstract class BaseLoader extends AbstractExtendable implements Loader{
        
        for(AbsoluteCodingSchemeVersionReference reference : references) {
            service.createIndex(reference);
-                      
-           // index the coding scheme information
+              
+           CodingScheme cs = getCodingScheme(reference.getCodingSchemeURN(), 
+                   reference.getCodingSchemeVersion());
+           
+           // index the coding scheme information, including if it is a resolved VS
            codingSchemWithTypeService.indexCodingSchemeWithType(
-                   reference.getCodingSchemeURN(), 
-                   reference.getCodingSchemeVersion(), 
-                   "myCodingSchemeName", //codingSchemeName, 
-                   false,//isCodingSchemeResolvedValueSet, 
+                   cs.getCodingSchemeURI(),
+                   cs.getRepresentsVersion(),
+                   cs.getCodingSchemeName(),
+                   isResolvedValueSetCodingScheme(cs),
                    resourceUri);
        } 
-       
+    }
+    
+    protected CodingScheme getCodingScheme(String csUri, String csVersion) throws LBException {
+        LexBIGService lbs = LexBIGServiceImpl.defaultInstance();
+        CodingScheme cs = lbs.resolveCodingScheme(csUri, 
+                Constructors.createCodingSchemeVersionOrTagFromVersion(csVersion));
+        
+        return cs;
+    }
+    
+    boolean isResolvedValueSetCodingScheme(CodingScheme cs) {
+        for (Property prop: cs.getProperties().getProperty()) {
+            if (prop.getPropertyName().equalsIgnoreCase(RESOLVED_AGAINST_CODING_SCHEME_VERSION)) {
+                return true;
+            }
+
+        }
+        return false;
     }
 
     public String getStringFromURI(URI uri) throws LBParameterException {
@@ -848,7 +872,7 @@ public abstract class BaseLoader extends AbstractExtendable implements Loader{
         }
         return returnList;
     }
-    
+        
     protected URNVersionPair[] constructVersionPairsFromCodingSchemes(Object... loadedObject) {
         URNVersionPair[] pairs = new URNVersionPair[loadedObject.length];
         

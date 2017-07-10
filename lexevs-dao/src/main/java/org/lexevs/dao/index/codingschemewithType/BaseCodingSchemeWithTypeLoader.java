@@ -25,6 +25,7 @@ public class BaseCodingSchemeWithTypeLoader {
 	private static final String CODING_SCHEME_VERSION = "codingSchemeVersion";
 	private static final String CODING_SCHEME_NAME = "codingSchemeRegisteredName";
 	private static final String CODING_SCHEME_IS_RESOLVED_VALUE_SET = "codingSchemeIsResolvedValueSet";
+	private static final String CODING_SCHEME_NAME_VERSION = "codingSchemeNameAndVersion";
 	
 	public static final String STRING_TOKENIZER_TOKEN = "<:>";
 	public static final String CONCATINATED_VALUE_SPLIT_TOKEN = ":";
@@ -54,9 +55,9 @@ public class BaseCodingSchemeWithTypeLoader {
 		fields.append(CODING_SCHEME_IS_RESOLVED_VALUE_SET + " ");
 
 		// this field is used to make deletions easier.
-		generator_.addTextField(CODING_SCHEME_VERSION,
-				codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion, false, true, false);
-		fields.append(CODING_SCHEME_VERSION + " ");
+		generator_.addTextField(CODING_SCHEME_NAME_VERSION,
+				codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeName + codingSchemeVersion, false, true, false);
+		fields.append(CODING_SCHEME_NAME_VERSION + " ");
 			
 		generator_.addTextField("fields", fields.toString(), true, true, true);
 

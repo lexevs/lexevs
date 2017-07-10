@@ -7,14 +7,14 @@ import org.LexGrid.annotations.LgClientSideSafe;
  */
 @SuppressWarnings("serial")
 @LgClientSideSafe 
-public class CodingSchemeWithTypeList implements java.io.Serializable {
+public class CodingSchemeWithTypePropertyList implements java.io.Serializable {
 
   /**
    * Field _codingSchemeWithTypeList.
    */
   private java.util.List<org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithType> _codingSchemeWithTypeList;
 
-  public CodingSchemeWithTypeList() {
+  public CodingSchemeWithTypePropertyList() {
       super();
       this._codingSchemeWithTypeList = new java.util.ArrayList<org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithType>();
   }

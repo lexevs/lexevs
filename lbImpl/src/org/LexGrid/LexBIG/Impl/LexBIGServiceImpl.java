@@ -101,6 +101,7 @@ import org.LexGrid.LexBIG.LexBIGService.CodedNodeGraph;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.AnonymousOption;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
+import org.LexGrid.LexBIG.LexBIGService.LexBIGServiceCodingSchemeWithType;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGServiceManager;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGServiceMetadata;
 import org.LexGrid.LexBIG.Utility.Constructors;
@@ -520,6 +521,12 @@ public class LexBIGServiceImpl implements LexBIGService {
         return new LexBIGServiceMetadataImpl();
     }
     
+    @Override
+    public LexBIGServiceCodingSchemeWithType getServiceCodingSchemeWithType() throws LBException {
+        getLogger().logMethod(new Object[] {});
+        return new LexBIGServiceCodingSchemeWithTypeImpl();
+    }
+    
     private void registerExtensions() throws LBParameterException, LBException {
         // sort extensions
         new EntityDescriptionSort().register();
@@ -678,4 +685,5 @@ public class LexBIGServiceImpl implements LexBIGService {
         }
         
     }
+
 }

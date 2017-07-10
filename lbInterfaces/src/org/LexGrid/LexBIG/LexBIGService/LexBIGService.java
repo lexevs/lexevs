@@ -215,6 +215,15 @@ public interface LexBIGService extends Serializable {
 			throws LBException;
 
 	/**
+	 * Return an interface to perform system-wide query over
+	 * coding schemes for loaded code systems.
+	 * 
+	 * @throws LBException
+	 */
+	LexBIGServiceCodingSchemeWithType getServiceCodingSchemeWithType()
+			throws LBException;
+	
+	/**
 	 * Returns an instance of the sort extension registered with the given name.
 	 * 
 	 * @param name

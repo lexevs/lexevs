@@ -1,7 +1,9 @@
 package org.lexevs.dao.index.access.codingschemewithtype;
 
 import org.LexGrid.LexBIG.DataModel.Core.CodingSchemeSummary;
+import org.LexGrid.annotations.LgClientSideSafe;
 
+@LgClientSideSafe 
 public class CodingSchemeWithType extends CodingSchemeSummary {
 
 	private static final long serialVersionUID = 1L;

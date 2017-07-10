@@ -3,11 +3,11 @@ package org.lexevs.dao.index.service.codingschemewithtype;
 import java.net.URI;
 
 import org.apache.lucene.search.Query;
-import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypeList;
+import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypePropertyList;
 
 public interface CodingSchemeWithTypeIndexService {
 	
-	public CodingSchemeWithTypeList listCodingSchemeWithType();
+	public CodingSchemeWithTypePropertyList listCodingSchemeWithType();
 	
 	public void indexCodingSchemeWithType(
 	    		String codingSchemeUri, 
@@ -16,7 +16,7 @@ public interface CodingSchemeWithTypeIndexService {
 	    		boolean isCodingSchemeResolvedValueSet,
 	    		URI codingSchemeLocation) throws Exception;
 	
-	public CodingSchemeWithTypeList search(Query query);
+	public CodingSchemeWithTypePropertyList search(Query query);
 
 	public void removeCodingSchemeWithType(
 			String codingSchemeUri,

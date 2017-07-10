@@ -8,13 +8,13 @@ import org.apache.lucene.search.Query;
 
 public interface CodingSchemeWithTypeDao {
 
-	public CodingSchemeWithTypeList search(Query query);
+	public CodingSchemeWithTypePropertyList search(Query query);
 	
 	public void removeCodingSchemeWithType(
 			String codingSchemeUri,
 			String codingSchemeVersion);
 	
-	public CodingSchemeWithTypeList listCodingSchemeWithType(); 
+	public CodingSchemeWithTypePropertyList listCodingSchemeWithType(); 
 	
 	public void addDocuments(String codingSchemeUri, String codingSchemeVersion, String codingSchemeName, 
 			Boolean isCodingSchemeResolvedValueSet, List<Document> documents, Analyzer analyzer);

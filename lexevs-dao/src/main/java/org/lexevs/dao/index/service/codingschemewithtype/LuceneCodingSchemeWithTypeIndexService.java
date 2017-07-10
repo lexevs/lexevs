@@ -4,7 +4,7 @@ import java.net.URI;
 
 import org.apache.lucene.search.Query;
 import org.lexevs.dao.index.access.IndexDaoManager;
-import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypeList;
+import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypePropertyList;
 import org.lexevs.dao.index.indexer.CodingSchemeWithTypeIndexCreator;
 
 /**
@@ -17,7 +17,7 @@ public class LuceneCodingSchemeWithTypeIndexService implements CodingSchemeWithT
 	private IndexDaoManager indexDaoManager;
 	
 	@Override
-	public CodingSchemeWithTypeList listCodingSchemeWithType() {
+	public CodingSchemeWithTypePropertyList listCodingSchemeWithType() {
 		return indexDaoManager.getCodingSchemeWithTypeDao().listCodingSchemeWithType();
 	} 
 
@@ -30,7 +30,7 @@ public class LuceneCodingSchemeWithTypeIndexService implements CodingSchemeWithT
 	}
 
 	@Override
-	public CodingSchemeWithTypeList search(Query query) {
+	public CodingSchemeWithTypePropertyList search(Query query) {
 		return indexDaoManager.getCodingSchemeWithTypeDao().search(query);
 	}
 
