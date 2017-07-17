@@ -80,7 +80,7 @@ public class LuceneCodingSchemeWithTypeDao implements CodingSchemeWithTypeDao {
 			// TODO see Multifield for a better implementation of this.
 			BytesRef text = null;
 			while ((te != null) && (text = te.next()) != null) {
-				Query temp = new TermQuery(new Term("codingSchemeNameVersion", text.utf8ToString()));
+				Query temp = new TermQuery(new Term("codingSchemeNameAndVersion", text.utf8ToString()));
 
 				List<ScoreDoc> d = this.luceneIndexTemplate.search(temp, null);
 				if (d.size() > 0) {
