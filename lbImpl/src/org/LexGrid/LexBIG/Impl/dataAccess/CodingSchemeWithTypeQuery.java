@@ -23,7 +23,7 @@ public class CodingSchemeWithTypeQuery {
     
     public static Query makeCodingSchemeRestriction(String matchText) throws LBParameterException {
         BooleanQuery.Builder builder = new BooleanQuery.Builder();        
-        builder.add(new BooleanClause(new TermQuery(new Term("codingSchemeRegisteredName", matchText)), Occur.MUST));
+        builder.add(new BooleanClause(new TermQuery(new Term("codingSchemeRegisteredName", matchText.toLowerCase())), Occur.MUST));
         
         return builder.build();
     }

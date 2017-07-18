@@ -36,24 +36,19 @@ public class BaseCodingSchemeWithTypeLoader {
 
 	public Document addProperty(String codingSchemeUri, String codingSchemeVersion, String codingSchemeName,
 			boolean isCodingSchemeResolvedValueSet) throws Exception {
-
-		// add the values as lower case
-		String codingSchemeVersion_lower = codingSchemeVersion.toLowerCase();
-		String codingSchemeUri_lower = codingSchemeUri.toLowerCase();
-		String codingSchemeName_lower = codingSchemeName.toLowerCase();
 		
 		StringBuffer fields = new StringBuffer();
 		
-		generator_.startNewDocument(codingSchemeUri_lower + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion_lower
+		generator_.startNewDocument(codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion
 				+ CONCATINATED_VALUE_SPLIT_TOKEN + UUID.randomUUID().toString());
 		
-		generator_.addTextField(CODING_SCHEME_URI, codingSchemeUri_lower, true, true, false);
+		generator_.addTextField(CODING_SCHEME_URI, codingSchemeUri, true, true, false);
 		fields.append(CODING_SCHEME_URI + " ");
 		
-		generator_.addTextField(CODING_SCHEME_VERSION, codingSchemeVersion_lower, true, true, false);
+		generator_.addTextField(CODING_SCHEME_VERSION, codingSchemeVersion, true, true, false);
 		fields.append(CODING_SCHEME_VERSION + " ");
 		
-		generator_.addTextField(CODING_SCHEME_NAME, codingSchemeName_lower, true, true, false);    // *** index and tokenize ***
+		generator_.addTextField(CODING_SCHEME_NAME, codingSchemeName, true, true, true);    // index and tokenize
 		fields.append(CODING_SCHEME_NAME + " ");
 		
 		generator_.addTextField(CODING_SCHEME_IS_RESOLVED_VALUE_SET, Boolean.toString(isCodingSchemeResolvedValueSet), true, true, false);
@@ -62,7 +57,7 @@ public class BaseCodingSchemeWithTypeLoader {
 		// this field is used to make deletions easier.
 		generator_.addTextField(CODING_SCHEME_NAME_VERSION,
 				//codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeName_lower + codingSchemeVersion_lower, false, true, false);
-				codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion_lower, false, true, false);
+				codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion, false, true, false);
 		fields.append(CODING_SCHEME_NAME_VERSION + " ");
 			
 		generator_.addTextField("fields", fields.toString(), true, true, true);

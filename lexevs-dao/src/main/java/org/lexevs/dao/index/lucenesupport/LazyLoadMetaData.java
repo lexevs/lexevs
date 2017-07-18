@@ -86,7 +86,7 @@ public class LazyLoadMetaData implements
 		}
 		for (String key : orphanedIndexCache.keySet()) {
 
-			if (!key.equals("MetaDataIndex")) {
+			if (!key.equals("MetaDataIndex") && !key.equals("CodingSchemeWithTypeIndex")) {
 				LoggerFactory.getLogger().warn(
 						"Deleting orphaned Index: " + key);
 				((LuceneEntityIndexService) locator.getIndexServiceManager()
