@@ -53,7 +53,7 @@ public class BaseCodingSchemeWithTypeLoader {
 		generator_.addTextField(CODING_SCHEME_VERSION, codingSchemeVersion_lower, true, true, false);
 		fields.append(CODING_SCHEME_VERSION + " ");
 		
-		generator_.addTextField(CODING_SCHEME_NAME, codingSchemeName_lower, true, true, false);
+		generator_.addTextField(CODING_SCHEME_NAME, codingSchemeName_lower, true, true, false);    // *** index and tokenize ***
 		fields.append(CODING_SCHEME_NAME + " ");
 		
 		generator_.addTextField(CODING_SCHEME_IS_RESOLVED_VALUE_SET, Boolean.toString(isCodingSchemeResolvedValueSet), true, true, false);
@@ -61,7 +61,8 @@ public class BaseCodingSchemeWithTypeLoader {
 
 		// this field is used to make deletions easier.
 		generator_.addTextField(CODING_SCHEME_NAME_VERSION,
-				codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeName_lower + codingSchemeVersion_lower, false, true, false);
+				//codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeName_lower + codingSchemeVersion_lower, false, true, false);
+				codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion_lower, false, true, false);
 		fields.append(CODING_SCHEME_NAME_VERSION + " ");
 			
 		generator_.addTextField("fields", fields.toString(), true, true, true);

@@ -1,7 +1,9 @@
 package org.lexevs.dao.index.lucene.v2013.search;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import org.LexGrid.LexBIG.DataModel.Core.CodingSchemeSummary;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Fields;
@@ -26,18 +28,25 @@ public class LuceneCodingSchemeWithTypeDao implements CodingSchemeWithTypeDao {
 	private BaseCodingSchemeWithTypeLoader baseCodingSchemeWithTypeLoader;
 	private LuceneIndexTemplate luceneIndexTemplate;
 	
-
 	@Override
-	public CodingSchemeWithTypePropertyList search(Query query) {
+	public List<CodingSchemeSummary> search(Query query) {
 		
 		List<ScoreDoc> docs = this.luceneIndexTemplate.search(query, null);
 		CodingSchemeWithTypePropertyList codingSchemeWithTypePropertyList = new CodingSchemeWithTypePropertyList();
+		List<CodingSchemeSummary> cssList = new ArrayList<CodingSchemeSummary>();
 
         // assemble the result object
         for (ScoreDoc doc : docs) {
        	 	Document d = luceneIndexTemplate.getDocumentById(doc.doc);
        	 
        	 	CodingSchemeWithType curr = new CodingSchemeWithType();
+       	    CodingSchemeSummary css = new CodingSchemeSummary();
+       	    css.setCodingSchemeURI(d.get("codingSchemeUri"));
+       	 	css.setFormalName(d.get("codingSchemeRegisteredName"));
+       	 	css.setRepresentsVersion(d.get("codingSchemeVersion"));
+       	 	
+       	 	cssList.add(css);
+       	 	
             curr.setCodingSchemeURI(d.get("codingSchemeUri"));
             curr.setFormalName(d.get("codingSchemeRegisteredName"));
             curr.setRepresentsVersion(d.get("codingSchemeVersion"));
@@ -46,18 +55,19 @@ public class LuceneCodingSchemeWithTypeDao implements CodingSchemeWithTypeDao {
             codingSchemeWithTypePropertyList.addCodingSchemeWithType(curr);
         }
         
-        return codingSchemeWithTypePropertyList;
+        return cssList;
 	}
 
 	@Override
 	public void removeCodingSchemeWithType(String codingSchemeUri, String codingSchemeVersion) {
-		// TODO Auto-generated method stub
-		
+		this.luceneIndexTemplate.removeDocuments(
+				new Term("codingSchemeNameAndVersion",
+						codingSchemeUri	+ BaseCodingSchemeWithTypeLoader.CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion));
 	}
 
 	@Override
-	public CodingSchemeWithTypePropertyList listCodingSchemeWithType() {
-		CodingSchemeWithTypePropertyList result = new CodingSchemeWithTypePropertyList();
+	public List<CodingSchemeSummary> listCodingSchemeWithType() {
+		List<CodingSchemeSummary> cssList = new ArrayList<CodingSchemeSummary>();
 		
 		try {
 			final TermsEnum te = luceneIndexTemplate.executeInIndexReader(new IndexReaderCallback<TermsEnum>() {
@@ -86,18 +96,18 @@ public class LuceneCodingSchemeWithTypeDao implements CodingSchemeWithTypeDao {
 				if (d.size() > 0) {
 
 					ScoreDoc doc = d.get(0);
-					CodingSchemeWithType codingSchemeWithType = new CodingSchemeWithType();
+					CodingSchemeSummary css = new CodingSchemeSummary();
+
 					Document document = luceneIndexTemplate.getDocumentById(doc.doc);
 					
-					codingSchemeWithType.setCodingSchemeURI(document.get("codingSchemeUri"));
-					codingSchemeWithType.setRepresentsVersion(document.get("codingSchemeVersion"));
-					codingSchemeWithType.setFormalName(document.get("codingSchemeRegisteredName"));
-					codingSchemeWithType.setCodingSchemeIsResolvedValueSet(new Boolean(document.get("codingSchemeIsResolvedValueSet")));
-
-					result.addCodingSchemeWithType(codingSchemeWithType);
+					css.setCodingSchemeURI(document.get("codingSchemeUri"));
+					css.setRepresentsVersion(document.get("codingSchemeVersion"));
+					css.setFormalName(document.get("codingSchemeRegisteredName"));
+					
+					cssList.add(css);
 				}
 			}
-			return result;
+			return cssList;
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

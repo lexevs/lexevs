@@ -28,7 +28,6 @@ public class CodingSchemeWithTypeQuery {
         return builder.build();
     }
     
-    
     public static Query makeResolvedValueSetRestriction() throws LBParameterException {
         BooleanQuery.Builder builder = new BooleanQuery.Builder();
         builder.add(new BooleanClause(new TermQuery(new Term("codingSchemeIsResolvedValueSet", "true")), Occur.MUST));

@@ -1,7 +1,10 @@
 package org.LexGrid.LexBIG.Impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import org.LexGrid.LexBIG.DataModel.Core.CodingSchemeSummary;
+import org.LexGrid.LexBIG.Exceptions.LBException;
 import org.LexGrid.LexBIG.Exceptions.LBInvocationException;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
 import org.LexGrid.LexBIG.Impl.dataAccess.CodingSchemeWithTypeQuery;
@@ -12,7 +15,6 @@ import org.apache.lucene.sandbox.queries.regex.RegexQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Query;
-import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypePropertyList;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexevs.logging.LoggerFactory;
 
@@ -30,31 +32,15 @@ public class LexBIGServiceCodingSchemeWithTypeImpl implements LexBIGServiceCodin
     private LgLoggerIF getLogger() {
         return LoggerFactory.getLogger();
     }
-
-
+   
     @Override
-    public String listResolvedValueSets() throws LBInvocationException {
-     // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public String listCodingSchemes() throws LBInvocationException {
-        
-        
+    public List<CodingSchemeSummary> listAllCodingSchemes() throws LBInvocationException {
         getLogger().logMethod(new Object[] {});
         try {
-            
-            CodingSchemeWithTypePropertyList list = LexEvsServiceLocator.getInstance().
+            List<CodingSchemeSummary> list = LexEvsServiceLocator.getInstance().
                 getIndexServiceManager().getCodingSchemeWithTypeIndexService().listCodingSchemeWithType();
-            
-            //Enumeration enumeration = list.enumerateCodingSchemeWithType();
-            
-            // TODO CME: get list of coding schemes with type
-            
-            
-            return  list.getCodingSchemeWithType(0).getFormalName();
-       
+                       
+            return list;
 
         } catch (Exception e) {
             String id = getLogger().error("An unexpected error occurred while listing coding schemes.", e);
@@ -72,7 +58,7 @@ public class LexBIGServiceCodingSchemeWithTypeImpl implements LexBIGServiceCodin
      * (java.lang.String, java.lang.String)
      */
     public LexBIGServiceCodingSchemeWithType restrictToValue(String matchText) throws LBParameterException {
-        getLogger().logMethod(new Object[] { matchText });
+        getLogger().logMethod(new Object[] {matchText});
         
         queryClauses.add(CodingSchemeWithTypeQuery.makeValueRestriction(matchText));
         return this;
@@ -86,7 +72,7 @@ public class LexBIGServiceCodingSchemeWithTypeImpl implements LexBIGServiceCodin
 
 
     @Override
-    public String /*CodingSchemeWithTypePropertyList*/ resolve() throws LBParameterException, LBInvocationException {
+    public List<CodingSchemeSummary> resolve() throws LBParameterException, LBInvocationException {
         getLogger().logMethod(new Object[] {});
         try {
             if (queryClauses.size() + termClauses.size() < 1) {
@@ -101,31 +87,24 @@ public class LexBIGServiceCodingSchemeWithTypeImpl implements LexBIGServiceCodin
                 builder.add(new RegexQuery(termClauses.get(i)), Occur.MUST);
             }
 
-            CodingSchemeWithTypePropertyList list = LexEvsServiceLocator.getInstance().
-                    getIndexServiceManager().getCodingSchemeWithTypeIndexService().search(builder.build());
-            
-//            return LexEvsServiceLocator.getInstance().
-//                getIndexServiceManager().
-//                getCodingSchemeWithTypeIndexService().search(builder.build());
-            return "test";
-            
+             return LexEvsServiceLocator.getInstance().
+                    getIndexServiceManager().getCodingSchemeWithTypeIndexService().search(builder.build());            
         } catch (LBParameterException e) {
             throw e;
         } catch (Exception e) {
-            String id = getLogger().error("An unexpected error occurred resolving the MetaData search.", e);
+            String id = getLogger().error("An unexpected error occurred resolving the Coding Scheme with type search.", e);
             throw new LBInvocationException(
-                    "An unexpected error occurred resolving the metadata search.  See the log for more details", id);
+                    "An unexpected error occurred resolving the  Coding Scheme with type search.  See the log for more details", id);
         }
     }
 
     @Override
-    public LexBIGServiceCodingSchemeWithType makeResolvedValueSetRestriction() throws LBParameterException {
+    public List<CodingSchemeSummary> listAllResolvedValueSets() throws LBException {
         getLogger().logMethod();
         
         queryClauses.add(CodingSchemeWithTypeQuery.makeResolvedValueSetRestriction());
-        return this;
+        return resolve();
     }
-
 
     @Override
     public LexBIGServiceCodingSchemeWithType restrictToCodingSchemeName(String matchText) throws LBParameterException {

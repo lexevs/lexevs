@@ -255,9 +255,12 @@ public class LexEvsResourceManagingService
 			this.getLogger().warn("No Coding Scheme Metadata to drop.");
 		}
 		
-		
-		// TODO CME: Need to call CodingSchemeWithTypeListService to remove indexes.
-		
+		try {
+			codingSchemeWithTypeIndexService.removeCodingSchemeWithType(uri, version);
+		} catch (Exception e) {
+			this.getLogger().warn("No Coding Scheme with type to drop.");
+		}
+				
 		this.readCodingSchemeAliasesFromServer();
 	}
 

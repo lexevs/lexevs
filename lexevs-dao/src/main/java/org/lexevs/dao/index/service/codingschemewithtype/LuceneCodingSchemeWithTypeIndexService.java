@@ -1,7 +1,9 @@
 package org.lexevs.dao.index.service.codingschemewithtype;
 
 import java.net.URI;
+import java.util.List;
 
+import org.LexGrid.LexBIG.DataModel.Core.CodingSchemeSummary;
 import org.apache.lucene.search.Query;
 import org.lexevs.dao.index.access.IndexDaoManager;
 import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypePropertyList;
@@ -17,7 +19,7 @@ public class LuceneCodingSchemeWithTypeIndexService implements CodingSchemeWithT
 	private IndexDaoManager indexDaoManager;
 	
 	@Override
-	public CodingSchemeWithTypePropertyList listCodingSchemeWithType() {
+	public List<CodingSchemeSummary> listCodingSchemeWithType() {
 		return indexDaoManager.getCodingSchemeWithTypeDao().listCodingSchemeWithType();
 	} 
 
@@ -30,7 +32,7 @@ public class LuceneCodingSchemeWithTypeIndexService implements CodingSchemeWithT
 	}
 
 	@Override
-	public CodingSchemeWithTypePropertyList search(Query query) {
+	public List<CodingSchemeSummary> search(Query query) {
 		return indexDaoManager.getCodingSchemeWithTypeDao().search(query);
 	}
 
