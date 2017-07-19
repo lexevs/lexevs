@@ -16,9 +16,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.util.BytesRef;
-import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithType;
 import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypeDao;
-import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypePropertyList;
 import org.lexevs.dao.index.codingschemewithType.BaseCodingSchemeWithTypeLoader;
 import org.lexevs.dao.index.lucenesupport.BaseLuceneIndexTemplate.IndexReaderCallback;
 import org.lexevs.dao.index.lucenesupport.LuceneIndexTemplate;
@@ -32,29 +30,19 @@ public class LuceneCodingSchemeWithTypeDao implements CodingSchemeWithTypeDao {
 	public List<CodingSchemeSummary> search(Query query) {
 		
 		List<ScoreDoc> docs = this.luceneIndexTemplate.search(query, null);
-		CodingSchemeWithTypePropertyList codingSchemeWithTypePropertyList = new CodingSchemeWithTypePropertyList();
 		List<CodingSchemeSummary> cssList = new ArrayList<CodingSchemeSummary>();
 
         // assemble the result object
         for (ScoreDoc doc : docs) {
        	 	Document d = luceneIndexTemplate.getDocumentById(doc.doc);
        	 
-       	 	CodingSchemeWithType curr = new CodingSchemeWithType();
        	    CodingSchemeSummary css = new CodingSchemeSummary();
        	    css.setCodingSchemeURI(d.get("codingSchemeUri"));
        	 	css.setFormalName(d.get("codingSchemeRegisteredName"));
        	 	css.setRepresentsVersion(d.get("codingSchemeVersion"));
        	 	
        	 	cssList.add(css);
-       	 	
-            curr.setCodingSchemeURI(d.get("codingSchemeUri"));
-            curr.setFormalName(d.get("codingSchemeRegisteredName"));
-            curr.setRepresentsVersion(d.get("codingSchemeVersion"));
-            curr.setCodingSchemeIsResolvedValueSet(new Boolean(d.get("codingSchemeIsResolvedValueSet")));
-            
-            codingSchemeWithTypePropertyList.addCodingSchemeWithType(curr);
         }
-        
         return cssList;
 	}
 
