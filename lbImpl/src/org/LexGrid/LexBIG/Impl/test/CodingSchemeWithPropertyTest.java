@@ -1,5 +1,8 @@
 package org.LexGrid.LexBIG.Impl.test;
 
+import java.util.List;
+
+import org.LexGrid.LexBIG.DataModel.Core.CodingSchemeSummary;
 import org.LexGrid.LexBIG.Impl.LexBIGServiceImpl;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGServiceCodingSchemeWithType;
@@ -10,22 +13,43 @@ public class CodingSchemeWithPropertyTest {
             LexBIGService lbs = LexBIGServiceImpl.defaultInstance();
             LexBIGServiceCodingSchemeWithType scst = lbs.getServiceCodingSchemeWithType();
 
-            System.out.println("Indexed coding schemes:");
-            String test = scst.listResolvedValueSets();
             
-//            int i = 0;
-//            for (Enumeration<? extends AbsoluteCodingSchemeVersionReference> items = al
-//                    .enumerateAbsoluteCodingSchemeVersionReference(); items.hasMoreElements();) {
-//                AbsoluteCodingSchemeVersionReference ref = items.nextElement();
-//                System.out.println("Coding Scheme URN - " + ref.getCodingSchemeURN());
-//                System.out.println("Coding Scheme version - " + ref.getCodingSchemeVersion());
-//                i++;
-//            }
-
-            System.out.println(test);
-
+            List<CodingSchemeSummary> cssListAll = scst.listAllCodingSchemes();
+            System.out.println("ALL coding schemes:");
+            System.out.println("--------------------");
+            printCodingSchemeWithTypeList(cssListAll);
+            
+            List<CodingSchemeSummary> cssList = scst.listAllResolvedValueSets();
+            System.out.println("ALL Resolved Value Sets:");
+            System.out.println("------------------------");
+            printCodingSchemeWithTypeList(cssList);
+            
+            scst = lbs.getServiceCodingSchemeWithType();
+            scst.restrictToCodingSchemeName("AUTOMOBILES");
+            List<CodingSchemeSummary> cssListByName = scst.resolve();
+            System.out.println("ALL coding schemes - automobiles:");
+            System.out.println("--------------------");
+            printCodingSchemeWithTypeList(cssListByName);
+                        
+            scst = lbs.getServiceCodingSchemeWithType();
+            scst.restrictToCodingSchemeVersion("1.0");
+            List<CodingSchemeSummary> cssListByVersion = scst.resolve();
+            System.out.println("ALL coding schemes - version 1.0:");
+            System.out.println("--------------------");
+            printCodingSchemeWithTypeList(cssListByVersion);
+                     
+            
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+    
+    private static void printCodingSchemeWithTypeList(List<CodingSchemeSummary> cssList) {
+        for (CodingSchemeSummary cs: cssList) {
+            System.out.println("Coding Scheme Name - " + cs.getFormalName());
+            System.out.println("Coding Scheme URN - " + cs.getCodingSchemeURI());
+            System.out.println("Coding Scheme version - " + cs.getRepresentsVersion());
+            System.out.println("\n");
         }
     }
 
