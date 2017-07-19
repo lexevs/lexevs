@@ -6,7 +6,6 @@ import java.util.List;
 import org.LexGrid.LexBIG.DataModel.Core.CodingSchemeSummary;
 import org.apache.lucene.search.Query;
 import org.lexevs.dao.index.access.IndexDaoManager;
-import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypePropertyList;
 import org.lexevs.dao.index.indexer.CodingSchemeWithTypeIndexCreator;
 
 /**
