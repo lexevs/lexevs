@@ -50,27 +50,6 @@ public class LexBIGServiceCodingSchemeWithTypeImpl implements LexBIGServiceCodin
         }
     }
     
-    /*
-     * (non-Javadoc)
-     * 
-     * @see
-     * org.LexGrid.LexBIG.LexBIGService.LexBIGServiceMetadata#restrictToValue
-     * (java.lang.String, java.lang.String)
-     */
-    public LexBIGServiceCodingSchemeWithType restrictToValue(String matchText) throws LBParameterException {
-        getLogger().logMethod(new Object[] {matchText});
-        
-        queryClauses.add(CodingSchemeWithTypeQuery.makeValueRestriction(matchText));
-        return this;
-    }
-
-    @Override
-    public String search(Query query) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-
     @Override
     public List<CodingSchemeSummary> resolve() throws LBParameterException, LBInvocationException {
         getLogger().logMethod(new Object[] {});
@@ -110,8 +89,23 @@ public class LexBIGServiceCodingSchemeWithTypeImpl implements LexBIGServiceCodin
     public LexBIGServiceCodingSchemeWithType restrictToCodingSchemeName(String matchText) throws LBParameterException {
         getLogger().logMethod(new Object[] { matchText });
         
-        queryClauses.add(CodingSchemeWithTypeQuery.makeCodingSchemeRestriction(matchText));
+        queryClauses.add(CodingSchemeWithTypeQuery.makeCodingSchemeNameRestriction(matchText));
         return this;
+    }
+
+    @Override
+    public LexBIGServiceCodingSchemeWithType restrictToCodingSchemeVersion(String matchText)
+            throws LBParameterException {
+        getLogger().logMethod(new Object[] { matchText });
+        
+        queryClauses.add(CodingSchemeWithTypeQuery.makeCodingSchemeVersionRestriction(matchText));
+        return this;
+    }
+
+    @Override
+    public String search(Query query) {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

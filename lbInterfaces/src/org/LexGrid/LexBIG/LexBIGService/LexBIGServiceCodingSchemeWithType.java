@@ -23,6 +23,8 @@ public interface LexBIGServiceCodingSchemeWithType extends Serializable {
 		
 	public abstract LexBIGServiceCodingSchemeWithType restrictToCodingSchemeName(String matchText) throws LBParameterException;
 	
+	public abstract LexBIGServiceCodingSchemeWithType restrictToCodingSchemeVersion(String matchText) throws LBParameterException;
+	
 	/**
      * Apply all of the restrictions, and return the result.
      * 
@@ -31,20 +33,7 @@ public interface LexBIGServiceCodingSchemeWithType extends Serializable {
      * @throws LBInvocationException
      */
     public abstract List<CodingSchemeSummary> resolve() throws LBParameterException, LBInvocationException;
-
-	
-	/**
-     * Restrict the result to the coding scheme with type elements that match the supplied string.
-     * 
-     * @param matchText
-     *          The match text. 
-     * @throws LBParameterException
-     */
-    public abstract LexBIGServiceCodingSchemeWithType restrictToValue(String matchText) throws LBParameterException;
-
-    
     
 	public abstract String search(Query query);
-	
 	
 }

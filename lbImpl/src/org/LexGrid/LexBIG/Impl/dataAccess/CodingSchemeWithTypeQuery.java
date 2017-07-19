@@ -21,9 +21,16 @@ public class CodingSchemeWithTypeQuery {
         return search.buildQuery(matchText);
     }
     
-    public static Query makeCodingSchemeRestriction(String matchText) throws LBParameterException {
+    public static Query makeCodingSchemeNameRestriction(String matchText) throws LBParameterException {
         BooleanQuery.Builder builder = new BooleanQuery.Builder();        
         builder.add(new BooleanClause(new TermQuery(new Term("codingSchemeRegisteredName", matchText.toLowerCase())), Occur.MUST));
+        
+        return builder.build();
+    }
+    
+    public static Query makeCodingSchemeVersionRestriction(String matchText) throws LBParameterException {
+        BooleanQuery.Builder builder = new BooleanQuery.Builder();        
+        builder.add(new BooleanClause(new TermQuery(new Term("codingSchemeVersion", matchText.toLowerCase())), Occur.MUST));
         
         return builder.build();
     }

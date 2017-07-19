@@ -42,10 +42,10 @@ public class BaseCodingSchemeWithTypeLoader {
 		generator_.startNewDocument(codingSchemeUri + CONCATINATED_VALUE_SPLIT_TOKEN + codingSchemeVersion
 				+ CONCATINATED_VALUE_SPLIT_TOKEN + UUID.randomUUID().toString());
 		
-		generator_.addTextField(CODING_SCHEME_URI, codingSchemeUri, true, true, false);
+		generator_.addTextField(CODING_SCHEME_URI, codingSchemeUri, true, true, true);
 		fields.append(CODING_SCHEME_URI + " ");
 		
-		generator_.addTextField(CODING_SCHEME_VERSION, codingSchemeVersion, true, true, false);
+		generator_.addTextField(CODING_SCHEME_VERSION, codingSchemeVersion, true, true, true); // index and tokenize
 		fields.append(CODING_SCHEME_VERSION + " ");
 		
 		generator_.addTextField(CODING_SCHEME_NAME, codingSchemeName, true, true, true);    // index and tokenize
