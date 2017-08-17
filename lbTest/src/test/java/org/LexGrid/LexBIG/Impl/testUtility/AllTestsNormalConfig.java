@@ -95,6 +95,7 @@ import org.LexGrid.LexBIG.Impl.function.codednodeset.RestrictToMatchingDesignati
 import org.LexGrid.LexBIG.Impl.function.codednodeset.RestrictToMatchingPropertiesTest;
 import org.LexGrid.LexBIG.Impl.function.codednodeset.RestrictToPropertiesTest;
 import org.LexGrid.LexBIG.Impl.function.codednodeset.UnionTest;
+import org.LexGrid.LexBIG.Impl.function.codingSchemeWithType.TestCodingSchemeWithTypeCodingScheme;
 import org.LexGrid.LexBIG.Impl.function.history.TestProductionTags;
 import org.LexGrid.LexBIG.Impl.function.mapping.MappingToNodeListTest;
 import org.LexGrid.LexBIG.Impl.function.metadata.TestMetaDataSearch;
@@ -234,6 +235,7 @@ public class AllTestsNormalConfig {
         mainSuite.addTestSuite(CodedNodeSetImplTest.class);
         mainSuite.addTestSuite(CodedNodeSetSerializationTest.class);
         mainSuite.addTestSuite(TestMetaDataSearch.class);
+        mainSuite.addTestSuite(TestCodingSchemeWithTypeCodingScheme.class);
         mainSuite.addTestSuite(ServiceManagerTest.class);
         mainSuite.addTestSuite(RegistryTest.class);
         mainSuite.addTestSuite(TestNCIThesMetadata.class);

@@ -474,6 +474,10 @@ public class SystemVariables {
         return "MetaDataIndex";
     }
 
+    public static String getCodingSchemeWithTypeIndexName() {
+        return "CodingSchemeWithTypeIndex";
+    }
+    
     public Hashtable<String, SQLConnectionInfo> getSqlServers() {
         return sqlServers_;
     }

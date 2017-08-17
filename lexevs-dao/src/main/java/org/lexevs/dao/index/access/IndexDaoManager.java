@@ -24,6 +24,7 @@ import java.util.Set;
 
 import org.LexGrid.LexBIG.DataModel.Core.AbsoluteCodingSchemeVersionReference;
 import org.LexGrid.LexBIG.Extensions.Generic.CodingSchemeReference;
+import org.lexevs.dao.index.access.codingschemewithtype.CodingSchemeWithTypeDao;
 import org.lexevs.dao.index.access.entity.CommonEntityDao;
 import org.lexevs.dao.index.access.entity.EntityDao;
 import org.lexevs.dao.index.access.metadata.MetadataDao;
@@ -52,6 +53,8 @@ public class IndexDaoManager {
 	
 	/** The entity daos. */
 	private List<MetadataDao> metadataDaos;
+	
+	private List<CodingSchemeWithTypeDao> codingSchemeWithTypeDaos;
 		
 	/** The system resource service. */
 	private SystemResourceService systemResourceService;
@@ -96,6 +99,12 @@ public class IndexDaoManager {
 		Assert.state(this.metadataDaos.size() == 1, "Currently Metadata Daos are not Versionable.");
 		
 		return this.metadataDaos.get(0);
+	}
+	
+	public CodingSchemeWithTypeDao getCodingSchemeWithTypeDao(){
+		Assert.state(this.codingSchemeWithTypeDaos.size() == 1, "Currently CodingSchemeWithType Daos are not Versionable.");
+		
+		return this.codingSchemeWithTypeDaos.get(0);
 	}
 	
 	/**
@@ -203,6 +212,14 @@ public class IndexDaoManager {
 
 	public List<MetadataDao> getMetadataDaos() {
 		return metadataDaos;
+	}
+		
+	public void setCodingSchemeWithTypeDaos(List<CodingSchemeWithTypeDao> codingSchemeWithTypeDaos) {
+		this.codingSchemeWithTypeDaos = codingSchemeWithTypeDaos;
+	}
+
+	public List<CodingSchemeWithTypeDao> getCodingSchemeWithTypeDaos() {
+		return codingSchemeWithTypeDaos;
 	}
 
 	public ConcurrentMetaData getConcurrentMetaData() {

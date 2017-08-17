@@ -21,6 +21,7 @@ package org.LexGrid.valueset.test;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
+import org.LexGrid.LexBIG.Impl.function.codingSchemeWithType.TestCodingSchemeWithTypeResolvedVS;
 import org.LexGrid.LexBIG.Impl.testUtility.AllTestsNormalConfig;
 import org.LexGrid.valueset.impl.AssertedVSHierarchyTest;
 import org.LexGrid.valueset.impl.LexEVSPickListServicesImplTest;
@@ -45,6 +46,7 @@ public class VDAllTests {
 		suite.addTestSuite(EntityToVSDTransFormerTest.class);
 		suite.addTestSuite(LexEVSPickListServicesImplTest.class);
 		suite.addTestSuite(LexEVSResolvedValueSetTest.class);
+		suite.addTestSuite(TestCodingSchemeWithTypeResolvedVS.class);
 		suite.addTestSuite(AssertedVSHierarchyTest.class);
 		suite.addTestSuite(CleanUpTest.class);
 		//$JUnit-END$
