@@ -1275,12 +1275,21 @@ public class OwlApi2LG {
             // Interpret RDF property value(s) ...
             // Special case for handling concept code and status, which are
             // set directly as attributes on the LexGrid concept.
+            // set directly as attributes on the LexGrid concept.
             if (propName.matches(prefManager.getMatchPattern_conceptCode())) {
                 lgEntity.setEntityCode(resolvedText);
-            } else if (lgLabel != null && lgLabel.matches(prefManager.getMatchPattern_conceptStatus())) {
+            } 
+            else if (lgLabel != null && lgLabel.matches(prefManager.getMatchPattern_conceptStatus())) {
                 lgEntity.setStatus(resolvedText);
                 if (resolvedText.matches(prefManager.getMatchPattern_inactiveStatus()))
+                {
                     lgEntity.setIsActive(false);
+                }
+            }
+            if (lgLabel != null && lgLabel.matches(OwlApi2LGConstants.PROP_TAG_DEPRECATED)) { 
+                if(Boolean.valueOf(resolvedText)) {
+                    lgEntity.setIsActive(false);
+                }
             }
             // Otherwise instantiate a new EMF property and add the new
             // property to the list to eventually add to the concept.
@@ -1293,7 +1302,7 @@ public class OwlApi2LG {
                         presentationCount++;
                 }
             }
-
+            
         }
 
         // The LexGrid model requires a matching presentation for the entity

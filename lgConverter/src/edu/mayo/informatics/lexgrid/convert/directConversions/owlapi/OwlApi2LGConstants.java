@@ -153,6 +153,8 @@ public class OwlApi2LGConstants {
     public static final String MATCH_XMLSOURCE_VALUES = "([A-Z]*[^ISBN]:[a-z0-9_\\-\\.]*)";
     public static final String MATCH_XMLTEXT_NAMES = "(term-name|def-definition|go-term)";
 
+    public static final String PROP_TAG_DEPRECATED = "deprecated";
+    
     //Complex Properties Tags and upper level elements
     //Tags that may prompt further processing as qualifiers, source or definition.
     public static final String COMP_PROP_TAG_TERM_NAME = "term-name";

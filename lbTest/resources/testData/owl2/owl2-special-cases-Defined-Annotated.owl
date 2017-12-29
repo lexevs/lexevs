@@ -1228,6 +1228,7 @@
         <definition rdf:datatype="&xsd;string">Any human being.</definition>
         <term rdf:datatype="&xsd;string">Human</term>
         <term rdf:datatype="&xsd;string">Person</term>
+        <owl:deprecated rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:deprecated> 
     </owl:Class>
     <owl:Axiom>
         <source rdf:datatype="&xsd;string">NCI</source>
