@@ -1286,11 +1286,6 @@ public class OwlApi2LG {
                     lgEntity.setIsActive(false);
                 }
             }
-            if (lgLabel != null && lgLabel.matches(OwlApi2LGConstants.PROP_TAG_DEPRECATED)) { 
-                if(Boolean.valueOf(resolvedText)) {
-                    lgEntity.setIsActive(false);
-                }
-            }
             // Otherwise instantiate a new EMF property and add the new
             // property to the list to eventually add to the concept.
             else {
@@ -1303,6 +1298,10 @@ public class OwlApi2LG {
                 }
             }
             
+        }
+        
+        if (isDeprecated(owlClass)) {
+            lgEntity.setIsActive(false);
         }
 
         // The LexGrid model requires a matching presentation for the entity
@@ -1409,6 +1408,23 @@ public class OwlApi2LG {
             lgEntity.addAnyProperty(lgProp);
         }
 
+    }
+    
+    /**
+     * Determine if one OWLAnnotation is set to deprecated.
+     * 
+     * @param entity the OWLEntity.
+     * @return true if one OWLAnnotation of the OWLEntity is set to deprecated.
+     */
+    private boolean isDeprecated (OWLEntity entity) {            
+        Set<OWLAnnotation> annotations = entity.getAnnotations(ontology);
+        
+        for(OWLAnnotation annotation: annotations){
+            if(annotation.isDeprecatedIRIAnnotation()){
+                return true;
+            } 
+        }
+        return false;
     }
 
     /**
@@ -2560,6 +2576,7 @@ public class OwlApi2LG {
                     RDF.type.getURI(), null);
             assocEntity.addProperty(pro);
         }
+        
         addPropertiesToAssociationEntity(assocEntity, property);
     }
 
