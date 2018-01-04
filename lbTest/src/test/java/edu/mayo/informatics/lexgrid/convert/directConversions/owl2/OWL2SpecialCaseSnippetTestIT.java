@@ -20,6 +20,7 @@ import org.LexGrid.LexBIG.Exceptions.LBResourceUnavailableException;
 import org.LexGrid.LexBIG.Impl.function.LexBIGServiceTestCase;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeGraph;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet;
+import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.ActiveOption;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.SearchDesignationOption;
 import org.LexGrid.LexBIG.Utility.Constructors;
 import org.LexGrid.LexBIG.Utility.LBConstants.MatchAlgorithms;
@@ -659,6 +660,17 @@ public class OWL2SpecialCaseSnippetTestIT extends DataLoadTestBaseSpecialCases {
 				}
 			}
 
+		}
+		
+		
+		@Test
+		public void testDeprecation() throws LBException{
+			cns.restrictToStatus(ActiveOption.INACTIVE_ONLY, null);
+			ResolvedConceptReferencesIterator itr = cns.resolve(null, null, null);
+			assertNotNull(itr);
+			assertTrue(itr.hasNext());
+			ResolvedConceptReference ref = itr.next();
+			assertTrue(ref.getConceptCode().equals("Person"));
 		}
 		
 		public void testCodingSchemeSourceDefinition() throws LBException{
