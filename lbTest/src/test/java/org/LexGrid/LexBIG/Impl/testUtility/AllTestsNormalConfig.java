@@ -254,37 +254,37 @@ public class AllTestsNormalConfig {
         mainSuite.addTestSuite(NCIThesaurusHistoryServiceTest.class);
         mainSuite.addTestSuite(UMLSHistoryServiceTest.class);
         mainSuite.addTestSuite(LexBIGServiceConvenienceMethodsImplTest.class);
-        mainSuite.addTestSuite(CodedNodeGraphImplTest.class);
-        mainSuite.addTestSuite(CodedNodeSetImplTest.class);
-        mainSuite.addTestSuite(CodedNodeSetSerializationTest.class);
-        mainSuite.addTestSuite(TestMetaDataSearch.class);
-        mainSuite.addTestSuite(ServiceManagerTest.class);
-        mainSuite.addTestSuite(RegistryTest.class);
-        mainSuite.addTestSuite(TestNCIThesMetadata.class);
-        mainSuite.addTestSuite(ResourceManagerTest.class); 
-        mainSuite.addTestSuite(SQLImplementedMethodsTest.class);  
-        mainSuite.addTestSuite(ResolvedConceptReferencesIteratorImplTest.class);
-        
-        mainSuite.addTestSuite(AbstractSortTest.class);
-        mainSuite.addTestSuite(AbstractSearchTest.class);
-        
-        TestSuite metaLoaderSuite = new TestSuite("MetaLoader Tests");
-        metaLoaderSuite.addTestSuite(DefinitionPropertyDataTestIT.class);
-        metaLoaderSuite.addTestSuite(DefinitionQualifiersDataTestIT.class);
-        metaLoaderSuite.addTestSuite(EntityAssnsToEntityDataTestIT.class);
-        metaLoaderSuite.addTestSuite(EntityAssnsToEntityQualsDataTestIT.class);
-        metaLoaderSuite.addTestSuite(EntityDataTestIT.class);
-        metaLoaderSuite.addTestSuite(MetadataLoadTestIT.class);
-        metaLoaderSuite.addTestSuite(MrstyPropertyDataTestIT.class);
-        metaLoaderSuite.addTestSuite(MrhierAssocQualifierTestIT.class);
-        metaLoaderSuite.addTestSuite(MrhierPropertyQualifierTestIT.class);
-        metaLoaderSuite.addTestSuite(MrrankQualifierDataTestIT.class);
-        metaLoaderSuite.addTestSuite(PresentationPropertyDataTestIT.class);
-        metaLoaderSuite.addTestSuite(PresentationQualifiersDataTestIT.class);
-        metaLoaderSuite.addTestSuite(MetaVersionTestIT.class);
-        metaLoaderSuite.addTestSuite(GenericPropertySourceQualifierTestIT.class);
-
-        mainSuite.addTest(metaLoaderSuite);
+//        mainSuite.addTestSuite(CodedNodeGraphImplTest.class);
+//        mainSuite.addTestSuite(CodedNodeSetImplTest.class);
+//        mainSuite.addTestSuite(CodedNodeSetSerializationTest.class);
+//        mainSuite.addTestSuite(TestMetaDataSearch.class);
+//        mainSuite.addTestSuite(ServiceManagerTest.class);
+//        mainSuite.addTestSuite(RegistryTest.class);
+//        mainSuite.addTestSuite(TestNCIThesMetadata.class);
+//        mainSuite.addTestSuite(ResourceManagerTest.class); 
+//        mainSuite.addTestSuite(SQLImplementedMethodsTest.class);  
+//        mainSuite.addTestSuite(ResolvedConceptReferencesIteratorImplTest.class);
+//        
+//        mainSuite.addTestSuite(AbstractSortTest.class);
+//        mainSuite.addTestSuite(AbstractSearchTest.class);
+//        
+//        TestSuite metaLoaderSuite = new TestSuite("MetaLoader Tests");
+//        metaLoaderSuite.addTestSuite(DefinitionPropertyDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(DefinitionQualifiersDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(EntityAssnsToEntityDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(EntityAssnsToEntityQualsDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(EntityDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(MetadataLoadTestIT.class);
+//        metaLoaderSuite.addTestSuite(MrstyPropertyDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(MrhierAssocQualifierTestIT.class);
+//        metaLoaderSuite.addTestSuite(MrhierPropertyQualifierTestIT.class);
+//        metaLoaderSuite.addTestSuite(MrrankQualifierDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(PresentationPropertyDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(PresentationQualifiersDataTestIT.class);
+//        metaLoaderSuite.addTestSuite(MetaVersionTestIT.class);
+//        metaLoaderSuite.addTestSuite(GenericPropertySourceQualifierTestIT.class);
+//
+//        mainSuite.addTest(metaLoaderSuite);
         
         
         // Graph DB Tests
