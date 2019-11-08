@@ -297,10 +297,10 @@ public class AllTestsNormalConfig {
         mainSuite.addTest(graphDBTests);
         
         
-//        TestSuite owlLoaderSuite = new TestSuite("OWL Tests");
-//        owlLoaderSuite.addTestSuite(OWLUnitTests.class);
-//        mainSuite.addTest(owlLoaderSuite);
-//        
+        TestSuite owlLoaderSuite = new TestSuite("OWL Tests");
+        owlLoaderSuite.addTestSuite(OWLUnitTests.class);
+        mainSuite.addTest(owlLoaderSuite);
+        
 //        TestSuite owl2LoaderSuite = new TestSuite("OWL2 Tests");
 //        owl2LoaderSuite.addTestSuite(PresentationPropertyTestIT.class);
 //        owl2LoaderSuite.addTestSuite(OWL2LoaderLexGridTest.class);

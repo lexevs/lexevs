@@ -408,27 +408,27 @@ public class LoadTestDataTest extends LexBIGServiceTestCase {
 ////
 ////    }
 //
-//    @Test
-//    @Order(14)
-//    public void testLoadOWL2NPOwMultiNamespace() throws InterruptedException, LBException {
-//        LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//        OWLLoaderImpl loader = (OWLLoaderImpl) lbsm.getLoader("OWLLoader");
-//        loader.setLoaderPreferences(new File("resources/testData/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
-//        loader.load(new File("resources/testData/multiName_npo-2011-12-08_inferred.owl").toURI(), 
-//        		new File("resources/testData/NPOMF.xml").toURI(),  1, false, true);
-//        
-//        while (loader.getStatus().getEndTime() == null) {
-//            Thread.sleep(1000);
-//        }
-//        assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//        assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//        lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//        lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], LBConstants.KnownTags.PRODUCTION.toString());
-//
-//    }
-//
+    @Test
+    @Order(14)
+    public void testLoadOWL2NPOwMultiNamespace() throws InterruptedException, LBException {
+        LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+        OWLLoaderImpl loader = (OWLLoaderImpl) lbsm.getLoader("OWLLoader");
+        loader.setLoaderPreferences(new File("resources/testData/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
+        loader.load(new File("resources/testData/multiName_npo-2011-12-08_inferred.owl").toURI(), 
+        		new File("resources/testData/NPOMF.xml").toURI(),  1, false, true);
+        
+        while (loader.getStatus().getEndTime() == null) {
+            Thread.sleep(1000);
+        }
+        assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+        assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+        lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+        lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], LBConstants.KnownTags.PRODUCTION.toString());
+
+    }
+
 //    @Test
 //    @Order(15)
 //    public void testLoadCompPropsOwl() throws InterruptedException, LBException {
@@ -490,139 +490,139 @@ public class LoadTestDataTest extends LexBIGServiceTestCase {
 //        lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], LBConstants.KnownTags.PRODUCTION.toString());
 //    }
 //
-//    @Test
-//    @Order(18)
-//	public void testloadOWL2Snippet() throws Exception {
-//		
-//		LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-//		loader.load(new File("resources/testData/owl2/owl2-snippet-data.owl")
-//				.toURI(), null, 1, true, true);
-//
-//		while (loader.getStatus().getEndTime() == null) {
-//			Thread.sleep(1000);
-//		}
-//		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//
-//	}
-//
-//    @Test
-//    @Order(19)
-//	public void testloadOWL2SnippetWithIndividuals() throws Exception {
-//		
-//		LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-//		try{
-//		loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
-//		loader.load(new File("resources/testData/owl2/owl2-test-cases-Defined-Annotated.owl")
-//				.toURI(), null, 1, true, true);
-//		}
-//		catch(ClassCastException e){
-//			fail("Failed on class cast exception: " + e.getMessage());
-//		}
-//
-//		while (loader.getStatus().getEndTime() == null) {
-//			Thread.sleep(1000);
-//		}
-//		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//
+    @Test
+    @Order(18)
+	public void testloadOWL2Snippet() throws Exception {
+		
+		LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+		loader.load(new File("resources/testData/owl2/owl2-snippet-data.owl")
+				.toURI(), null, 1, true, true);
+
+		while (loader.getStatus().getEndTime() == null) {
+			Thread.sleep(1000);
+		}
+		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+
+	}
+
+    @Test
+    @Order(19)
+	public void testloadOWL2SnippetWithIndividuals() throws Exception {
+		
+		LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+		try{
+		loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
+		loader.load(new File("resources/testData/owl2/owl2-test-cases-Defined-Annotated.owl")
+				.toURI(), null, 1, true, true);
+		}
+		catch(ClassCastException e){
+			fail("Failed on class cast exception: " + e.getMessage());
+		}
+
+		while (loader.getStatus().getEndTime() == null) {
+			Thread.sleep(1000);
+		}
+		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+
+		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0],
+				LBConstants.KnownTags.PRODUCTION.toString());
+
+	}
+
+    @Test
+    @Order(20)
+	public void testloadOWL2SnippetWithPrimitives() throws Exception {
+		
+		LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+		try{
+		loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
+		loader.load(new File("resources/testData/owl2/owl2-test-cases-Primitive-Annotated.owl")
+				.toURI(), null, 1, true, true);
+		}
+		catch(ClassCastException e){
+			fail("Failed on class cast exception: " + e.getMessage());
+		}
+
+		while (loader.getStatus().getEndTime() == null) {
+			Thread.sleep(1000);
+		}
+		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+
 //		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0],
 //				LBConstants.KnownTags.PRODUCTION.toString());
-//
-//	}
-//
-//    @Test
-//    @Order(20)
-//	public void testloadOWL2SnippetWithPrimitives() throws Exception {
-//		
-//		LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-//		try{
-//		loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
-//		loader.load(new File("resources/testData/owl2/owl2-test-cases-Primitive-Annotated.owl")
-//				.toURI(), null, 1, true, true);
-//		}
-//		catch(ClassCastException e){
-//			fail("Failed on class cast exception: " + e.getMessage());
-//		}
-//
-//		while (loader.getStatus().getEndTime() == null) {
-//			Thread.sleep(1000);
-//		}
-//		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//
-////		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0],
-////				LBConstants.KnownTags.PRODUCTION.toString());
-//
-//	}
-//
-//    @Test
-//    @Order(21)
-//	public void testloadOWL2SnippetWithIndividualsUnannotated() throws Exception {
-//		
-//		LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-//		try{
-//			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
-//			loader.load(new File("resources/testData/owl2/owl2-test-cases-Defined-Unannotated.owl")
-//					.toURI(), null, 1, true, true);
-//		}
-//		catch(ClassCastException e){
-//			fail("Failed on class cast exception: " + e.getMessage());
-//		}
-//
-//		while (loader.getStatus().getEndTime() == null) {
-//			Thread.sleep(1000);
-//		}
-//		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//
-////		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0],
-////				LBConstants.KnownTags.PRODUCTION.toString());
-//	}
-//
-//    @Test
-//    @Order(22)
-//	public void testloadOWL2SnippetWithPrimitivesUnannotated() throws Exception {
-//		
-//		LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-//		try{
-//			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
-//			loader.load(new File("resources/testData/owl2/owl2-test-cases-Primitive-Unannotated.owl")
-//					.toURI(), null, 1, true, true);
-//		}
-//		catch(ClassCastException e){
-//			fail("Failed on class cast exception: " + e.getMessage());
-//		}
-//
-//		while (loader.getStatus().getEndTime() == null) {
-//			Thread.sleep(1000);
-//		}
-//		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//
-////		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0],
-////				LBConstants.KnownTags.PRODUCTION.toString());
-//	}
+
+	}
+
+    @Test
+    @Order(21)
+	public void testloadOWL2SnippetWithIndividualsUnannotated() throws Exception {
+		
+		LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+		try{
+			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
+			loader.load(new File("resources/testData/owl2/owl2-test-cases-Defined-Unannotated.owl")
+					.toURI(), null, 1, true, true);
+		}
+		catch(ClassCastException e){
+			fail("Failed on class cast exception: " + e.getMessage());
+		}
+
+		while (loader.getStatus().getEndTime() == null) {
+			Thread.sleep(1000);
+		}
+		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+
+//		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0],
+//				LBConstants.KnownTags.PRODUCTION.toString());
+	}
+
+    @Test
+    @Order(22)
+	public void testloadOWL2SnippetWithPrimitivesUnannotated() throws Exception {
+		
+		LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+		try{
+			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF.XML").toURI());
+			loader.load(new File("resources/testData/owl2/owl2-test-cases-Primitive-Unannotated.owl")
+					.toURI(), null, 1, true, true);
+		}
+		catch(ClassCastException e){
+			fail("Failed on class cast exception: " + e.getMessage());
+		}
+
+		while (loader.getStatus().getEndTime() == null) {
+			Thread.sleep(1000);
+		}
+		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+
+//		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0],
+//				LBConstants.KnownTags.PRODUCTION.toString());
+	}
 
     @Test
     @Order(23)
@@ -649,54 +649,54 @@ public class LoadTestDataTest extends LexBIGServiceTestCase {
 		lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], "PRODUCTION");
 	}
 
-//    @Test
-//    @Order(24)
-//	public void testloadOWL2SnippetSpecialCasesAnnotatedByCodeDefined() throws Exception {
-//		
-//		LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-//		try{
-//			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF2SetTopNodesByNameToCode.XML").toURI());
-//			loader.load(new File("resources/testData/owl2/owl2-special-cases-byName-Defined-Annotated2.owl")
-//					.toURI(), null, 1, true, true);
-//		}
-//		catch(ClassCastException e){
-//			fail("Failed on class cast exception: " + e.getMessage());
-//		}
-//
-//		while (loader.getStatus().getEndTime() == null) {
-//			Thread.sleep(1000);
-//		}
-//		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//	}
-//    @Test
-//    @Order(25)
-//	public void testloadOWL2SnippetSpecialCasesNamespaces() throws Exception {
-//		
-//		LexBIGServiceManager lbsm = getLexBIGServiceManager();
-//
-//		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-//		try{
-//			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF2SetTopNodesByNameToCode.XML").toURI());
-//			loader.load(new File("resources/testData/owl2/owl2-special-cases-Namespaces.owl")
-//					.toURI(), null, 1, true, true);
-//		}
-//		catch(ClassCastException e){
-//			fail("Failed on class cast exception: " + e.getMessage());
-//		}
-//
-//		while (loader.getStatus().getEndTime() == null) {
-//			Thread.sleep(1000);
-//		}
-//		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-//		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-//
-//		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-//	}
+    @Test
+    @Order(24)
+	public void testloadOWL2SnippetSpecialCasesAnnotatedByCodeDefined() throws Exception {
+		
+		LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+		try{
+			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF2SetTopNodesByNameToCode.XML").toURI());
+			loader.load(new File("resources/testData/owl2/owl2-special-cases-byName-Defined-Annotated2.owl")
+					.toURI(), null, 1, true, true);
+		}
+		catch(ClassCastException e){
+			fail("Failed on class cast exception: " + e.getMessage());
+		}
+
+		while (loader.getStatus().getEndTime() == null) {
+			Thread.sleep(1000);
+		}
+		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+	}
+    @Test
+    @Order(25)
+	public void testloadOWL2SnippetSpecialCasesNamespaces() throws Exception {
+		
+		LexBIGServiceManager lbsm = getLexBIGServiceManager();
+
+		OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+		try{
+			loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF2SetTopNodesByNameToCode.XML").toURI());
+			loader.load(new File("resources/testData/owl2/owl2-special-cases-Namespaces.owl")
+					.toURI(), null, 1, true, true);
+		}
+		catch(ClassCastException e){
+			fail("Failed on class cast exception: " + e.getMessage());
+		}
+
+		while (loader.getStatus().getEndTime() == null) {
+			Thread.sleep(1000);
+		}
+		assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+		assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+
+		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+	}
 //    @Test
 //    @Order(26)
 //	public void testLoadHL7JMifVocabularyForBadSource() throws LBException,
