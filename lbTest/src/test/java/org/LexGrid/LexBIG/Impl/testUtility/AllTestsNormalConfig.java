@@ -293,7 +293,7 @@ public class AllTestsNormalConfig {
         graphDBTests.addTest(new JUnit4TestAdapter(TestLexEVSRelsToGraphDao.class));
         graphDBTests.addTest(new JUnit4TestAdapter(TestLexEVSRelsToGraph.class));
         graphDBTests.addTest(new JUnit4TestAdapter(TestGraphingDatabaseUtil.class));
-        //graphDBTests.addTest(new JUnit4TestAdapter(CleanUpGraphDBDataTest.class));
+        graphDBTests.addTest(new JUnit4TestAdapter(CleanUpGraphDBDataTest.class));
         mainSuite.addTest(graphDBTests);
         
         
