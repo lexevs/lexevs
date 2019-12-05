@@ -30,9 +30,9 @@ import org.lexevs.dao.database.ibatis.entity.IbatisEntityDao;
 import org.lexevs.dao.database.ibatis.property.IbatisPropertyDao;
 import org.lexevs.dao.database.ibatis.versions.IbatisVersionsDao;
 import org.lexevs.dao.database.utility.DaoUtility;
-import org.springframework.batch.classify.Classifier;
+import org.springframework.batch.support.annotation.Classifier;
 
-public class BatchOrderClassifier implements Classifier<String,Integer>{
+public class BatchOrderClassifier{
 	
 	private static int GROUP_ONE = 1;
 	private static int GROUP_TWO = 2;
@@ -74,7 +74,7 @@ public class BatchOrderClassifier implements Classifier<String,Integer>{
 		));
 	}
 
-	@Override
+	@Classifier
 	public Integer classify(String sql) {
 		for(Integer key : this.orderedGroups.keySet()) {
 			List<String> registerdSqlStatements = this.orderedGroups.get(key);

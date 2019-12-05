@@ -79,8 +79,8 @@ public class DefaultRootBuilderTest extends LexEvsDbUnitTestBase {
 		
 		rootBuilder.addRootRelationNode("csuri", "csversion", DaoUtility.createNonTypedList("test-assoc"), "c-name", RootOrTail.ROOT, TraverseAssociations.TOGETHER);
 	
-		int count = template.queryForInt("Select count(*) from entityassnstoentity" +
-				" where sourceEntitycode = '@' and targetEntityCode = 's-code'");
+		int count = template.queryForObject("Select count(*) from entityassnstoentity" +
+				" where sourceEntitycode = '@' and targetEntityCode = 's-code'", Integer.class);
 		
 		assertEquals(1,count);
 	}
@@ -119,8 +119,8 @@ public class DefaultRootBuilderTest extends LexEvsDbUnitTestBase {
 		
 		rootBuilder.addRootRelationNode("csuri", "csversion", DaoUtility.createNonTypedList("test-assoc"), "c-name", RootOrTail.TAIL, TraverseAssociations.TOGETHER);
 	
-		int count = template.queryForInt("Select count(*) from entityassnstoentity" +
-				" where sourceEntitycode = 't-code1' and targetEntityCode = '@@'");
+		int count = template.queryForObject("Select count(*) from entityassnstoentity" +
+				" where sourceEntitycode = 't-code1' and targetEntityCode = '@@'", Integer.class);
 		
 		assertEquals(1,count);
 	}

@@ -102,10 +102,6 @@ public class CleanupListener extends LoggingBean implements JobExecutionListener
 		super.getLogger().getProcessStatus().setEndTime(new Date());
 	}
 	
-	private String getParameterFromJobExecution(String parameter, JobExecution jobExecution){
-		return jobExecution.getJobInstance().getJobParameters().getString(parameter);
-	}
-	
 
 	public void beforeJob(JobExecution arg0) {
 		//no-op -- handle this logging elsewhere	

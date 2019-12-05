@@ -71,10 +71,10 @@ import org.lexevs.dao.database.schemaversion.LexGridSchemaVersion;
 import org.lexevs.dao.database.service.daocallback.DaoCallbackService.DaoCallback;
 import org.lexevs.dao.database.utility.DaoUtility;
 import org.lexevs.locator.LexEvsServiceLocator;
-import org.springframework.orm.ibatis.SqlMapClientCallback;
 import org.springframework.util.Assert;
 
 import com.ibatis.sqlmap.client.SqlMapExecutor;
+import com.ibatis.sqlmap.client.SqlMapSession;
 
 /**
  * The Class IbatisAssociationDao.
@@ -200,8 +200,12 @@ public class IbatisAssociationDao extends AbstractIbatisDao implements Associati
 		
 		PrefixedParameter bean = new PrefixedParameter(prefix, associationInstanceId);
 		
-		return (String) this.getSqlMapClientTemplate().queryForObject(
-				GET_ASSOCIATION_PREDICATE_NAME_FOR_ASSOC_INSTANCE_ID, bean);
+		try {
+			return (String) this.getSqlMapClientTemplate().queryForObject(
+					GET_ASSOCIATION_PREDICATE_NAME_FOR_ASSOC_INSTANCE_ID, bean);
+		} catch (SQLException e) {
+			throw new RuntimeException("Error for query: " + GET_ASSOCIATION_PREDICATE_NAME_FOR_ASSOC_INSTANCE_ID, e);
+		}
 	}
 
 	@Override
@@ -211,8 +215,12 @@ public class IbatisAssociationDao extends AbstractIbatisDao implements Associati
 		
 		PrefixedParameter bean = new PrefixedParameter(prefix, associationInstanceId);
 		
-		return (String) this.getSqlMapClientTemplate().queryForObject(
-				GET_RELATIONS_CONTAINER_NAME_FOR_ASSOC_INSTANCE_ID, bean);
+		try {
+			return (String) this.getSqlMapClientTemplate().queryForObject(
+					GET_RELATIONS_CONTAINER_NAME_FOR_ASSOC_INSTANCE_ID, bean);
+		} catch (SQLException e) {
+			throw new RuntimeException("Error for query: " + GET_RELATIONS_CONTAINER_NAME_FOR_ASSOC_INSTANCE_ID,e);
+		}
 	}
 
 	@Override
@@ -227,8 +235,12 @@ public class IbatisAssociationDao extends AbstractIbatisDao implements Associati
 		bean.setParam2(relationUid);
 		bean.setParam3(revisionId);
 		
-		return (Relations) this.getSqlMapClientTemplate().queryForObject(
-				GET_RELATIONS_FOR_UID_AND_REVISION_ID_SQL, bean);	
+		try {
+			return (Relations) this.getSqlMapClientTemplate().queryForObject(
+					GET_RELATIONS_FOR_UID_AND_REVISION_ID_SQL, bean);
+		} catch (SQLException e) {
+			throw new RuntimeException("Error for query: " + GET_RELATIONS_FOR_UID_AND_REVISION_ID_SQL,e);
+		}	
 	}
 
 	@SuppressWarnings("unchecked")
@@ -239,11 +251,15 @@ public class IbatisAssociationDao extends AbstractIbatisDao implements Associati
 			int start, int pageSize) {
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeId);
 		
-		return this.getSqlMapClientTemplate().queryForList(
-				GET_ALL_TRIPLES_OF_CODINGSCHEME_SQL, 
-				new PrefixedParameterTuple(prefix, codingSchemeId, associationPredicateId), 
-				start, 
-				pageSize);
+		try {
+			return this.getSqlMapClientTemplate().queryForList(
+					GET_ALL_TRIPLES_OF_CODINGSCHEME_SQL, 
+					new PrefixedParameterTuple(prefix, codingSchemeId, associationPredicateId), 
+					start, 
+					pageSize);
+		} catch (SQLException e) {
+			throw new RuntimeException("Error for query: " + GET_ALL_TRIPLES_OF_CODINGSCHEME_SQL,e);
+		}
 	}
 	
 
@@ -254,19 +270,27 @@ public class IbatisAssociationDao extends AbstractIbatisDao implements Associati
 			int start, int pageSize) {
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeId);
 		
-		return this.getSqlMapClientTemplate().queryForList(
-				GET_ALL_GRAPHDB_TRIPLES_OF_CODINGSCHEME_SQL, 
-				new PrefixedParameterTuple(prefix, codingSchemeId, associationPredicateId), 
-				start, 
-				pageSize);
+		try {
+			return this.getSqlMapClientTemplate().queryForList(
+					GET_ALL_GRAPHDB_TRIPLES_OF_CODINGSCHEME_SQL, 
+					new PrefixedParameterTuple(prefix, codingSchemeId, associationPredicateId), 
+					start, 
+					pageSize);
+		} catch (SQLException e) {
+			throw new RuntimeException("Error for query: " + GET_ALL_GRAPHDB_TRIPLES_OF_CODINGSCHEME_SQL,e);
+		}
 	}
 	
 	@Override
 	public String getAnonDesignationForPredicate(String codingSchemeId, String associationPredicateId){
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeId);
-		return (String) this.getSqlMapClientTemplate().queryForObject(
-				GET_ANON_DESIGNATION_FOR_PREDICATE_UID, 
-				new PrefixedParameterTuple(prefix, associationPredicateId, "Association"));
+		try {
+			return (String) this.getSqlMapClientTemplate().queryForObject(
+					GET_ANON_DESIGNATION_FOR_PREDICATE_UID, 
+					new PrefixedParameterTuple(prefix, associationPredicateId, "Association"));
+		} catch (SQLException e) {
+			throw new RuntimeException("Error for query: " + GET_ANON_DESIGNATION_FOR_PREDICATE_UID,e);
+		}
 		
 	}
 
@@ -577,29 +601,40 @@ public class IbatisAssociationDao extends AbstractIbatisDao implements Associati
 	@ClearCache
 	public void insertBatchAssociationSources(final String codingSchemeId,
 			final List<AssociationSourceBatchInsertItem> list) {
+		SqlMapSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
+		this.getSqlMapClientTemplate().
+		try {
+		  NameMapper mapper = sqlSession.getMapper(NameMapper.class);
+		  for (String name : names) {
+		    mapper.insertName(name);
+		  }
+		  sqlSession.commit();
+		} finally {
+		  sqlSession.close();
+		}
 		
-		this.getSqlMapClientTemplate().execute(new SqlMapClientCallback(){
-		
-			public Object doInSqlMapClient(SqlMapExecutor executor)
-					throws SQLException {
-				BatchInserter batchInserter = getBatchTemplateInserter(executor);
-				
-				batchInserter.startBatch();
-				
-				for(AssociationSourceBatchInsertItem item : list){
-					
-					insertAssociationSource(
-							codingSchemeId, 
-							item.getParentId(), 
-							item.getAssociationSource(), 
-							batchInserter);
-				}
-				
-				batchInserter.executeBatch();
-				
-				return null;
-			}	
-		});
+//		this.getSqlMapClientTemplate().execute(new SqlMapClientCallback(){
+//		
+//			public Object doInSqlMapClient(SqlMapExecutor executor)
+//					throws SQLException {
+//				BatchInserter batchInserter = getBatchTemplateInserter(executor);
+//				
+//				batchInserter.startBatch();
+//				
+//				for(AssociationSourceBatchInsertItem item : list){
+//					
+//					insertAssociationSource(
+//							codingSchemeId, 
+//							item.getParentId(), 
+//							item.getAssociationSource(), 
+//							batchInserter);
+//				}
+//				
+//				batchInserter.executeBatch();
+//				
+//				return null;
+//			}	
+//		});
 	}
 	
 	@ClearCache

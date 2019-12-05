@@ -39,7 +39,6 @@ import org.lexevs.dao.test.LexEvsDbUnitTestBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -47,7 +46,6 @@ import org.springframework.transaction.annotation.Transactional;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-@TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
 @Transactional
 public class IbatisPropertyDaoTest extends LexEvsDbUnitTestBase {
 
@@ -375,8 +373,8 @@ public class IbatisPropertyDaoTest extends LexEvsDbUnitTestBase {
 		property.setEntryState(es);
 		
 		ibatisPropertyDao.insertHistoryProperty("1", "1", property);
-		
-		assertEquals(1, template.queryForInt("select count(*) from h_property"));
+		int result = template.queryForObject("select count(*) from h_property", Integer.class);
+		assertEquals(1, result);
 	}
 	
 	@Test
@@ -674,10 +672,12 @@ public class IbatisPropertyDaoTest extends LexEvsDbUnitTestBase {
 		template.execute("Insert into entity (entityGuid, codingSchemeGuid, entityCode, entityCodeNamespace) " +
 			"values ('1', '1', 'ecode', 'ens')");
 	
-		
-		assertEquals(1, template.queryForInt("Select count(*) from codingScheme"));
-		assertEquals(1, template.queryForInt("Select count(*) from entity"));
-		assertEquals(2, template.queryForInt("Select count(*) from property"));
+		int result = template.queryForObject("Select count(*) from codingScheme", Integer.class);
+		assertEquals(1, result);
+		result =  template.queryForObject("Select count(*) from entity", Integer.class);
+		assertEquals(1, result);
+		result = template.queryForObject("Select count(*) from property", Integer.class);
+		assertEquals(2, result);
 		
 		
 		PropertyLink link = new PropertyLink();
@@ -1090,14 +1090,16 @@ public class IbatisPropertyDaoTest extends LexEvsDbUnitTestBase {
 		
 		template.execute("Insert into entity (entityGuid, codingSchemeGuid, entityCode, entityCodeNamespace) " +
 			"values ('1', '1', 'ecode', 'ens')");
-		
-		assertEquals(1, template.queryForInt("Select count(*) from codingScheme"));
-		assertEquals(1, template.queryForInt("Select count(*) from entity"));
-		assertEquals(1, template.queryForInt("Select count(*) from property"));
+		int result =  template.queryForObject("Select count(*) from codingScheme", Integer.class);
+		assertEquals(1, result);
+		result = template.queryForObject("Select count(*) from entity", Integer.class);
+		assertEquals(1, result);
+		result = template.queryForObject("Select count(*) from property", Integer.class);
+		assertEquals(1, result);
 		
 		ibatisPropertyDao.deleteAllEntityPropertiesOfCodingScheme("1");
-		
-		assertEquals(0, template.queryForInt("Select count(*) from property"));
+		result = template.queryForObject("Select count(*) from property", Integer.class);
+		assertEquals(0, result);
 
 	}
 }

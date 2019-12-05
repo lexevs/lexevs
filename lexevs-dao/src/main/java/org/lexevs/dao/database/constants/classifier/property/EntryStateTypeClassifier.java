@@ -19,14 +19,15 @@
 package org.lexevs.dao.database.constants.classifier.property;
 
 import org.lexevs.dao.database.access.versions.VersionsDao.EntryStateType;
-import org.springframework.batch.classify.Classifier;
+import org.springframework.batch.support.annotation.Classifier;
 
-public class EntryStateTypeClassifier implements Classifier<EntryStateType,String>{
+public class EntryStateTypeClassifier{
 
 	//TODO: Figure out which constants to use here...
 	/* (non-Javadoc)
 	 * @see org.springframework.batch.classify.Classifier#classify(java.lang.Object)
 	 */
+	@org.springframework.batch.support.annotation.Classifier
 	public String classify(EntryStateType type) {
 		
 		if(type.equals(EntryStateType.CODINGSCHEME)){

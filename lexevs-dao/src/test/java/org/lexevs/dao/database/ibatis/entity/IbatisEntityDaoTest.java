@@ -42,7 +42,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.test.context.transaction.TransactionConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
@@ -50,7 +49,6 @@ import org.springframework.transaction.annotation.Transactional;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-@TransactionConfiguration(transactionManager="transactionManager", defaultRollback=false)
 @Transactional
 public class IbatisEntityDaoTest extends LexEvsDbUnitTestBase {
 
@@ -301,7 +299,8 @@ public class IbatisEntityDaoTest extends LexEvsDbUnitTestBase {
 		ibatisEntityDao.insertHistoryEntity(csId, entityUId, entity);
 		
 		JdbcTemplate template = new JdbcTemplate(this.getDataSource());
-		assertEquals(1, template.queryForInt("select count(*) from h_entity"));
+		int result = template.queryForObject("select count(*) from h_entity", Integer.class);
+		assertEquals(1, result);
 	}
 	
 	/*
@@ -518,7 +517,8 @@ public class IbatisEntityDaoTest extends LexEvsDbUnitTestBase {
 		}
 		
 		JdbcTemplate template = new JdbcTemplate(this.getDataSource());
-		assertEquals(1, template.queryForInt("select count(*) from entity"));
+		int result = template.queryForObject("select count(*) from entity", Integer.class);
+		assertEquals(1, result );
 
 	}
 	

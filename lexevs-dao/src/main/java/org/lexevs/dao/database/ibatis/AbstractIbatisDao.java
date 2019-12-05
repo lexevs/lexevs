@@ -18,18 +18,22 @@
  */
 package org.lexevs.dao.database.ibatis;
 
+import java.sql.SQLException;
+
+import javax.sql.DataSource;
+
+import org.apache.ibatis.session.SqlSession;
 import org.lexevs.dao.database.access.AbstractBaseDao;
 import org.lexevs.dao.database.ibatis.batch.InOrderOrderingBatchInserterDecorator;
 import org.lexevs.dao.database.ibatis.batch.SqlMapClientTemplateInserter;
 import org.lexevs.dao.database.ibatis.batch.SqlMapExecutorBatchInserter;
+import org.lexevs.dao.database.ibatis.batch.SqlSessionFactorySingleInserter;
 import org.lexevs.dao.database.ibatis.parameter.PrefixedParameter;
 import org.lexevs.dao.database.inserter.BatchInserter;
 import org.lexevs.dao.database.inserter.Inserter;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.orm.ibatis.SqlMapClientTemplate;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ibatis.sqlmap.client.SqlMapExecutor;
 
 /**
  * The Class AbstractIbatisDao.
@@ -39,10 +43,12 @@ import com.ibatis.sqlmap.client.SqlMapExecutor;
 public abstract class AbstractIbatisDao extends AbstractBaseDao implements InitializingBean {
 
 	/** The sql map client template. */
-	private SqlMapClientTemplate sqlMapClientTemplate;
+	private SqlSession sqlMapClientTemplate;
 	
 	/** The non batch template inserter. */
 	private Inserter nonBatchTemplateInserter;
+	
+	private DataSource datasource;
 	
 	/** The VERSION s_ namespace. */
 	public static String VERSIONS_NAMESPACE = "Versions.";
@@ -59,7 +65,7 @@ public abstract class AbstractIbatisDao extends AbstractBaseDao implements Initi
 	 * @see org.springframework.beans.factory.InitializingBean#afterPropertiesSet()
 	 */
 	public void afterPropertiesSet() throws Exception {
-		setNonBatchTemplateInserter(new SqlMapClientTemplateInserter(this.getSqlMapClientTemplate()));
+		setNonBatchTemplateInserter(new SqlSessionFactorySingleInserter(this.getSqlMapClientTemplate()));
 	}
 	
 	
@@ -78,7 +84,7 @@ public abstract class AbstractIbatisDao extends AbstractBaseDao implements Initi
 	 * 
 	 * @param sqlMapClientTemplate the new sql map client template
 	 */
-	public void setSqlMapClientTemplate(SqlMapClientTemplate sqlMapClientTemplate) {
+	public void setSqlMapClientTemplate(SqlSession sqlMapClientTemplate) {
 		this.sqlMapClientTemplate = sqlMapClientTemplate;
 	}
 
@@ -87,7 +93,7 @@ public abstract class AbstractIbatisDao extends AbstractBaseDao implements Initi
 	 * 
 	 * @return the sql map client template
 	 */
-	public SqlMapClientTemplate getSqlMapClientTemplate() {
+	public SqlSession getSqlMapClientTemplate() {
 		return sqlMapClientTemplate;
 	}
 	
@@ -120,8 +126,9 @@ public abstract class AbstractIbatisDao extends AbstractBaseDao implements Initi
 	 * 
 	 * @param entryStateUId
 	 * @return boolean
+	 * @throws SQLException 
 	 */
-	public boolean entryStateExists(String prefix, String entryStateUId) {
+	public boolean entryStateExists(String prefix, String entryStateUId) throws SQLException {
 		
 		String count = (String) this.getSqlMapClientTemplate().queryForObject(
 				CHECK_ENTRYSTATE_EXISTS, 
@@ -142,9 +149,15 @@ public abstract class AbstractIbatisDao extends AbstractBaseDao implements Initi
 	 */
 	public boolean vsEntryStateExists(String prefix, String entryStateUId) {
 		
-		String count = (String) this.getSqlMapClientTemplate().queryForObject(
-				CHECK_VSENTRYSTATE_EXISTS, 
-				new PrefixedParameter(prefix, entryStateUId));
+		String count = null;
+		try {
+			count = (String) this.getSqlMapClientTemplate().queryForObject(
+					CHECK_VSENTRYSTATE_EXISTS, 
+					new PrefixedParameter(prefix, entryStateUId));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		if( count != null &&  new Integer(count).intValue() > 0 )
 			return true;

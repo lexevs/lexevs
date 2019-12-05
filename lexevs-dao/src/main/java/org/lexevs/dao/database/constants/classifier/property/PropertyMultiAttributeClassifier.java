@@ -21,11 +21,11 @@ package org.lexevs.dao.database.constants.classifier.property;
 import org.LexGrid.commonTypes.PropertyQualifier;
 import org.LexGrid.commonTypes.Source;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.springframework.batch.classify.Classifier;
+import org.springframework.batch.support.annotation.Classifier;
 
-public class PropertyMultiAttributeClassifier implements Classifier<Class<?>,String>{
+public class PropertyMultiAttributeClassifier{
 
-	@Override
+	@Classifier
 	public String classify(Class<?> clazz) {
 		if(clazz == Source.class) {
 			return SQLTableConstants.TBLCOLVAL_SOURCE;

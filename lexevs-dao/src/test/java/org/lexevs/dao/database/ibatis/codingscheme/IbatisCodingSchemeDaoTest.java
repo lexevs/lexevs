@@ -302,8 +302,8 @@ public class IbatisCodingSchemeDaoTest extends LexEvsDbUnitTestBase {
 		source.setRole("updated role");
 		
 		ibatisCodingSchemeDao.insertOrUpdateCodingSchemeSource("1", source);
-		
-		assertEquals(1, template.queryForInt("select count(*) from csmultiattrib"));
+		int result = template.queryForObject("select count(*) from csmultiattrib", Integer.class);
+		assertEquals(1, result );
 		
 		template.queryForObject("Select * from csmultiattrib", new RowMapper(){
 
@@ -453,8 +453,8 @@ public class IbatisCodingSchemeDaoTest extends LexEvsDbUnitTestBase {
 		scs.setUri("changedUri");
 		
 		ibatisCodingSchemeDao.insertOrUpdateURIMap("1", scs);
-		
-		assertEquals(1, template.queryForInt("Select count(*) from cssupportedattrib"));
+		int result = template.queryForObject("Select count(*) from cssupportedattrib", Integer.class);
+		assertEquals(1, result);
 		
 		template.queryForObject("Select * from cssupportedattrib", new RowMapper(){
 
@@ -485,11 +485,12 @@ public class IbatisCodingSchemeDaoTest extends LexEvsDbUnitTestBase {
 		template.execute("Insert into cssupportedattrib " +
 			"values ('2', '1', 'CodingScheme', 'id2', 'uri2', null, null, null, null, null, null, null, null, null, null, null)");
 
-		assertEquals(2, template.queryForInt("Select count(*) from cssupportedattrib"));
+		int result = template.queryForObject("Select count(*) from cssupportedattrib", Integer.class);
+		assertEquals(2, result);
 		
 		ibatisCodingSchemeDao.deleteCodingSchemeMappings("1");
-		
-		assertEquals(0, template.queryForInt("Select count(*) from cssupportedattrib"));
+		result = template.queryForObject("Select count(*) from cssupportedattrib", Integer.class);
+		assertEquals(0, result);
 	}
 	
 	/**
@@ -872,10 +873,10 @@ public class IbatisCodingSchemeDaoTest extends LexEvsDbUnitTestBase {
 		template.execute("Insert into codingScheme (codingSchemeGuid, codingSchemeName, codingSchemeUri, representsVersion, approxNumConcepts) " +
 			"values ('1', 'csname', 'csuri', 'csversion', 1234)");
 		
-		int count1 = template.queryForInt("select count(*) from codingscheme");
+		int count1 = template.queryForObject("select count(*) from codingscheme", Integer.class);
 		assertEquals(1, count1);
 		
-		long preUpdateConcepts = template.queryForLong("select approxNumConcepts from codingscheme where codingSchemeGuid = '1'");
+		long preUpdateConcepts = template.queryForObject("select approxNumConcepts from codingscheme where codingSchemeGuid = '1'", Long.class);
 		assertEquals(1234l, preUpdateConcepts);
 		
 		CodingScheme newCs = new CodingScheme();
@@ -883,10 +884,10 @@ public class IbatisCodingSchemeDaoTest extends LexEvsDbUnitTestBase {
 		
 		ibatisCodingSchemeDao.updateCodingScheme("1", newCs);
 		
-		int count2 = template.queryForInt("select count(*) from codingscheme");
+		int count2 = template.queryForObject("select count(*) from codingscheme", Integer.class);
 		assertEquals(1, count2);
 		
-		long postUpdateConcepts = template.queryForLong("select approxNumConcepts from codingscheme where codingSchemeGuid = '1'");
+		long postUpdateConcepts = template.queryForObject("select approxNumConcepts from codingscheme where codingSchemeGuid = '1'", Long.class);
 		assertEquals(11111l, postUpdateConcepts);
 	}
 	

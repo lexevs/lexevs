@@ -445,8 +445,8 @@ public class VersionableEntityServiceTest extends LexEvsDbUnitTestBase {
 		entity.getEntryState().setPrevRevision("rid1");
 		
 		service.revise("csuri", "csversion", entity);
-		
-		assertEquals(1, template.queryForInt("select count(*) from h_entity"));
+		int result = template.queryForObject("select count(*) from h_entity", Integer.class);
+		assertEquals(1, result);
 	}
 	
 	@Test
@@ -481,7 +481,7 @@ public class VersionableEntityServiceTest extends LexEvsDbUnitTestBase {
 		entity.getEntryState().setPrevRevision("rid1");
 		
 		service.revise("csuri", "csversion", entity);
-		
-		assertEquals(1, template.queryForInt("select count(*) from h_entity"));
+		int result = template.queryForObject("select count(*) from h_entity", Integer.class);
+		assertEquals(1, result);
 	}
 }

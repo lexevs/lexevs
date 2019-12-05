@@ -140,9 +140,12 @@ public class VersionableEventCodingSchemeServiceTest extends LexEvsDbUnitTestBas
 		authoringService.loadRevision(scheme, null, null);
 		
 		JdbcTemplate template = new JdbcTemplate(this.getDataSource());
-		assertEquals(1, template.queryForInt("Select count(*) from codingScheme"));
-		assertEquals(1, template.queryForInt("Select count(*) from entity"));
-		assertEquals(1, template.queryForInt("Select count(*) from property"));
+		int result =  template.queryForObject("Select count(*) from codingScheme", Integer.class);
+		assertEquals(1,result);
+		result =  template.queryForObject("Select count(*) from entity", Integer.class);
+		assertEquals(1, result);
+		result = template.queryForObject("Select count(*) from property", Integer.class);
+		assertEquals(1, result);
 			
 	}
 	
@@ -225,14 +228,22 @@ public class VersionableEventCodingSchemeServiceTest extends LexEvsDbUnitTestBas
 		authoringService.loadRevision(scheme, null, null);
 		
 		JdbcTemplate template = new JdbcTemplate(this.getDataSource());
-		assertEquals(1, template.queryForInt("Select count(*) from codingScheme"));
-		assertEquals(1, template.queryForInt("Select count(*) from entity"));
-		assertEquals(2, template.queryForInt("Select count(*) from property"));
-		assertEquals(1, template.queryForInt("Select count(*) from propertymultiattrib"));
-		assertEquals(1, template.queryForInt("Select count(*) from propertylinks"));
-		assertEquals(1, template.queryForInt("Select count(*) from entityassnstoentity"));
-		assertEquals(1, template.queryForInt("Select count(*) from associationpredicate"));
-		assertEquals(1, template.queryForInt("Select count(*) from relation"));
+		int   result = template.queryForObject("Select count(*) from codingScheme", Integer.class);
+		assertEquals(1, result);
+		result = template.queryForObject("Select count(*) from entity", Integer.class);
+		assertEquals(1, result);
+		result = template.queryForObject("Select count(*) from property", Integer.class);
+		assertEquals(2,  result);
+		result = template.queryForObject("Select count(*) from propertymultiattrib", Integer.class);
+		assertEquals(1,  result);
+		result = template.queryForObject("Select count(*) from propertylinks", Integer.class);
+		assertEquals(1,  result);
+		result = template.queryForObject("Select count(*) from entityassnstoentity", Integer.class);
+		assertEquals(1,  result);
+		result = template.queryForObject("Select count(*) from associationpredicate", Integer.class);
+		assertEquals(1,  result);
+		result =  template.queryForObject("Select count(*) from relation", Integer.class);
+		assertEquals(1, result);
 		
 		
 	}
@@ -241,7 +252,8 @@ public class VersionableEventCodingSchemeServiceTest extends LexEvsDbUnitTestBas
 	@Transactional
 	public void updateCodingSchemeWithMappingsInsert() throws Exception{
 		JdbcTemplate template = new JdbcTemplate(this.getDataSource());
-		assertEquals(0, template.queryForInt("Select count(*) from cssupportedattrib"));
+		int result = template.queryForObject("Select count(*) from cssupportedattrib", Integer.class);
+		assertEquals(0, result);
 		
 		template.execute("Insert into codingScheme (codingSchemeGuid, codingSchemeName, codingSchemeUri, representsVersion, entryStateGuid) " +
 			"values ('1', 'csname', 'csuri', 'csversion', '1')");
@@ -272,14 +284,15 @@ public class VersionableEventCodingSchemeServiceTest extends LexEvsDbUnitTestBas
 		cs.setEntryState(es);
 		
 		service.updateCodingScheme(cs);
-		
-		assertEquals(2, template.queryForInt("Select count(*) from cssupportedattrib"));
+		result = template.queryForObject("Select count(*) from cssupportedattrib", Integer.class);
+		assertEquals(2, result);
 	}
 	
 	@Test
 	public void updateCodingSchemeWithMappingsUpdate() throws Exception{
 		JdbcTemplate template = new JdbcTemplate(this.getDataSource());
-		assertEquals(0, template.queryForInt("Select count(*) from cssupportedattrib"));
+		int result =  template.queryForObject("Select count(*) from cssupportedattrib", Integer.class);
+		assertEquals(0, result);
 		
 		template.execute("Insert into codingScheme (codingSchemeGuid, codingSchemeName, codingSchemeUri, representsVersion, entryStateGuid) " +
 			"values ('1', 'csname', 'csuri', 'csversion', '1')");
@@ -311,8 +324,8 @@ public class VersionableEventCodingSchemeServiceTest extends LexEvsDbUnitTestBas
 		cs.getMappings().addSupportedCodingScheme(scs);
 		
 		service.updateCodingScheme(cs);
-		
-		assertEquals(1, template.queryForInt("Select count(*) from cssupportedattrib"));
+		result = template.queryForObject("Select count(*) from cssupportedattrib", Integer.class);
+		assertEquals(1, result);
 	}
 	
 	/**
@@ -392,8 +405,8 @@ public class VersionableEventCodingSchemeServiceTest extends LexEvsDbUnitTestBas
 		assertEquals(1, errors.size());	
 		
 		assertEquals(CodingSchemeService.INSERT_CODINGSCHEME_ERROR, errors.get(0).getErrorCode());
-		
-		assertEquals(1, template.queryForInt("Select count(*) from codingscheme"));
+		int result =  template.queryForObject("Select count(*) from codingscheme", Integer.class);
+		assertEquals(1, result);
 	}
 	
 	private class CachingCallback implements ErrorCallbackListener {

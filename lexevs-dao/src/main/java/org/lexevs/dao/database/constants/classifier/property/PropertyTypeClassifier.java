@@ -19,18 +19,19 @@
 package org.lexevs.dao.database.constants.classifier.property;
 
 import org.lexevs.dao.database.access.property.PropertyDao.PropertyType;
-import org.springframework.batch.classify.Classifier;
+import org.springframework.batch.support.annotation.Classifier;
 
 /**
  * The Class PropertyTypeClassifier.
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-public class PropertyTypeClassifier implements Classifier<PropertyType,String>{
+public class PropertyTypeClassifier{
 
 	/* (non-Javadoc)
 	 * @see org.springframework.batch.classify.Classifier#classify(java.lang.Object)
 	 */
+	@Classifier
 	public String classify(PropertyType type) {
 		if(type == null) {return null;}
 		

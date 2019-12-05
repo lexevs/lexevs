@@ -18,59 +18,63 @@
  */
 package org.lexevs.dao.database.ibatis.batch;
 
-import java.sql.SQLException;
+import java.io.Reader;
 
+import org.apache.ibatis.exceptions.PersistenceException;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.lexevs.dao.database.inserter.Inserter;
 
-import com.ibatis.sqlmap.client.SqlMapClient;
 
 /**
  * The Class SqlMapClientTemplateInserter.
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-public class SqlMapClientTemplateInserter implements Inserter{
+public class SqlSessionFactorySingleInserter implements Inserter{
 
 	/** The sql map client template. */
-	private SqlMapClient sqlMapClientTemplate;
+	private SqlSession session;
 	
-	/**
-	 * Instantiates a new sql map client template inserter.
-	 * 
-	 * @param sqlMapClientTemplate the sql map client template
-	 */
-	public SqlMapClientTemplateInserter(SqlMapClient sqlMapClientTemplate){
-		this.sqlMapClientTemplate = sqlMapClientTemplate;
+
+	public SqlSessionFactorySingleInserter(SqlSession session){
+		this.session = session;
 	}
 	
 	/* (non-Javadoc)
 	 * @see org.lexevs.dao.database.ibatis.batch.Inserter#insert(java.lang.String, java.lang.Object)
 	 */
 	public void insert(String sql, Object parameter) {
-		try {
-			sqlMapClientTemplate.insert(sql, parameter);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Reader resource = null;
+		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resource);
+		session = sqlSessionFactory.openSession();
+	    try {
+	        	session.insert(sql, parameter);
+	        session.commit();
+	    } catch (Throwable t) {
+	        session.rollback();
+	        //logger.error("Exception occurred during updateBatch : ", t);
+	        throw new PersistenceException(t);
+	    } finally {
+	        session.close();
+	    }
 	}
 
 	/**
-	 * Sets the sql map client template.
-	 * 
-	 * @param sqlMapClientTemplate the new sql map client template
+	 * @return the session
 	 */
-	public void setSqlMapClientTemplate(SqlMapClient sqlMapClientTemplate) {
-		this.sqlMapClientTemplate = sqlMapClientTemplate;
+	public SqlSession getSession() {
+		return session;
 	}
 
 	/**
-	 * Gets the sql map client template.
-	 * 
-	 * @return the sql map client template
+	 * @param session the session to set
 	 */
-	public SqlMapClient getSqlMapClientTemplate() {
-		return sqlMapClientTemplate;
+	public void setSession(SqlSession session) {
+		this.session = session;
 	}
+
+
 
 }

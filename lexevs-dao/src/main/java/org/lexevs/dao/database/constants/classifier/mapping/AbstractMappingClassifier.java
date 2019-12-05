@@ -23,14 +23,14 @@ import java.util.Map;
 
 import org.LexGrid.naming.*;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.springframework.batch.classify.Classifier;
+import org.springframework.batch.support.annotation.Classifier;
 
 /**
  * The Class AbstractMappingClassifier.
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-public abstract class AbstractMappingClassifier<I,O> implements Classifier<I,O>{
+public abstract class AbstractMappingClassifier<I,O>{
 	
 	/** The mappings. */
 	private Map<Class<? extends URIMap>,String> mappings = buildMap();
@@ -38,7 +38,7 @@ public abstract class AbstractMappingClassifier<I,O> implements Classifier<I,O>{
 	/* (non-Javadoc)
 	 * @see org.springframework.batch.classify.Classifier#classify(java.lang.Object)
 	 */
-	@Override
+	@Classifier
 	public O classify(I item) {
 		try {
 			return doClassify(item, mappings);

@@ -37,7 +37,7 @@ import org.lexevs.dao.database.type.DatabaseType;
 import org.lexevs.registry.service.Registry;
 import org.lexevs.system.constants.SystemVariables;
 import org.lexevs.system.service.DelegatingSystemResourceService;
-import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -118,7 +118,7 @@ public class LexEvsDbUnitTestBase extends DataSourceBasedDBTestCase {
 		extensionLoadingListenerRegistry.setEnableListeners(false);
 		
 		if(this.databaseType.equals(DatabaseType.HSQL)) {
-			new SimpleJdbcTemplate(dataSource).getJdbcOperations().execute("SHUTDOWN");
+			new SimpleJdbcCall(dataSource).execute("SHUTDOWN");
 		} else {
 			lexEvsDatabaseOperations.dropAllTables();
 			primaryKeyIncrementer.destroy();

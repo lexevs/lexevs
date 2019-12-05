@@ -61,7 +61,6 @@ import org.lexevs.dao.database.ibatis.parameter.PrefixedParameterTriple;
 import org.lexevs.dao.database.ibatis.parameter.PrefixedParameterTuple;
 import org.lexevs.dao.database.schemaversion.LexGridSchemaVersion;
 import org.lexevs.dao.database.utility.DaoUtility;
-import org.springframework.orm.ibatis.SqlMapClientCallback;
 import org.springframework.util.Assert;
 import org.springframework.util.StringUtils;
 
@@ -200,9 +199,13 @@ public class IbatisCodingSchemeDao extends AbstractIbatisDao implements CodingSc
 	public CodingScheme getCodingSchemeByUId(String codingSchemeUId) {
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeUId);
 		
-		CodingScheme scheme = 
-			(CodingScheme) this.getSqlMapClientTemplate().queryForObject(
+		CodingScheme scheme = null;
+		try {
+			scheme = (CodingScheme) this.getSqlMapClientTemplate().queryForObject(
 				GET_CODING_SCHEME_BY_ID_SQL, new PrefixedParameter(prefix, codingSchemeUId));
+		} catch (SQLException e) {
+			throw new RuntimeException("Query failing for: " + GET_CODING_SCHEME_BY_ID_SQL, e);
+		}
 
 		scheme.setMappings(
 				this.getMappings(codingSchemeUId));
@@ -682,25 +685,39 @@ public class IbatisCodingSchemeDao extends AbstractIbatisDao implements CodingSc
 	@ClearCache
 	public void insertURIMap(final String codingSchemeId,
 			final List<URIMap> supportedProperties) {
-		this.getSqlMapClientTemplate().execute(new SqlMapClientCallback(){
-	
-			public Object doInSqlMapClient(SqlMapExecutor executor)
-			throws SQLException {
-				executor.startBatch();
-				for(URIMap uriMap : supportedProperties){
-					String uriMapId = createUniqueId();
-					
-					executor.insert(INSERT_URIMAP_SQL, 
-							buildInsertOrUpdateURIMapBean(
-									getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeId),
-									uriMapId, 
-									codingSchemeId,
-									classToStringMappingClassifier.classify(uriMap.getClass()),
-									uriMap));
-				}
-				return executor.executeBatch();
-			}	
-		});		
+//		this.getSqlMapClientTemplate().execute(new SqlMapClientCallback(){
+//	
+//			public Object doInSqlMapClient(SqlMapExecutor executor)
+//			throws SQLException {
+//				executor.startBatch();
+//				for(URIMap uriMap : supportedProperties){
+//					String uriMapId = createUniqueId();
+//					
+//					executor.insert(INSERT_URIMAP_SQL, 
+//							buildInsertOrUpdateURIMapBean(
+//									getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeId),
+//									uriMapId, 
+//									codingSchemeId,
+//									classToStringMappingClassifier.classify(uriMap.getClass()),
+//									uriMap));
+//				}
+//				return executor.executeBatch();
+//			}	
+//		});		
+		
+		SqlSession session = ConnectionBuilderAction.getSqlSession();
+	    PartyDao partyDao = session.getMapper(PartyDao.class);
+	    try {
+	        if (attendingUsrList.size() > 0) {
+	            partyDao.updateAttendingCountForParties(attendingUsrList);
+	        }
+	        session.commit();
+	    } catch (Throwable t) {
+	        session.rollback();
+	        logger.error("Exception occurred during updateBatch : ", t);
+	        throw new PersistenceException(t);
+	    } finally {
+	        session.close();
 	}
 	
 	/* (non-Javadoc)
