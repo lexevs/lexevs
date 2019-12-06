@@ -23,7 +23,7 @@ package org.lexevs.dao.database.inserter;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-public interface Inserter {
+public interface Inserter <T> {
 
 	/**
 	 * Insert.
@@ -31,5 +31,5 @@ public interface Inserter {
 	 * @param sql the sql
 	 * @param parameter the parameter
 	 */
-	public void insert(String sql, Object parameter);
+	public void insert(String sql, T parameter);
 }

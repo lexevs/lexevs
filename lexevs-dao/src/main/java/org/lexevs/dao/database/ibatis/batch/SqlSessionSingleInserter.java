@@ -18,12 +18,9 @@
  */
 package org.lexevs.dao.database.ibatis.batch;
 
-import java.io.Reader;
-
 import org.apache.ibatis.exceptions.PersistenceException;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.lexevs.dao.database.inserter.Inserter;
 
 
@@ -31,26 +28,22 @@ import org.lexevs.dao.database.inserter.Inserter;
  * The Class SqlMapClientTemplateInserter.
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
+ * @param <T>
  */
-public class SqlSessionFactorySingleInserter implements Inserter{
+public class SqlSessionSingleInserter<T> implements Inserter<T>{
 
 	/** The sql map client template. */
-	private SqlSession session;
+	private SqlSessionFactory sqlSessionFactory;
+	
 	
 
-	public SqlSessionFactorySingleInserter(SqlSession session){
-		this.session = session;
-	}
-	
 	/* (non-Javadoc)
-	 * @see org.lexevs.dao.database.ibatis.batch.Inserter#insert(java.lang.String, java.lang.Object)
+	 * @see org.lexevs.dao.database.inserter.Inserter#insert(java.lang.String, java.lang.Object)
 	 */
-	public void insert(String sql, Object parameter) {
-		Reader resource = null;
-		SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resource);
-		session = sqlSessionFactory.openSession();
+	public void insert(String sql, T parameter) {
+		SqlSession session = sqlSessionFactory.openSession();
 	    try {
-	        	session.insert(sql, parameter);
+	        session.insert(sql, parameter);
 	        session.commit();
 	    } catch (Throwable t) {
 	        session.rollback();
@@ -60,21 +53,6 @@ public class SqlSessionFactorySingleInserter implements Inserter{
 	        session.close();
 	    }
 	}
-
-	/**
-	 * @return the session
-	 */
-	public SqlSession getSession() {
-		return session;
-	}
-
-	/**
-	 * @param session the session to set
-	 */
-	public void setSession(SqlSession session) {
-		this.session = session;
-	}
-
 
 
 }

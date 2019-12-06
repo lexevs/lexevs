@@ -22,11 +22,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.ibatis.executor.BatchResult;
 import org.lexevs.dao.database.inserter.BatchInserter;
 import org.lexevs.logging.LoggerFactory;
+import org.apache.ibatis
 
-import com.ibatis.sqlmap.client.SqlMapExecutor;
-import com.ibatis.sqlmap.engine.execution.BatchResult;
 
 /**
  * The Class SqlMapExecutorBatchInserter.
