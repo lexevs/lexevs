@@ -18,6 +18,8 @@
  */
 package org.lexevs.dao.database.inserter;
 
+import java.util.List;
+
 /**
  * The Interface Inserter.
  * 
@@ -32,4 +34,6 @@ public interface Inserter <T> {
 	 * @param parameter the parameter
 	 */
 	public void insert(String sql, T parameter);
+
+	public void insert(String sql, List<T> parameter);
 }
