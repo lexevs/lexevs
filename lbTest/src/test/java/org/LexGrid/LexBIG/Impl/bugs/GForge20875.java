@@ -1,21 +1,4 @@
-/*
- * Copyright: (c) 2004-2010 Mayo Foundation for Medical Education and 
- * Research (MFMER). All rights reserved. MAYO, MAYO CLINIC, and the
- * triple-shield Mayo logo are trademarks and service marks of MFMER.
- *
- * Except as contained in the copyright notice above, or as used to identify 
- * MFMER as the author of this software, the trade names, trademarks, service
- * marks, or product names of the copyright holder shall not be used in
- * advertising, promotion or otherwise in connection with this software without
- * prior written authorization of the copyright holder.
- * 
- * Licensed under the Eclipse Public License, Version 1.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at 
- * 
- * 		http://www.eclipse.org/legal/epl-v10.html
- * 
- */
+
 package org.LexGrid.LexBIG.Impl.bugs;
 
 // LexBIG Test ID: GForge20875	TestRetrieveConceptandAttributesbyCode
@@ -52,7 +35,7 @@ public class GForge20875 extends LexBIGServiceTestCase {
         Property[] properties = rcr[0].getEntity().getProperty();
         Boolean fail = true;
         for(Property prop: properties){
-            if(prop.getValue().getContent().contains("CTCAE Gradé 2 Boñé Marrow Céllularity")){
+            if(prop.getValue().getContent().contains("CTCAE GradÃ© 2 BoÃ±Ã© Marrow CÃ©llularity")){
                // assertTrue(prop.getSource()[0].getContent().equals("NCI"));
                // assertTrue(prop.getLanguage().equals("es"));
                 fail = false;
@@ -64,7 +47,7 @@ public class GForge20875 extends LexBIGServiceTestCase {
         fail = true;
         for(Property prop: properties){
         	System.out.println(prop.getValue().getContent());
-            if(prop.getValue().getContent().contains("Modératély hypoçéllûlar or &gt;25 - &lt;=50% rédûçtion from normal çéllûlarity for agé")){
+            if(prop.getValue().getContent().contains("ModÃ©ratÃ©ly hypoÃ§Ã©llÃ»lar or &gt;25 - &lt;=50% rÃ©dÃ»Ã§tion from normal Ã§Ã©llÃ»larity for agÃ©")){
                // assertTrue(prop.getSource()[0].getContent().equals("CTCAE"));
                // assertTrue(prop.getLanguage().equals("fr"));
                 fail = false;
