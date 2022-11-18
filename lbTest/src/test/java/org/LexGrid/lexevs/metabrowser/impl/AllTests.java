@@ -6,6 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ 
+	MetaBrowserServiceImplTest.class,
 	GetBySourceCountTest.class, 
 	GetBySourceTabDisplayTest.class, 
 	GetMetaTreeTest.class, 
