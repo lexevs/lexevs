@@ -20,11 +20,16 @@ package org.LexGrid.lexevs.metabrowser.impl;
 
 import static org.junit.Assert.assertTrue;
 
+import org.LexGrid.LexBIG.Exceptions.LBException;
+import org.LexGrid.LexBIG.Impl.LexBIGServiceImpl;
+import org.LexGrid.LexBIG.Impl.function.LexBIGServiceTestCase;
+import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
 import org.LexGrid.lexevs.metabrowser.MetaBrowserService;
 import org.LexGrid.lexevs.metabrowser.MetaTree;
 import org.LexGrid.lexevs.metabrowser.MetaBrowserService.Direction;
 import org.LexGrid.lexevs.metabrowser.model.MetaTreeNode;
 import org.LexGrid.lexevs.metabrowser.model.MetaTreeNode.ExpandedState;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
@@ -32,11 +37,24 @@ import org.junit.Test;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-public class GetMetaTreeTest extends MetaBrowserServiceImplTest{
-
-	/** The impl. */
-	private MetaBrowserService impl = new MetaBrowserServiceImpl();
+public class GetMetaTreeTest extends LexBIGServiceTestCase{
 	
+	
+	LexBIGService lbs;
+	
+	MetaBrowserService svc;
+	
+	@Override
+	protected String getTestID() {
+		return "Meta Extension Tab Display Test";
+	}
+	
+	
+	@BeforeClass
+	public void setUp() throws LBException {
+		lbs = LexBIGServiceImpl.defaultInstance();
+        svc = (MetaBrowserService) lbs.getGenericExtension("metabrowser-extension");
+	}
 	/**
 	 * Test get by souce tab display source of exclude self referencing true.
 	 * 
@@ -44,10 +62,8 @@ public class GetMetaTreeTest extends MetaBrowserServiceImplTest{
 	 */
 	@Test
 	public void testGetBySouceTabDisplaySourceOfExcludeSelfReferencingTrue() throws Exception {
-		//System.setProperty("LG_CONFIG_FILE", "src/test/resources/config/lbconfig.props");
-		MetaBrowserService impl = new MetaBrowserServiceImpl();
-
-		MetaTree tree = impl.getMetaNeighborhood("NCI");
+		
+		MetaTree tree = svc.getMetaNeighborhood("NCI");
 		printMetaTreeNode(tree.getCurrentFocus(), 0);
 		
 //		tree = tree.focusMetaTreeNode("C0221566");
@@ -61,7 +77,7 @@ public class GetMetaTreeTest extends MetaBrowserServiceImplTest{
 		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++");
 		
 		//printMetaTreeNode(tree.getCurrentFocus(), 0);
-		tree = impl.getMetaNeighborhood("NCI");
+		tree = svc.getMetaNeighborhood("NCI");
 		
 	}
 	
