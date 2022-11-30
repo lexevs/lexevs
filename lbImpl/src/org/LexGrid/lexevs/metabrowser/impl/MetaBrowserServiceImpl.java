@@ -119,7 +119,7 @@ public class MetaBrowserServiceImpl extends AbstractExtendable implements MetaBr
 	private static String AUI_SOURCE_QUAL_VALUE = "source-aui";
 	
 	/** The AU i_ qua l_ value. */
-	private static String AUI_QUAL_VALUE = "aui";;
+	private static String AUI_QUAL_VALUE = "AUI";;
 	
 	/** The ROOT. */
 	private static String ROOT = "@";
