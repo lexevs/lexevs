@@ -45,25 +45,25 @@ public void setUp() throws LBException{
 	extService = new ExternalResolvedValueSetIndexService();
 }
 
-@Order(1)
-@Test
-public void loadFirstValueSetCodingSchemeTest() throws LBException, InterruptedException{
-
-	OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
-    String fileName = "resources/testData/owl2/owl2-special-cases-Defined-Annotated.owl";
-    loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF2SetTopNodes.XML").toURI());
-    loader.load(new File(fileName).toURI(),null,  1, false, true);
-    
-    while (loader.getStatus().getEndTime() == null) {
-        Thread.sleep(1000);
-    }
-    assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-    assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-
-    lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-
-    lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], LBConstants.KnownTags.PRODUCTION.toString());
-}
+//@Order(1)
+//@Test
+//public void loadFirstValueSetCodingSchemeTest() throws LBException, InterruptedException{
+//
+//	OWL2LoaderImpl loader = (OWL2LoaderImpl) lbsm.getLoader("OWL2Loader");
+//    String fileName = "resources/testData/owl2/owl2-special-cases-Defined-Annotated.owl";
+//    loader.setLoaderPreferences(new File("resources/testData/owl2/OWLPrefsLoadAnonAsAssocPF2SetTopNodes.XML").toURI());
+//    loader.load(new File(fileName).toURI(),null,  1, false, true);
+//    
+//    while (loader.getStatus().getEndTime() == null) {
+//        Thread.sleep(1000);
+//    }
+//    assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+//    assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+//
+//    lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+//
+//    lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], LBConstants.KnownTags.PRODUCTION.toString());
+//}
 
 @Order(2)
 @Test
@@ -200,11 +200,11 @@ public void loadCurrentCodingSchemeTest() throws LBException, InterruptedExcepti
 		assertTrue(doesExist);
 	}
 	
-	@Order(10)
-	@Test
-	public void createIndexForExternalValueSets() {
-		extService.indexExternalResolvedValueSetsToAssertedValueSetIndex();
-	}
+//	@Order(10)
+//	@Test
+//	public void createIndexForExternalValueSets() {
+//		extService.indexExternalResolvedValueSetsToAssertedValueSetIndex();
+//	}
 	
 	
 

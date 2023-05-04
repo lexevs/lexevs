@@ -21,6 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import javax.sql.DataSource;
 
+
 import org.LexGrid.LexBIG.DataModel.Core.AbsoluteCodingSchemeVersionReference;
 import org.LexGrid.LexBIG.DataModel.Core.types.CodingSchemeVersionStatus;
 import org.LexGrid.LexBIG.Exceptions.LBInvocationException;
@@ -30,7 +31,6 @@ import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.util.sql.DBUtility;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
 import org.LexGrid.util.sql.lgTables.SQLTableUtilities;
-import org.apache.commons.collections.map.LRUMap;
 import org.apache.commons.lang.StringUtils;
 import org.apache.lucene.search.BooleanQuery;
 import org.lexevs.dao.database.connection.SQLConnectionInfo;
@@ -1068,7 +1068,7 @@ public class ResourceManager implements SystemResourceService {
                 //this enables us to still drop a database that has been previously loaded.
                 //We detect a multi-db load by detecting if the 'dbName' is not blank in the
                 //registry. We then reconstruct the jdbc url from the registry.
-                if (!singleDBMode || StringUtils.isNotBlank(dbName)){   
+                if (!singleDBMode || StringUtils.isNotBlank(dbName)){
                     String url = registry_.getDBCodingSchemeEntry(codingSchemeReference).dbURL;
                     url = this.constructJdbcUrlForDeprecatedMultiDbMode(url, dbName);
                     DBUtility.dropDatabase(url, systemVars_.getAutoLoadDBDriver(), dbName,

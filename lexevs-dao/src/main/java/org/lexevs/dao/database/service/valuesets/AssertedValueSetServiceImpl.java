@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.print.DocFlavor;
 import org.LexGrid.LexBIG.Exceptions.LBException;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
 import org.LexGrid.codingSchemes.CodingScheme;
@@ -201,8 +202,14 @@ public class AssertedValueSetServiceImpl extends AbstractDatabaseService impleme
 	}
 	
 	public String getPredUid(String csUID) {
-		return this.getDaoManager().getAssociationDao(params.getCodingSchemeURI(), params.getCodingSchemeVersion()).
-				getAssociationPredicateUidsForAssociationName(csUID, null, params.getAssertedValueSetRelation()).get(0);
+
+		List<String> associationDAO= this.getDaoManager().getAssociationDao(params.getCodingSchemeURI(), params.getCodingSchemeVersion()).
+				getAssociationPredicateUidsForAssociationName(csUID, null, params.getAssertedValueSetRelation());
+
+		if(associationDAO!=null && associationDAO.size()>0) {
+				return associationDAO.get(0);
+		}
+		return null;
 	}
 
 //	public ValueSetHierarchyService getValueSetHeirarchyService() {

@@ -396,6 +396,12 @@ public class DaoManager {
 		return versionsDaos;
 	}
 
+	public void setValueSetHierarchyDaos(List valueSetHierarchyDaos) {
+		if(valueSetHierarchyDaos !=null) {
+			setValueSetHierarchyDaos((List<ValueSetHierarchyDao>)valueSetHierarchyDaos);
+		}
+	}
+
 	/**
 	 * Sets the versions daos.
 	 * 

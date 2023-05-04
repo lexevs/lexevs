@@ -71,7 +71,7 @@ public interface CodedNodeGraphService {
 		 * 
 		 * @return the table alias
 		 */
-		protected String getTableAlias() {
+		public String getTableAlias() {
 			return tableAlias;
 		}
 	}

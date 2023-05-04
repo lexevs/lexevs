@@ -71,7 +71,7 @@ public class LazyLoadMetaData implements
 
 			if (!(key.equals("MetaDataIndex") || key.equals("AssertedValueSetIndex"))) {
 				try{
-				LoggerFactory.getLogger().fatalAndThrowException("Indexes seem to be created in another context "
+				LoggerFactory.getLogger().fatalAndThrowException(key + " Indexes seem to be created in another context "
 						+ "as they do not match database registrations. "
 						+ "If these indexes were copied from another service then "
 						+ "please edit the config.props file to match the source service. "

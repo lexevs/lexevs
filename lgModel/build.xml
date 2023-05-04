@@ -42,6 +42,7 @@
 		<taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant"
 			classpathref="ivy.lib.path" />
 		<ivy:settings file="${ivy.settings.file}" />
+
 	</target>
 
 	<target name="ivy:clean" depends="clean:dependencies"
@@ -53,6 +54,7 @@
 	</target>
 
 	<target name="clean:dependencies">
+		<delete dir="${lib.dir}" />
 		<delete dir="${genepattern-service.jar.compile.lib.dir}" />
 	</target>
 
@@ -64,7 +66,9 @@
 		<ivy:resolve refresh="true" conf="default" />
 		<ivy:retrieve pattern="${lib.dir}/[conf]/[artifact]-[revision].[ext]"
 			conf="default" />
+		<ivy:report/>
 	</target>
+
 	<!--*******************************************************************-->
 	<!--** END IVY TARGETS AND DEPENDENCY PATHS **-->
 	<!--*******************************************************************-->
@@ -95,6 +99,8 @@
 		<delete dir="${CastorFull}/${CastorGen}"/>
 		<delete dir="${CastorFull}/${CastorClass}"/>
 		<delete dir="${dist}"/>
+		<delete dir="${lib.dir}" />
+		<mkdir dir="${lib.dir}"/>
 	</target>
 	
 	<target name="genCastorFromXSD" depends="init" description="generate the Castor representation of the schema">
@@ -158,19 +164,19 @@
 	<target name="compile" depends="init" description="compile the source ">
 		<mkdir dir="${CastorFull}/${CastorClass}"/>
 		<!-- We need to compile the annotations first   -->
-		<javac source="1.6" target="1.6" srcdir="${src}" includes="org/LexGrid/annotations/**"
+		<javac source="1.8" target="1.8" srcdir="${src}" includes="org/LexGrid/annotations/**"
                     destdir="${CastorFull}/${CastorClass}" debug="yes">
 					<classpath refid="classpath"/>
 		</javac>
-		<javac source="1.6" target="1.6" srcdir="${src}" includes="org/mayo/edu/lgModel/**"
+		<javac source="1.8" target="1.8" srcdir="${src}" includes="org/mayo/edu/lgModel/**"
                     destdir="${CastorFull}/${CastorClass}" debug="yes">
 					<classpath refid="classpath"/>
 		</javac>
-		<javac source="1.6" target="1.6" srcdir="${CastorFull}/${CastorGen}" destdir="${CastorFull}/${CastorClass}" debug="yes">
+		<javac source="1.8" target="1.8" srcdir="${CastorFull}/${CastorGen}" destdir="${CastorFull}/${CastorClass}" debug="yes">
 			<classpath refid="classpath"/>
 		</javac>
 		<!-- We need to compile the src last as this uses the Castor generated code   -->
-		<javac source="1.6" target="1.6" srcdir="${src}" destdir="${CastorFull}/${CastorClass}" debug="yes">
+		<javac source="1.8" target="1.8" srcdir="${src}" destdir="${CastorFull}/${CastorClass}" debug="yes">
 			<classpath refid="classpath"/>
 		</javac>
 	</target>

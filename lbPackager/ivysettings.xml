@@ -3,9 +3,10 @@
 	<properties file="build.properties" />
 	<property name="ivy.revision" value="${vBuild}"/>
 		
-	<property name="ncimvn.snapshots.repo" value="https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVS3rdParty" />
+	<property name="ncimvn.snapshots.repo" value="https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVSSnapshots" />
 	<property name="ncimvn.releases.repo" value="https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVSRelease" />
-	<property name="ncimvn.thirdparty.repo" value="https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVS3rdParty" /> 
+	<property name="ncimvn.thirdparty.repo" value="https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVS3rdParty" />
+	<property name="ncimvn.public.repo" value="https://ncimvn.nci.nih.gov/nexus/content/repositories/public" />
 	
 	<settings defaultResolver="nci-chain" />
 	<caches defaultCacheDir="${user.home}/.ivy2" useOrigin="true"/>
@@ -50,26 +51,32 @@
 				<ivy pattern="${user.home}/.ivy2/[organisation]/[module]/[revision]/ivy.xml" />
 	  		</filesystem> 
 
-	  		<filesystem name="shared-libraries" m2compatible="true">
-     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-    		</filesystem>
+<!--	  		<filesystem name="shared-libraries" m2compatible="true">-->
+<!--     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />-->
+<!--    		</filesystem>-->
+<!--    		-->
+<!--    		<filesystem name="shared-libraries-eclipse" m2compatible="true">-->
+<!--     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/eclipse/[organisation]/[revision]/[artifact].[ext]" />-->
+<!--    		</filesystem>-->
+<!--    		-->
+<!--    		<filesystem name="shared-libraries-eclipse-type2" m2compatible="true">-->
+<!--     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/eclipse/[organisation]/[artifact]-[revision].[ext]" />-->
+<!--    		</filesystem>-->
     		
-    		<filesystem name="shared-libraries-eclipse" m2compatible="true">
-     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/eclipse/[organisation]/[revision]/[artifact].[ext]" />
-    		</filesystem>
-    		
-    		<filesystem name="shared-libraries-eclipse-type2" m2compatible="true">
-     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/eclipse/[organisation]/[artifact]-[revision].[ext]" />
-    		</filesystem>
-    		
-    		<filesystem name="shared-libraries-eclipse-type3" m2compatible="true">
-     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/eclipse/[organisation]/[artifact]_[revision].[ext]" />
-    		</filesystem>
+<!--    		<filesystem name="shared-libraries-eclipse-type3" m2compatible="true">-->
+<!--     			 <artifact pattern="${ivy.project.dir}/../lgSharedLibraries/eclipse/[organisation]/[artifact]_[revision].[ext]" />-->
+<!--    		</filesystem>-->
 
+<!--			<ibiblio name="ncimvn-public" m2compatible="true" root="https://ncimvn.nci.nih.gov/nexus/content/repositories/public/"/>-->
+
+			<url name="ncimvn-public" m2compatible="true">
+				<artifact pattern="https://ncimvn.nci.nih.gov/nexus/content/repositories/public/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"/>
+			</url>
       		<url name="maven-central" m2compatible="true">
       			  <artifact pattern="https://repo1.maven.org/maven2/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]"/>
       		</url>
-      		    <ibiblio name="ncimvn-thirdparty-works" m2compatible="true" root="https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVS3rdParty/"/>	
+
+      		<ibiblio name="ncimvn-thirdparty-works" m2compatible="true" root="https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVS3rdParty/"/>
 		</chain>
 	</resolvers>
 </ivysettings>

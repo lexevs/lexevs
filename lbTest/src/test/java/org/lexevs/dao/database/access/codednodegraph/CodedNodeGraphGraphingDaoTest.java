@@ -25,7 +25,7 @@ public class CodedNodeGraphGraphingDaoTest {
 	public void test() {
 		List<String> list = graphService
 		.getValidAssociationsforTargetandSourceOf(
-				"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#", "18.05b", "C12434");
+				"http://ncicb.nci.nih.gov/xml/owl/EVS/Thesaurus.owl#", "23.02d", "C12434");
 		assertNotNull(list);
 		assertTrue(list.size() > 0);
 		assertEquals("Gene_Product_Expressed_In_Tissue", 

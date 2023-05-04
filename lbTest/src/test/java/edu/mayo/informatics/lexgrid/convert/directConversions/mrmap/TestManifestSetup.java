@@ -10,6 +10,7 @@ import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGServiceManager;
 import org.LexGrid.LexBIG.Utility.ConvenienceMethods;
 import org.LexGrid.LexOnt.CodingSchemeManifest;
+import org.junit.Test;
 
 import edu.mayo.informatics.lexgrid.convert.exceptions.LgConvertException;
 import edu.mayo.informatics.lexgrid.convert.utility.ManifestUtil;
@@ -20,6 +21,7 @@ import junit.framework.TestCase;
 public class TestManifestSetup extends TestCase {
 	LexBIGService svc;
 
+	@Test
 	public void testSetUP() throws LBException, InterruptedException, LgConvertException{
 		svc = LexBIGServiceImpl.defaultInstance();
 		LexBIGServiceManager lbsm = null;

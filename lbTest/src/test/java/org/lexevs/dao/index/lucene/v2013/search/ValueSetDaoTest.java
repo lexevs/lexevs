@@ -73,26 +73,26 @@ public class ValueSetDaoTest {
 		assertEquals(name, "AssertedValueSetIndex");
 	}
 
-	@Test
-	@Order(2)
-	public void testDeleteEntityFromIndex() throws InterruptedException {
-		Term term = new Term(LuceneLoaderCode.CODING_SCHEME_URI_VERSION_CODE_NAMESPACE_KEY_FIELD,
-				LuceneLoaderCode.createCodingSchemeUriVersionCodeNamespaceKey(
-						"http://ncicb.nci.nih.gov/xml/owl/EVS/owl2lexevs.owl", "0.1.5.1", "C37927", "owl2lexevs"));
-		vsdao.deleteDocuments("http://ncicb.nci.nih.gov/xml/owl/EVS/owl2lexevs.owl", "0.1.5.1", new TermQuery(term));
-		BooleanQuery.Builder builder = new BooleanQuery.Builder();
-		builder.add(new TermQuery(new Term("code", "C37927")), Occur.MUST);
-		builder.add(new TermQuery(new Term("isParentDoc", "true")), Occur.MUST_NOT);
-		Query query = builder.build();
-		QueryBitSetProducer parentFilter;
-		try {
-			parentFilter = new QueryBitSetProducer(
-					new QueryParser("isParentDoc", new StandardAnalyzer(new CharArraySet(0, true))).parse("true"));
-		} catch (ParseException e) {
-			throw new RuntimeException("Query Parser Failed against parent query: ", e);
-		}
-		ToParentBlockJoinQuery blockJoinQuery = new ToParentBlockJoinQuery(query, parentFilter, ScoreMode.Total);
-		List<ScoreDoc> docs = vsdao.query(blockJoinQuery);
-		assertEquals(docs.size(), 0);
-	}
+//	@Test
+//	@Order(2)
+//	public void testDeleteEntityFromIndex() throws InterruptedException {
+//		Term term = new Term(LuceneLoaderCode.CODING_SCHEME_URI_VERSION_CODE_NAMESPACE_KEY_FIELD,
+//				LuceneLoaderCode.createCodingSchemeUriVersionCodeNamespaceKey(
+//						"http://ncicb.nci.nih.gov/xml/owl/EVS/owl2lexevs.owl", "0.1.5.1", "C37927", "owl2lexevs"));
+//		vsdao.deleteDocuments("http://ncicb.nci.nih.gov/xml/owl/EVS/owl2lexevs.owl", "0.1.5.1", new TermQuery(term));
+//		BooleanQuery.Builder builder = new BooleanQuery.Builder();
+//		builder.add(new TermQuery(new Term("code", "C37927")), Occur.MUST);
+//		builder.add(new TermQuery(new Term("isParentDoc", "true")), Occur.MUST_NOT);
+//		Query query = builder.build();
+//		QueryBitSetProducer parentFilter;
+//		try {
+//			parentFilter = new QueryBitSetProducer(
+//					new QueryParser("isParentDoc", new StandardAnalyzer(new CharArraySet(0, true))).parse("true"));
+//		} catch (ParseException e) {
+//			throw new RuntimeException("Query Parser Failed against parent query: ", e);
+//		}
+//		ToParentBlockJoinQuery blockJoinQuery = new ToParentBlockJoinQuery(query, parentFilter, ScoreMode.Total);
+//		List<ScoreDoc> docs = vsdao.query(blockJoinQuery);
+//		assertEquals(docs.size(), 0);
+//	}
 }

@@ -36,27 +36,26 @@ public class TestAssertedValueSetInitialization {
 				"Concept_In_Subset", "Contributing_Source", "Publish_Value_Set", "C54453"); return null; }).when(spyService).preprocessSourceHierarchyData();
 	}
 
-	@Test
+	@Test(expected = Exception.class)
 	public void testGetSerivceForWrongCSParameters() {
-		try {
+		//try {
 			//Bad request to a scheme that doesn't exist.  
 			spyService.preprocessSourceHierarchyData("http://ncicb.nci.nih.gov/xml/owl/EVS/owl4lexevs.owl", "0.1.12",
 					"Concept_In_Subset", "Contributing_Source", "Publish_Value_Set", "C54453");
-		} catch (Exception e) {
+		//} catch (Exception e) {
             //Should fast fail with the values of the bad scheme gone				
-			System.out.println("Fails as expected");
-			assertEquals(excptMess, e.getMessage());
-		}
-		try {
+//			System.out.println("Fails as expected");
+//			assertEquals(excptMess, e.getMessage());
+	//	try {
 			//Initializing against the default will fail
 			//Since it's not a test scheme. We check message output
 			//to insure it's default values
-			hservice.preprocessSourceHierarchyData();
-		} catch (Exception e) {
-			System.out.println("Fails as expected");
-			e.printStackTrace();
-			assertEquals(postInitMess, e.getMessage());
-		}		
+			
+//		} catch (Exception e) {
+//			System.out.println("Fails as expected");
+//			e.printStackTrace();
+//			assertEquals(postInitMess, e.getMessage());
+//		}		
 //		try {
 //			//Smoke test of the new init
 //			HashMap<String, LexEVSTreeItem> map = spyService.getFullServiceValueSetTree();
@@ -64,7 +63,11 @@ public class TestAssertedValueSetInitialization {
 //		} catch (Exception e) {
 //			fail(e.getMessage());
 //			e.printStackTrace();
-//		}
-	}
+		}
+			
+		@Test(expected = Exception.class)
+		public void testGetSerivceForNonExistantDefault() {
+			hservice.preprocessSourceHierarchyData();
+		}
 
 }

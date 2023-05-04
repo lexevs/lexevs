@@ -112,6 +112,7 @@ import org.lexevs.dao.database.service.valuesets.AssertedValueSetServiceImpl;
 import org.lexevs.dao.database.utility.DaoUtility;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexevs.logging.LoggerFactory;
+import org.lexevs.property.impl.PropertyExtensionImpl;
 import org.lexevs.registry.model.RegistryEntry;
 import org.lexevs.registry.service.Registry;
 import org.lexevs.registry.service.Registry.ResourceType;
@@ -598,6 +599,7 @@ public class LexBIGServiceImpl implements LexBIGService {
         new MedDRALoaderImpl().register();
         new MIFVocabularyLoaderImpl().register();
         new LexEVSArangoGraphingDbLoader().register();
+        new PropertyExtensionImpl().register();
         
         //Meta Batch Loader Extension
         ExtensionDescription meta = new ExtensionDescription();

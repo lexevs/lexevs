@@ -6,10 +6,10 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="
-		http://www.springframework.org/schema/beans classpath:springxsds/spring-beans-2.0.xsd
-		http://www.springframework.org/schema/batch classpath:springxsds/spring-batch-2.1.xsd
-		http://www.springframework.org/schema/aop classpath:springxsds/spring-aop-2.0.xsd
-		http://www.springframework.org/schema/tx classpath:springxsds/spring-tx-2.0.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/batch http://www.springframework.org/schema/batch/spring-batch.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<beans:import resource="classpath:rrfBaseLoader.xml" />
 	<beans:import resource="classpath:umlsLoaderStaging.xml" />
@@ -225,14 +225,14 @@
 	<beans:bean id="umlsAssociationProcessor"
 		parent="associationProcessor">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 	</beans:bean>
 
 	<beans:bean id="umlsCodingSchemeNameSettingProcessor"
 		abstract="true">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 	</beans:bean>
 
@@ -271,7 +271,7 @@
 					</beans:property> 
 					
 					<beans:property name="codingSchemeIdSetter">
-						<beans:ref local="umlsCodingSchemeIdSetter" />
+						<beans:ref bean="umlsCodingSchemeIdSetter" />
 					</beans:property>
 					
  					<beans:property name="relationResolver">
@@ -350,7 +350,7 @@
 		class="org.lexgrid.loader.umls.processor.UmlsCodingSchemeProcessor"
 		scope="step">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 		<beans:property name="sab" value="${sab}"/>
 		
@@ -406,7 +406,7 @@
 	<beans:bean id="umlsEntityProcessor"
 		class="org.lexgrid.loader.processor.EntityProcessor">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 		<beans:property name="entityResolver">
 			<beans:ref bean="umlsEntityResolver" />
@@ -745,7 +745,7 @@
 	<beans:bean id="umlsEntityNamespaceResolver"
 		class="org.lexgrid.loader.processor.support.SameAsCodingSchemeNameEntityNamespaceResolver">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 	</beans:bean>
 
@@ -754,28 +754,28 @@
 		<beans:property name="retry" value="${retry}"/>
 		<beans:property name="prefix" value="${prefix}"/>
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 	</beans:bean>
 
 	<beans:bean id="indexingTasklet" parent="abstractLexEvsUtilityTasklet"
 		class="org.lexgrid.loader.lexbigadmin.IndexingTasklet">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 	</beans:bean>
 	
 	<beans:bean id="transitivityBuildingTasklet" parent="abstractLexEvsUtilityTasklet"
 		class="org.lexgrid.loader.lexbigadmin.TransitivityBuildingTasklet">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 	</beans:bean>
 	
 	<beans:bean id="introspectiveHardcodedValuesTasklet" parent="abstractIntrospectiveHardcodedValues"
 		class="org.lexgrid.loader.umls.hardcodedvalues.UmlsIntrospectiveHardcodedValues">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 		<beans:property name="supportedAttributeTemplate">
 			<beans:ref bean="cachingSupportedAttribuiteTemplate" />
@@ -784,7 +784,7 @@
 	
 	<beans:bean id="umlsDefaultPropertyProcessor" abstract="true">
 		<beans:property name="codingSchemeIdSetter">
-			<beans:ref local="umlsCodingSchemeIdSetter" />
+			<beans:ref bean="umlsCodingSchemeIdSetter" />
 		</beans:property>
 		<beans:property name="supportedAttributeTemplate">
 			<beans:ref bean="cachingSupportedAttribuiteTemplate" />
@@ -799,7 +799,7 @@
 			class="org.lexgrid.loader.umls.reader.support.UmlsMrrelGroupDiscriminator"/>
 		</beans:property>
 		<beans:property name="delegate">
-			<beans:ref local="umlsPartitionedMrrelReader"/>
+			<beans:ref bean="umlsPartitionedMrrelReader"/>
 		</beans:property>
 	</beans:bean>
 	

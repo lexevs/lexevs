@@ -15,8 +15,8 @@
 <!--                                                                        -->
 <!-- ====================================================================== -->
 
-<project name="cts2Impl" default="publish" xmlns:ivy="antlib:org.apache.ivy.ant" basedir=".">
-
+<!--<project name="cts2Impl" default="publish" xmlns:ivy="antlib:org.apache.ivy.ant" basedir=".">-->
+<project name="lbTest" default="publish" xmlns:ivy="antlib:org.apache.ivy.ant" basedir=".">
   <!-- ====================================================================== -->
   <!-- Build environment properties                                           -->
   <!-- ====================================================================== -->

@@ -40,7 +40,7 @@
     <!-- ** IVY TARGETS AND DEPENDENCY PATHS                              ** -->
     <!-- ******************************************************************* -->
 	
-	<property name="ivy.jar" location="${lbPackager.dir}/ivy/lib/ivy-2.3.0.jar" />
+	<property name="ivy.jar" location="${lbPackager.dir}/ivy/lib/ivy-2.5.1.jar" />
 
     <property name="ivy.settings.file" location="${lbPackager.dir}/ivysettings.xml" />
     <property name="ivy.def.file" location="ivy.xml" />
@@ -53,6 +53,7 @@
         <ivy:resolve refresh="true" conf="default,test"/>
     	<ivy:cachepath pathid="compile.classpath" conf="default" />
     	<ivy:cachepath pathid="test.classpath" conf="default,test" />
+        <ivy:report/>
     </target>
     
     <target name="ivy:clean" depends="clean:dependencies" description="Clean">
@@ -80,7 +81,8 @@
   <!-- ====================================================================== -->
 
   <target name="clean" depends="clean:dependencies" description="Clean the output directory">
-    <delete dir="${build.dir}"/>
+<!--    <delete dir="${build.dir}"/>-->
+<!--      <delete dir="${lib.dir}" />-->
   </target>
 
   <!-- ====================================================================== -->
@@ -286,5 +288,5 @@
 	</target>
 
 	<target name="all" depends="publish"/>
-	
+
 </project>

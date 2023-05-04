@@ -23,6 +23,7 @@ import org.LexGrid.LexBIG.Exceptions.LBResourceUnavailableException;
 import org.LexGrid.LexBIG.Extensions.Generic.SearchExtension.MatchAlgorithm;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.PropertyType;
 import org.LexGrid.LexBIG.Utility.Constructors;
+import org.LexGrid.LexBIG.Utility.OrderingTestRunner;
 import org.LexGrid.LexBIG.Utility.Iterators.ResolvedConceptReferencesIterator;
 import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.commonTypes.Properties;
@@ -51,12 +52,14 @@ import org.apache.lucene.search.join.ToParentBlockJoinQuery;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.lexevs.dao.index.service.search.SourceAssertedValueSetSearchIndexService;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexgrid.valuesets.sourceasserted.SourceAssertedValueSetService;
 import org.lexgrid.valuesets.sourceasserted.impl.SourceAssertedValueSetServiceImpl;
 import org.springframework.core.annotation.Order;
 
+@RunWith(OrderingTestRunner.class)
 public class SourceAssertedValueSetSearchIndexServiceTest {
 	static SourceAssertedValueSetSearchIndexService service;
 	static SourceAssertedValueSetService svc;
@@ -523,7 +526,7 @@ public class SourceAssertedValueSetSearchIndexServiceTest {
 		List<CodingScheme> schemes = svc.getMinimalSourceAssertedValueSetSchemes();
 		long count = schemes.stream().count();
 		assertTrue(count > 0L);
-		assertEquals(count, 8L);
+		assertEquals(count, 9L);
 		assertTrue(schemes.stream().filter(x -> x.getCodingSchemeName().equals("Black")).findAny().isPresent());
 		assertTrue(schemes.stream().filter(x -> x.getCodingSchemeURI().equals(
 				"http://evs.nci.nih.gov/valueset/TEST/C48323")).findAny().isPresent());

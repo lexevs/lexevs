@@ -6,7 +6,7 @@ import org.LexGrid.LexBIG.Impl.LexBIGServiceImpl;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
 import org.apache.commons.lang.BooleanUtils;
 import org.apache.commons.lang.StringUtils;
-import org.lexevs.dao.test.BaseInMemoryLexEvsTest;
+//import org.lexevs.dao.test.BaseInMemoryLexEvsTest;
 import org.lexevs.system.ResourceManager;
 import org.lexevs.system.constants.SystemVariables;
 import org.lexevs.system.utility.PropertiesUtility;
@@ -112,9 +112,9 @@ public class ServiceHolder {
                 boolean inMemory = 
                 	BooleanUtils.toBoolean(System.getProperty(SystemVariables.ALL_IN_MEMORY_SYSTEM_VARIABLE));
                 
-                if(inMemory){
-                	BaseInMemoryLexEvsTest.initInMemory();
-                }
+//                if(inMemory){
+//                	BaseInMemoryLexEvsTest.initInMemory();
+//                }
 
                 if(StringUtils.isNotBlank(System.getProperty(LexBIGServiceTestFactory.LBS_TEST_FACTORY_ENV))) {
                     lbsi_ = ((LexBIGServiceTestFactory) Class.forName(System.getProperty(LexBIGServiceTestFactory.LBS_TEST_FACTORY_ENV)).newInstance()).getLbs();

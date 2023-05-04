@@ -25,6 +25,7 @@ import org.LexGrid.LexBIG.Extensions.Generic.MappingExtension.Mapping;
 import org.LexGrid.LexBIG.Extensions.Generic.MappingExtension.Mapping.SearchContext;
 import org.LexGrid.LexBIG.Extensions.Generic.MappingExtension.MappingSortOption;
 import org.LexGrid.LexBIG.Extensions.Generic.MappingExtension.MappingSortOptionName;
+import org.LexGrid.LexBIG.Extensions.Generic.MappingExtension.QualifierSortOption;
 import org.LexGrid.LexBIG.Impl.CodedNodeSetImpl;
 import org.LexGrid.LexBIG.Impl.Extensions.GenericExtensions.mapping.CodedNodeSetBackedMapping;
 import org.LexGrid.LexBIG.Impl.function.LexBIGServiceTestCase;
@@ -327,6 +328,43 @@ public class MappingExtensionImplTest extends LexBIGServiceTestCase {
 		ResolvedConceptReferencesIterator itr = mapping.resolveMapping();
 		
 		assertTrue(itr.hasNext());
+	}
+	
+	@Test
+	public void testResolveMappingDirectFromExtWithSort() throws LBException {
+		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+		QualifierSortOption so = new QualifierSortOption(Direction.ASC, "score");
+
+		List<MappingSortOption> sortOptionList = Arrays.asList(so);
+		
+		ResolvedConceptReferencesIterator itr = mappingExtension.resolveMapping(
+				"Mapping Sample", 
+				Constructors.createCodingSchemeVersionOrTagFromVersion(MAPPING_SCHEME_VERSION), 
+				"AutoToGMPMappings", sortOptionList);
+		
+		
+		assertTrue(itr.hasNext());
+	}
+	
+	@Test
+	public void testResolveMappingWithMappingGet() throws LBException {
+		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+		QualifierSortOption so = new QualifierSortOption(Direction.ASC, "rel");
+
+		List<MappingSortOption> sortOptionList = Arrays.asList(so);
+		
+		Mapping mapping = mappingExtension.getMapping(
+				MAPPING_SCHEME_URI, 
+				Constructors.createCodingSchemeVersionOrTagFromVersion(MAPPING_SCHEME_VERSION), 
+				"AutoToGMPMappings");
+		
+		ResolvedConceptReferencesIterator itr = mapping.resolveMapping(sortOptionList);
+	
+		
+		assertTrue(itr.hasNext());
+		assertEquals(6, itr.numberRemaining());
 	}
 	
 	@Test
