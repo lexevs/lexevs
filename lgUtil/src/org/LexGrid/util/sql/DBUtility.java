@@ -7,9 +7,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Properties;
-
+import org.apache.commons.lang3.StringUtils;
 import org.LexGrid.util.sql.sqlReconnect.WrappedConnection;
-import org.apache.commons.lang.StringUtils;
+
 
 /**
  * This class holds many utility type methods for common DB related tasks -

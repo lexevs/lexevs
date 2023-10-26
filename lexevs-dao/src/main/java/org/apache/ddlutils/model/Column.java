@@ -27,8 +27,8 @@ import java.sql.Timestamp;
 import java.sql.Types;
 
 import org.apache.commons.beanutils.ConvertUtils;
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * Represents a column in the database model.
@@ -206,8 +206,7 @@ public class Column implements Serializable
      * 
      * @param typeCode The type code
      */
-    public void setTypeCode(int typeCode)
-    {
+    public void setTypeCode(int typeCode) throws ModelException {
         _type = TypeMap.getJdbcTypeName(typeCode);
         if (_type == null)
         {
@@ -231,8 +230,7 @@ public class Column implements Serializable
      *
      * @param type The type
      */
-    public void setType(String type)
-    {
+    public void setType(String type) throws ModelException {
         Integer typeCode = TypeMap.getJdbcTypeCode(type);
 
         if (typeCode == null)

@@ -18,7 +18,7 @@
 		<dependency org="commons-digester" name="commons-digester" rev="1.8" conf="default"/>
 		<dependency org="commons-betwixt" name="commons-betwixt" rev="0.8"  conf="default"/>
 		<dependency org="commons-beanutils" name="commons-beanutils" rev="1.9.4" conf="default"/>
-		<dependency org="org.apache.commons" name="commons-lang3" rev="3.12.0" conf="default"/>
+		<dependency org="org.apache.commons" name="commons-lang3" rev="3.13.0" conf="default"/>
 		<dependency org="commons-collections" name="commons-collections" rev="3.2.2" conf="default"/>
 <!--		<dependency org="lexevs" name="lexgrid-model" rev="${vBuild}" conf="default"/>-->
 <!--		<dependency org="lexevs" name="lexbig-model" rev="${vBuild}" conf="default"/>-->
@@ -49,8 +49,11 @@
 			<exclude org="log4j" name="log4j"/>
    			<exclude org="slf4j" name="slf4j-lg4j12"/>
 		</dependency>
-		<!--<dependency org="org.ehcache.modules" name="ehcache-107" rev="3.10.0" conf="default"/>-->
+		<dependency org="org.ehcache.modules" name="ehcache-107" rev="3.10.0" conf="default"/>
 		<dependency org="org.codehaus.castor" name="castor-core" rev="1.4.1" conf="default"/>
+		<dependency org="org.codehaus.castor" name="castor" rev="1.4.1" conf="default"/>
+<!--			<artifact name="castor" type="pom" ext="pom"/>-->
+<!--		</dependency>-->
 		<dependency org="org.codehaus.castor" name="castor-xml" rev="1.4.1" conf="default"/>
 		<dependency org="org.easymock" name="easymock" rev="5.1.0" conf="default"/>
 		<dependency org="org.easymock" name="easymockclassextension" rev="3.2" conf="default"/> 
@@ -60,7 +63,9 @@
 		<dependency org="aopalliance" name="aopalliance" rev="1.0" conf="default->*"/>
 
 
-		<dependency org="org.mybatis" name="mybatis-spring" rev="2.0.7" conf="default" />
+		<dependency org="org.mybatis" name="mybatis-spring" rev="2.0.7" conf="default">
+				<exclude org="org.springframework" name="*"/>
+		</dependency>
 		<dependency org="org.mybatis" name="mybatis" rev="3.5.11" conf="default" />
 		<dependency org="org.mybatis.dynamic-sql" name="mybatis-dynamic-sql" rev="1.4.1" conf="default" />
 		<dependency org="org.mybatis" name="mybatis-typehandlers-jsr310" rev="1.0.2" conf="default" />

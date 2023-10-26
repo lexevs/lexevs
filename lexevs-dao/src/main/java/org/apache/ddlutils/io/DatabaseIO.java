@@ -39,7 +39,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.betwixt.io.BeanReader;
 import org.apache.commons.betwixt.strategy.HyphenatedNameMapper;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ddlutils.model.CascadeActionEnum;
@@ -48,6 +48,7 @@ import org.apache.ddlutils.model.Database;
 import org.apache.ddlutils.model.ForeignKey;
 import org.apache.ddlutils.model.Index;
 import org.apache.ddlutils.model.IndexColumn;
+import org.apache.ddlutils.model.ModelException;
 import org.apache.ddlutils.model.NonUniqueIndex;
 import org.apache.ddlutils.model.Reference;
 import org.apache.ddlutils.model.Table;
@@ -229,7 +230,7 @@ public class DatabaseIO
         {
             throw new DdlUtilsXMLException(ex);
         }
-        catch (IOException ex)
+        catch (IOException | ModelException ex)
         {
             throw new DdlUtilsXMLException(ex);
         }
@@ -319,8 +320,7 @@ public class DatabaseIO
      * @param xmlReader The reader
      * @return The database model
      */
-    private Database read(XMLStreamReader xmlReader) throws DdlUtilsXMLException
-    {
+    private Database read(XMLStreamReader xmlReader) throws DdlUtilsXMLException, ModelException {
         Database model = null;
 
         try

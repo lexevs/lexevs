@@ -101,7 +101,8 @@ import org.LexGrid.versions.EntityVersion;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.Revision;
 import org.LexGrid.versions.SystemRelease;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
+
 
 /**
  * Class to turn LexBIG model objects into representative strings.
@@ -129,7 +130,7 @@ public class ObjectToString {
     /**
      * Returns a string representation of the object.
      * 
-     * @param object
+     * @param o
      *            The object to evaluate.
      */
     public static String toString(Object o) {
@@ -141,7 +142,7 @@ public class ObjectToString {
      * specified parameter values and wrapped at a predetermined default length
      * suitable for most displays.
      * 
-     * @param object
+     * @param o
      *            The object to evaluate.
      * @param indent
      *            A string, typically whitespace, prepended to each new
@@ -229,7 +230,7 @@ public class ObjectToString {
      * descriptions indented and wrapped according to the specified
      * parameter values.
      * 
-     * @param object
+     * @param o
      *            The object to evaluate.
      * @param indent
      *            A string, typically whitespace, prepended to each new

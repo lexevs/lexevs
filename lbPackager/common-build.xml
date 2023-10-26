@@ -86,6 +86,9 @@
 <!--    <delete dir="${build.dir}"/>-->
 <!--      <delete dir="${lib.dir}" />-->
       <delete dir="${target.dir}" />
+      <delete dir="${lib.dir}"  />
+      <delete file="*.graphml" />
+      <delete file="*.html" />
   </target>
 
   <!-- ====================================================================== -->
