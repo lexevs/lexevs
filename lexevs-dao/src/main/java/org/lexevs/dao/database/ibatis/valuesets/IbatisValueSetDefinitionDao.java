@@ -32,7 +32,7 @@ import org.LexGrid.valueSets.ValueSetDefinition;
 import org.LexGrid.valueSets.ValueSetDefinitions;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.cache.annotation.CacheMethod;
 import org.lexevs.cache.annotation.Cacheable;
 import org.lexevs.cache.annotation.ClearCache;

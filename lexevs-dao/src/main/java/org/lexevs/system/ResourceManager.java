@@ -31,7 +31,7 @@ import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.util.sql.DBUtility;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
 import org.LexGrid.util.sql.lgTables.SQLTableUtilities;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.search.BooleanQuery;
 import org.lexevs.dao.database.connection.SQLConnectionInfo;
 import org.lexevs.dao.database.connection.SQLHistoryInterface;
@@ -64,7 +64,7 @@ import org.lexevs.system.utility.MyClassLoader;
  * @deprecated
  * Use LexEvsResourceManagingService
  */
-@Deprecated
+
 public class ResourceManager implements SystemResourceService {
     
     /** The resource manager_. */

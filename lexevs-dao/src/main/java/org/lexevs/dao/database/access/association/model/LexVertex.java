@@ -3,7 +3,7 @@ package org.lexevs.dao.database.access.association.model;
 
 import com.arangodb.entity.DocumentField;
 import com.arangodb.entity.DocumentField.Type;
-
+@SuppressWarnings("deprecation")
 public class LexVertex {
 		
 		@DocumentField(Type.ID)

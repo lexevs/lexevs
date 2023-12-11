@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.apache.ddlutils.DdlUtilsException;
 import org.lexevs.dao.database.key.incrementer.PrimaryKeyIncrementer;
 import org.lexevs.dao.database.operation.transitivity.TransitivityBuilder.TransitivityTableState;
 import org.lexevs.dao.database.prefix.PrefixResolver;
@@ -62,7 +63,8 @@ public interface LexEvsDatabaseOperations {
 	
 	public void dropNciHistoryTables();
 	
-	public void dumpSqlScripts(DatabaseType databaseType, String outputPath, String prefix) throws IOException;
+	public void dumpSqlScripts(DatabaseType databaseType, String outputPath, String prefix)
+            throws IOException, DdlUtilsException;
 	
 	public boolean isCodingSchemeLoaded(String codingSchemeUri, String version);
 	

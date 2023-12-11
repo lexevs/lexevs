@@ -12,10 +12,12 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.apache.commons.io.IOUtils;
+import org.apache.ddlutils.DatabaseOperationException;
 import org.apache.ddlutils.DdlUtilsException;
 import org.apache.ddlutils.Platform;
 import org.apache.ddlutils.PlatformFactory;
 import org.apache.ddlutils.io.DatabaseIO;
+import org.apache.ddlutils.io.DdlUtilsXMLException;
 import org.apache.ddlutils.model.Database;
 import org.apache.ddlutils.model.Table;
 import org.apache.ddlutils.platform.CreationParameters;
@@ -320,11 +322,12 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 		}	
 	}
 	
-	protected String doGetSql(Resource xmlSchema, PlatformActor actor) {
+	protected String doGetSql(Resource xmlSchema, PlatformActor actor) throws DdlUtilsException {
 		return this.doGetSql(null, xmlSchema, actor);
 	}
 	
-	protected String doGetSql(DatabaseType databaseType, Resource xmlSchema, PlatformActor actor) {
+	protected String doGetSql(DatabaseType databaseType, Resource xmlSchema, PlatformActor actor)
+			throws DdlUtilsException {
 		Database db = readDatabase(xmlSchema);
 		
 		Platform platform;
@@ -371,7 +374,8 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 		}
 	}
 	
-	public void dumpSqlScripts(DatabaseType databaseType, String path, String prefix) throws IOException {
+	public void dumpSqlScripts(DatabaseType databaseType, String path, String prefix)
+			throws IOException, DdlUtilsException {
 		List<Resource> scriptResources = 
 			DaoUtility.createNonTypedList(
 					codingSchemeXmlDdl,
@@ -386,7 +390,8 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 		}
 	}
 	
-	protected void doDumpSqlScripts(DatabaseType databaseType, Resource resource, String destination, String prefix) throws IOException {
+	protected void doDumpSqlScripts(DatabaseType databaseType, Resource resource, String destination, String prefix)
+			throws IOException, DdlUtilsException {
 		Database db = this.readDatabase(resource);
 		String name = db.getName();
 		
@@ -624,8 +629,7 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 
 	private static class NonValidatingDatabaseIO extends DatabaseIO {
 		   
-		  public Database read(InputSource inputSource) throws DdlUtilsException
-		    {
+		  public Database read(InputSource inputSource) throws DdlUtilsXMLException {
 		        Database model = null;
 
 		        try
@@ -634,7 +638,7 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 		        }
 		        catch (Exception ex)
 		        {
-		            throw new DdlUtilsException(ex);
+		            throw new DdlUtilsXMLException(ex);
 		        }
 		      
 		        Database db = new AliasingDatabase();
@@ -645,7 +649,7 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 				return db;
 		    }
 		  
-		  public Database read(Reader reader) throws DdlUtilsException
+		  public Database read(Reader reader) throws DdlUtilsXMLException
 		    {
 		        Database model = null;
 
@@ -655,7 +659,8 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 		        }
 		        catch (Exception ex)
 		        {
-		            throw new DdlUtilsException(ex);
+//		            throw new DdlUtilsException(ex);
+					throw new DdlUtilsXMLException(ex);
 		        }
 		      
 		        Database db = new AliasingDatabase();

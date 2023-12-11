@@ -4,7 +4,7 @@ package org.lexevs.dao.database.access.association.model;
 import com.arangodb.entity.DocumentField;
 import com.arangodb.entity.DocumentField.Type;
 
-
+@SuppressWarnings("deprecation")
 public class NodeEdge {
 	@DocumentField(Type.ID)
 	private String id;

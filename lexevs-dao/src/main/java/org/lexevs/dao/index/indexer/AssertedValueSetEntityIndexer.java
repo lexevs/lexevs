@@ -10,7 +10,7 @@ import org.LexGrid.commonTypes.Source;
 import org.LexGrid.concepts.Entity;
 import org.LexGrid.concepts.Presentation;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.document.Document;
 import org.lexevs.dao.database.ibatis.entity.model.IdableEntity;
 import org.lexevs.dao.index.version.LexEvsIndexFormatVersion;

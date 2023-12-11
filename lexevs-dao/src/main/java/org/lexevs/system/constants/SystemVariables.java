@@ -9,8 +9,8 @@ import java.util.Properties;
 import java.util.StringTokenizer;
 
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
-import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.BooleanUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.connection.SQLConnectionInfo;
 import org.lexevs.exceptions.InitializationException;
 import org.lexevs.logging.Logger;

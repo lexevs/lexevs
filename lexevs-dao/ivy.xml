@@ -78,7 +78,16 @@
 <!--		<dependency org="org.hibernate.javax.persistence" name="hibernate-jpa-2.1-api" rev="1.0.2.Final" conf="default" />-->
 <!--		<dependency org="javax.persistence" name="persistence-api" rev="1.0.2" conf="default" />-->
 <!--		<dependency org="org.hibernate" name="hibernate-ehcache" rev="5.6.15.Final" conf="default" /> -->
-		<dependency org="javax.annotation" name="javax.annotation-api" rev="1.3.2" conf="default" />
+<!--		<dependency org="javax.transaction" name="jta" rev="1.1" conf="default" />-->
+<!--		<dependency org="javax.persistence" name="javax.persistence-api" rev="2.2" conf="default->*"/>-->
+<!--		<dependency org="javax.inject" name="javax.inject" rev="1" conf="default"/>-->
+<!--		<dependency org="javax.annotation" name="javax.annotation-api" rev="1.3.2" conf="default" />-->
+
+		<dependency org="jakarta.transaction" name="jakarta.transaction-api" rev="2.0.1" conf="default" />
+		<dependency org="javax.persistence" name="javax.persistence-api" rev="2.2.3" conf="default" />
+		<dependency org="jakarta.inject" name="jakarta.inject-api" rev="2.0.1" conf="default" />
+		<dependency org="jakarta.annotation" name="jakarta.annotation-api" rev="2.1.1" conf="default" />
+
 		<dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.19.0" conf="default" />
   		<dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.19.0" conf="default" />
   		<dependency org="org.apache.logging.log4j" name="log4j-jcl" rev="2.19.0" conf="default" />
@@ -86,7 +95,6 @@
 		<dependency org="io.micrometer" name="micrometer-core" rev="1.10.2" conf="default" />
 		<dependency org="org.slf4j" name="slf4j-api" rev="2.0.6" conf="default" />
 <!--        <dependency org="org.apache.logging.log4j" name="log4j-slf4j-impl" rev="2.17.1" conf="default" />-->
-		<dependency org="javax.transaction" name="jta" rev="1.1" conf="default" />
 		<dependency org="org.javassist" name="javassist" rev="3.29.2-GA" conf="default" />
 		<dependency org="com.thoughtworks.xstream" name="xstream" rev="1.4.20" conf="default" />
 		<dependency org="org.codehaus.jettison" name="jettison" rev="1.5.3" conf="default" />
@@ -99,9 +107,7 @@
    		<dependency org="org.dbunit" name="dbunit" rev="2.7.3" conf="default"/>
    		<dependency org="commons-io" name="commons-io" rev="2.11.0" conf="default" />
 		<dependency org="commons-dbcp" name="commons-dbcp" rev="1.4" conf="default" />
-   	   	<dependency org="javax.persistence" name="javax.persistence-api" rev="2.2" conf="default->*"/>
-   	   	<dependency org="javax.inject" name="javax.inject" rev="1" conf="default"/> 
-   	    <dependency org="org.mockito" name="mockito-all" rev="1.10.8" conf="default"/>
+  	    <dependency org="org.mockito" name="mockito-all" rev="1.10.8" conf="default"/>
    	    <dependency org="org.jdom" name="jdom2" rev="2.0.6.1" conf="default->*"/>
   		<dependency org="commons-codec" name="commons-codec" rev="1.15" conf="default"/>
   		<dependency org="org.compass-project" name="compass" rev="2.2.0" conf="default" />

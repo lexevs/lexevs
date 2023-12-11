@@ -4,7 +4,7 @@ package org.lexevs.dao.database.prefix;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.lexevs.dao.database.access.registry.RegistryDao;
 import org.lexevs.registry.model.RegistryEntry;
 import org.lexevs.registry.service.Registry;

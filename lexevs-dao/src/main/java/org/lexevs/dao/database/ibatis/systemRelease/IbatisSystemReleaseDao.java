@@ -4,7 +4,7 @@ package org.lexevs.dao.database.ibatis.systemRelease;
 import java.util.List;
 
 import org.LexGrid.versions.SystemRelease;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.systemRelease.SystemReleaseDao;
 import org.lexevs.dao.database.ibatis.AbstractIbatisDao;
 import org.lexevs.dao.database.ibatis.versions.parameter.InsertSystemReleaseBean;
