@@ -6,25 +6,19 @@ import org.LexGrid.LexBIG.DataModel.InterfaceElements.types.ProcessState;
 import org.LexGrid.LexBIG.Exceptions.LBException;
 import org.LexGrid.LexBIG.Exceptions.LBInvocationException;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
-import org.LexGrid.LexBIG.Extensions.Load.MIFVocabularyLoader;
 import org.LexGrid.LexBIG.Extensions.Load.MedDRA_Loader;
-import org.LexGrid.LexBIG.Extensions.Load.MetaBatchLoader;
 import org.LexGrid.LexBIG.Extensions.Load.MetaData_Loader;
 import org.LexGrid.LexBIG.Extensions.Load.NCIHistoryLoader;
 import org.LexGrid.LexBIG.Extensions.Load.OBO_Loader;
-import org.LexGrid.LexBIG.Extensions.Load.OWL_Loader;
 import org.LexGrid.LexBIG.Extensions.Load.ResolvedValueSetDefinitionLoader;
 import org.LexGrid.LexBIG.Extensions.Load.UMLSHistoryLoader;
 import org.LexGrid.LexBIG.Extensions.Load.UmlsBatchLoader;
-import org.LexGrid.LexBIG.Impl.LexBIGServiceImpl;
 import org.LexGrid.LexBIG.Impl.LexEVSAuthoringServiceImpl;
 import org.LexGrid.LexBIG.Impl.function.LexBIGServiceTestCase;
 import org.LexGrid.LexBIG.Impl.loaders.LexGridMultiLoaderImpl;
-import org.LexGrid.LexBIG.Impl.loaders.MIFVocabularyLoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.MedDRALoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.MrmapRRFLoader;
 import org.LexGrid.LexBIG.Impl.loaders.OWL2LoaderImpl;
-import org.LexGrid.LexBIG.Impl.loaders.OWLLoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.SourceAssertedValueSetBatchLoader;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGServiceManager;
 import org.LexGrid.LexBIG.Utility.Constructors;
@@ -48,7 +42,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.lexgrid.valuesets.impl.LexEVSValueSetDefinitionServicesImpl;
 import org.springframework.core.annotation.Order;
-import org.springframework.jdbc.UncategorizedSQLException;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mayo.informatics.lexgrid.convert.directConversions.mrmap.MappingRelationsUtil;
@@ -719,49 +712,49 @@ public class LoadTestDataTest extends LexBIGServiceTestCase {
 
 		lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
 	}
-    @Test
-    @Order(28)
-	public void testLoadHL7JMifVocabularyForBadSource() throws LBException,
-			InterruptedException {
-		LexBIGServiceManager lbsm = LexBIGServiceImpl.defaultInstance()
-				.getServiceManager(null);
-		MIFVocabularyLoader loader = null;
-		try {
-			lbsm = getLexBIGServiceManager();
-			loader = (MIFVocabularyLoaderImpl) lbsm
-					.getLoader(org.LexGrid.LexBIG.Impl.loaders.MIFVocabularyLoaderImpl.name);
-			loader.load(new File("resources/testData/German_Made_Parts.xml")
-					.toURI(), null, true, false);
-		} catch (RuntimeException e) {
-			assertEquals(
-					"Source file is invalid. Please check to see if this is a valid HL7 vocabulary mif file",
-					e.getMessage());
-		} finally {
-			while (loader.getStatus().getEndTime() == null) {
-				Thread.sleep(1000);
-			}
-		}
-	}
-
-    @Test
-    @Order(29)
-    public void testLoadHL7MifVocabulary() throws InterruptedException, LBException {
-        LexBIGServiceManager lbsm = getLexBIGServiceManager();
-    	File accessPath = new File("resources/testData/hl7MifVocabulary/DEFN=UV=VO=1189-20121121.coremif");
-
-    	MIFVocabularyLoader loader = (MIFVocabularyLoaderImpl) lbsm.getLoader(org.LexGrid.LexBIG.Impl.loaders.MIFVocabularyLoaderImpl.name);
-        loader.load(accessPath.toURI(), null, true, true);
-
-        while (loader.getStatus().getEndTime() == null) {
-            Thread.sleep(1000);
-        }
-        assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
-        assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
-
-        lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
-
-        lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], LBConstants.KnownTags.PRODUCTION.toString());
-    }
+//    @Test
+//    @Order(28)
+//	public void testLoadHL7JMifVocabularyForBadSource() throws LBException,
+//			InterruptedException {
+//		LexBIGServiceManager lbsm = LexBIGServiceImpl.defaultInstance()
+//				.getServiceManager(null);
+//		MIFVocabularyLoader loader = null;
+//		try {
+//			lbsm = getLexBIGServiceManager();
+//			loader = (MIFVocabularyLoaderImpl) lbsm
+//					.getLoader(org.LexGrid.LexBIG.Impl.loaders.MIFVocabularyLoaderImpl.name);
+//			loader.load(new File("resources/testData/German_Made_Parts.xml")
+//					.toURI(), null, true, false);
+//		} catch (RuntimeException e) {
+//			assertEquals(
+//					"Source file is invalid. Please check to see if this is a valid HL7 vocabulary mif file",
+//					e.getMessage());
+//		} finally {
+//			while (loader.getStatus().getEndTime() == null) {
+//				Thread.sleep(1000);
+//			}
+//		}
+//	}
+//
+//    @Test
+//    @Order(29)
+//    public void testLoadHL7MifVocabulary() throws InterruptedException, LBException {
+//        LexBIGServiceManager lbsm = getLexBIGServiceManager();
+//    	File accessPath = new File("resources/testData/hl7MifVocabulary/DEFN=UV=VO=1189-20121121.coremif");
+//
+//    	MIFVocabularyLoader loader = (MIFVocabularyLoaderImpl) lbsm.getLoader(org.LexGrid.LexBIG.Impl.loaders.MIFVocabularyLoaderImpl.name);
+//        loader.load(accessPath.toURI(), null, true, true);
+//
+//        while (loader.getStatus().getEndTime() == null) {
+//            Thread.sleep(1000);
+//        }
+//        assertTrue(loader.getStatus().getState().equals(ProcessState.COMPLETED));
+//        assertFalse(loader.getStatus().getErrorsLogged().booleanValue());
+//
+//        lbsm.activateCodingSchemeVersion(loader.getCodingSchemeReferences()[0]);
+//
+//        lbsm.setVersionTag(loader.getCodingSchemeReferences()[0], LBConstants.KnownTags.PRODUCTION.toString());
+//    }
 
     @Test
     @Order(30)

@@ -15,7 +15,7 @@ import org.LexGrid.relations.AssociationData;
 import org.LexGrid.relations.AssociationQualification;
 import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.AssociationTarget;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.bridge.Message;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 

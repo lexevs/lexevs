@@ -5,7 +5,6 @@ public enum OntologyFormat {
     OBO,
     OWL,
     OWLRDF,
-    HL7,
     UMLS,
     TEXT,
     LEXGRID_XML,
@@ -15,7 +14,6 @@ public enum OntologyFormat {
     MRMAP,
     RESOLVEDVALUESET,
     SOURCEASSERTEDRESOLVEDVS,
-    MIFVOCABULARY,
     MEDDRA;
     
     public static String getMetaName() {

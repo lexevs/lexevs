@@ -9,7 +9,7 @@ import org.LexGrid.commonTypes.Property;
 import org.LexGrid.commonTypes.PropertyQualifier;
 import org.LexGrid.commonTypes.Source;
 import org.LexGrid.relations.AssociationQualification;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.exolab.castor.xml.Unmarshaller;
 import org.lexgrid.loader.processor.support.PropertyQualifierResolver;
 import org.lexgrid.loader.processor.support.QualifierResolver;

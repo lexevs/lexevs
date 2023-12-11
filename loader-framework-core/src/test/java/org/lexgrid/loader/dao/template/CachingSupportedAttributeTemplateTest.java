@@ -13,10 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-public class CachingSupportedAttribuiteTemplateTest extends LoaderFrameworkCoreTestBase {
+public class CachingSupportedAttributeTemplateTest extends LoaderFrameworkCoreTestBase {
 
 	@Autowired
-	private CachingSupportedAttribuiteTemplate cachingSupportedAttribuiteTemplate;
+	private CachingSupportedAttributeTemplate cachingSupportedAttributeTemplate;
 	/**
 	 * Test insert cached.
 	 * 

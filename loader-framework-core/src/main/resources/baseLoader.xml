@@ -167,7 +167,7 @@
 		</beans:bean>
 	
 	<beans:bean id="cachingSupportedAttribuiteTemplate" parent="loggingBean"
-	class="org.lexgrid.loader.dao.template.CachingSupportedAttribuiteTemplate">
+	class="org.lexgrid.loader.dao.template.CachingSupportedAttributeTemplate">
 		<beans:property name="databaseServiceManager">
 			<beans:ref bean="databaseServiceManager" />
 		</beans:property>

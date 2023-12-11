@@ -24,7 +24,7 @@ import org.springframework.batch.core.StepExecutionListener;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-public class CachingSupportedAttribuiteTemplate extends AbstractSupportedAttributeTemplate implements JobExecutionListener, StepExecutionListener {
+public class CachingSupportedAttributeTemplate extends AbstractSupportedAttributeTemplate implements JobExecutionListener, StepExecutionListener {
 	
 	private DatabaseServiceManager databaseServiceManager;
 

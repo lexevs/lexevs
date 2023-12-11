@@ -98,7 +98,7 @@
   <target name="compile" depends="ivy:setup-compile, clean" unless="no.source" description="Compile the code">
     <mkdir dir="${build.outputDir}"/>
     <javac destdir="${build.outputDir}" 
-           nowarn="false" 
+           nowarn="on"
            debug="true" 
            optimize="false" 
            deprecation="true" 

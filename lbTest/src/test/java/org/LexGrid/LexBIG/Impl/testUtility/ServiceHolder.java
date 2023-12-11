@@ -5,7 +5,7 @@ import org.LexGrid.LexBIG.Exceptions.LBException;
 import org.LexGrid.LexBIG.Impl.LexBIGServiceImpl;
 import org.LexGrid.LexBIG.LexBIGService.LexBIGService;
 import org.apache.commons.lang.BooleanUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 //import org.lexevs.dao.test.BaseInMemoryLexEvsTest;
 import org.lexevs.system.ResourceManager;
 import org.lexevs.system.constants.SystemVariables;

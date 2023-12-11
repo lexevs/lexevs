@@ -1,7 +1,7 @@
 
 package org.lexgrid.loader.meta.reader.support;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexgrid.loader.reader.support.SkipPolicy;
 import org.lexgrid.loader.rrf.constants.RrfLoaderConstants;
 import org.lexgrid.loader.rrf.model.Mrrel;

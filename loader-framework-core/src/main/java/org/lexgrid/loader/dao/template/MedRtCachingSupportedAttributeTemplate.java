@@ -8,7 +8,7 @@ import org.springframework.batch.core.ExitStatus;
 import org.springframework.batch.core.JobExecution;
 import org.springframework.batch.core.StepExecution;
 
-public class MedRtCachingSupportedAttributeTemplate extends CachingSupportedAttribuiteTemplate {
+public class MedRtCachingSupportedAttributeTemplate extends CachingSupportedAttributeTemplate {
 
 	private CodingSchemeIdSetter codingSchemeIdSetter;
 	

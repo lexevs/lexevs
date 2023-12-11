@@ -53,7 +53,7 @@ import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.Revision;
 import org.LexGrid.versions.types.ChangeType;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang.time.DateUtils;
 import org.lexevs.dao.database.access.DaoManager;
 import org.lexevs.dao.database.ibatis.association.parameter.BatchAssociationInsertBean;

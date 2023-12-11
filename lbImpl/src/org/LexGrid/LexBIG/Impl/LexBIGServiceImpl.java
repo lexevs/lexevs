@@ -76,7 +76,6 @@ import org.LexGrid.LexBIG.Impl.loaders.HL7LoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.LexEVSArangoGraphingDbLoader;
 import org.LexGrid.LexBIG.Impl.loaders.LexGridMultiLoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.LexGridMultiResolvedValueSetLoaderImpl;
-import org.LexGrid.LexBIG.Impl.loaders.MIFVocabularyLoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.MedDRALoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.MetaDataLoaderImpl;
 import org.LexGrid.LexBIG.Impl.loaders.MrmapRRFLoader;
@@ -105,10 +104,9 @@ import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.naming.Mappings;
 import org.LexGrid.util.assertedvaluesets.AssertedValueSetParameters;
 import org.LexGrid.util.assertedvaluesets.AssertedValueSetServices;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.DatabaseServiceManager;
 import org.lexevs.dao.database.service.valuesets.AssertedValueSetService;
-import org.lexevs.dao.database.service.valuesets.AssertedValueSetServiceImpl;
 import org.lexevs.dao.database.utility.DaoUtility;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexevs.logging.LoggerFactory;
@@ -597,7 +595,6 @@ public class LexBIGServiceImpl implements LexBIGService {
         new MrmapRRFLoader().register();
         new SemNetLoaderImpl().register();
         new MedDRALoaderImpl().register();
-        new MIFVocabularyLoaderImpl().register();
         new LexEVSArangoGraphingDbLoader().register();
         new PropertyExtensionImpl().register();
         
