@@ -6,7 +6,7 @@ import java.io.Reader;
 import junit.framework.TestCase;
 
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.FieldType;

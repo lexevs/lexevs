@@ -13,7 +13,7 @@ import org.LexGrid.valueSets.DefinitionEntry;
 import org.LexGrid.valueSets.EntityReference;
 import org.LexGrid.valueSets.PropertyReference;
 import org.LexGrid.valueSets.ValueSetDefinition;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexgrid.valuesets.helper.VSDServiceHelper;
 import org.lexgrid.valuesets.helper.ValueSetResolutionMD5Generator;
 import org.springframework.util.ClassUtils;

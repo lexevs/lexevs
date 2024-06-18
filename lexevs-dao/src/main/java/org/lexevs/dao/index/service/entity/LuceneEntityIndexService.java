@@ -4,7 +4,7 @@ package org.lexevs.dao.index.service.entity;
 import org.LexGrid.LexBIG.DataModel.Core.AbsoluteCodingSchemeVersionReference;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
 import org.LexGrid.concepts.Entity;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;

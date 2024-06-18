@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.LexGrid.relations.AssociationPredicate;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.DaoManager;
 import org.lexevs.dao.database.access.association.AssociationDao;
 import org.lexevs.dao.database.access.codingscheme.CodingSchemeDao;

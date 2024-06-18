@@ -1,7 +1,7 @@
 
 package org.lexevs.dao.database.schemaversion;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.Assert;
 
 /**

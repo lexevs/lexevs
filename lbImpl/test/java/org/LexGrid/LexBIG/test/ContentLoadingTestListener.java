@@ -9,7 +9,7 @@ import org.LexGrid.LexBIG.LexBIGService.LexBIGServiceManager;
 import org.LexGrid.LexBIG.Utility.LBConstants;
 import org.LexGrid.LexBIG.test.LexEvsTestRunner.LoadContent;
 import org.LexGrid.LexBIG.test.LexEvsTestRunner.LoadContents;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.operation.LexEvsDatabaseOperations;
 import org.lexevs.dao.test.InMemoryLuceneDirectoryCreator;
 import org.lexevs.locator.LexEvsServiceLocator;

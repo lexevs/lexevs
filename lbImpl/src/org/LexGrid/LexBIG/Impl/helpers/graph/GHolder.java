@@ -36,7 +36,7 @@ import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.PropertyType;
 import org.LexGrid.annotations.LgClientSideSafe;
 import org.LexGrid.commonTypes.EntityDescription;
 import org.LexGrid.concepts.Entity;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.exceptions.MissingResourceException;
 import org.lexevs.exceptions.UnexpectedInternalError;
 import org.lexevs.system.ResourceManager;

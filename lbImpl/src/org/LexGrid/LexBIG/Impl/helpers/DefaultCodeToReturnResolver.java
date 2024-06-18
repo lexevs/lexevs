@@ -17,7 +17,7 @@ import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.PropertyType;
 import org.LexGrid.annotations.LgProxyClass;
 import org.LexGrid.commonTypes.EntityDescription;
 import org.LexGrid.concepts.Entity;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.DaoManager;
 import org.lexevs.dao.database.access.codingscheme.CodingSchemeDao;
 import org.lexevs.dao.database.access.entity.EntityDao;

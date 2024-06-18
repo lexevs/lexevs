@@ -14,7 +14,7 @@
 		<dependency org="lexevs" name="lexbig-interfaces" rev="${vBuild}" conf="default"/>
     	<dependency org="commons-collections" name="commons-collections" rev="3.2.2" conf="default"/>
     	<dependency org="commons-pool" name="commons-pool" rev="1.6" conf="default"/>
-    	<dependency org="commons-lang" name="commons-lang" rev="2.6" conf="default"/>
+		<dependency org="org.apache.commons" name="commons-lang3" rev="3.12.0" conf="default"/>
     	<dependency org="com.google.guava" name="guava" rev="31.1-jre" conf="default"/>
     		
 <!--		<dependency org="org.springframework" name="spring-aspects" rev="5.3.19" conf="default"/>-->

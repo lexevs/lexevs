@@ -22,7 +22,7 @@ import org.LexGrid.LexBIG.Utility.ServiceUtility;
 import org.LexGrid.LexBIG.Utility.Iterators.ResolvedConceptReferencesIterator;
 import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.concepts.Entity;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.DatabaseServiceManager;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexevs.system.service.SystemResourceService;

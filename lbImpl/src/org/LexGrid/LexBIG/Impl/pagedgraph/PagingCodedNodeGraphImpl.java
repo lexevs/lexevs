@@ -26,7 +26,7 @@ import org.LexGrid.LexBIG.Impl.pagedgraph.utility.PagedGraphUtils;
 import org.LexGrid.LexBIG.Impl.pagedgraph.utility.ValidatedParameterResolvingCallback;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.PropertyType;
 import org.LexGrid.LexBIG.Utility.ServiceUtility;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.codednodegraph.model.GraphQuery;
 import org.lexevs.dao.database.utility.DaoUtility;
 import org.lexevs.locator.LexEvsServiceLocator;

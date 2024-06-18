@@ -45,7 +45,7 @@ import org.LexGrid.valueSets.DefinitionEntry;
 import org.LexGrid.valueSets.ValueSetDefinition;
 import org.apache.commons.io.Charsets;
 import org.apache.commons.io.input.ReaderInputStream;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.castor.xml.XMLProperties;

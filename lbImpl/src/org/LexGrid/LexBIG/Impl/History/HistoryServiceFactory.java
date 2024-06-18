@@ -4,7 +4,7 @@ package org.LexGrid.LexBIG.Impl.History;
 import org.LexGrid.LexBIG.Exceptions.LBException;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
 import org.LexGrid.LexBIG.History.HistoryService;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexevs.registry.model.RegistryEntry;
 import org.lexevs.registry.service.Registry;

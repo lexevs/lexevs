@@ -13,7 +13,7 @@ import org.LexGrid.concepts.Definition;
 import org.LexGrid.concepts.Presentation;
 import org.LexGrid.concepts.PropertyLink;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.cache.annotation.Cacheable;
 import org.lexevs.cache.annotation.ClearCache;
 import org.lexevs.dao.database.access.property.PropertyDao;

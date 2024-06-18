@@ -5,7 +5,7 @@ import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.AssociationTarget;
 import org.LexGrid.relations.Relations;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.locator.LexEvsServiceLocator;
 
 /**

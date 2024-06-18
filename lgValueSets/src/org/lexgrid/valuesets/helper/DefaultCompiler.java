@@ -25,7 +25,7 @@ import org.LexGrid.valueSets.PropertyMatchValue;
 import org.LexGrid.valueSets.PropertyReference;
 import org.LexGrid.valueSets.ValueSetDefinition;
 import org.LexGrid.valueSets.types.DefinitionOperator;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.valuesets.ValueSetDefinitionService;
 import org.lexevs.locator.LexEvsServiceLocator;
 import org.lexgrid.valuesets.helper.compiler.ValueSetDefinitionCompiler;

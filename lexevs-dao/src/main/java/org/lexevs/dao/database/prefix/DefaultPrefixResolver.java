@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.LexGrid.LexBIG.Exceptions.LBInvocationException;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.cache.annotation.CacheMethod;
 import org.lexevs.cache.annotation.Cacheable;
 import org.lexevs.dao.database.access.DaoManager;

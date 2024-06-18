@@ -26,7 +26,7 @@ import org.LexGrid.naming.SupportedCodingScheme;
 import org.LexGrid.naming.SupportedConceptDomain;
 import org.LexGrid.naming.SupportedNamespace;
 import org.LexGrid.naming.SupportedSource;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class AssertedValueSetServices {
 

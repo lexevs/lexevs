@@ -43,7 +43,7 @@ import org.LexGrid.relations.AssociationQualification;
 import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.AssociationTarget;
 import org.LexGrid.relations.Relations;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import edu.mayo.informatics.lexgrid.convert.directConversions.claml.config.ClaMLConfig;
 import edu.mayo.informatics.lexgrid.convert.directConversions.claml.interfaces.DefaultRubricProcessorImpl;

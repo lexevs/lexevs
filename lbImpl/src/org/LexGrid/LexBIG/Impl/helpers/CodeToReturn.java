@@ -9,7 +9,7 @@ import org.LexGrid.LexBIG.Exceptions.LBParameterException;
 import org.LexGrid.LexBIG.Impl.namespace.NamespaceHandler;
 import org.LexGrid.LexBIG.Impl.namespace.NamespaceHandlerFactory;
 import org.LexGrid.annotations.LgClientSideSafe;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.locator.LexEvsServiceLocator;
 
 /**

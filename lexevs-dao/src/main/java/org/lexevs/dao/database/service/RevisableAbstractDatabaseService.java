@@ -7,7 +7,7 @@ import org.LexGrid.LexBIG.Exceptions.LBRevisionException;
 import org.LexGrid.commonTypes.Versionable;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.codingscheme.CodingSchemeDao;
 import org.lexevs.dao.database.access.versions.VersionsDao;
 import org.lexevs.dao.database.access.versions.VersionsDao.EntryStateType;

@@ -1,7 +1,7 @@
 
 package org.lexevs.dao.database.service.error;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.aop.Advisor;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
