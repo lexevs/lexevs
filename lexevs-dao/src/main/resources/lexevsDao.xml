@@ -282,7 +282,7 @@
 		<property name="vsPropertyService" ref="vsPropertyService"/>
 		<property name="daoCallbackService" ref="daoManagerDaoCallbackService"/>
 		<property name="codedNodeGraphService" ref="codedNodeGraphService"/>
-		<property name="authoringService" ref="authoringService"></property>
+		<property name="authoringService" ref="authoringService"/>
 		<property name="nciHistoryService" ref="nciHistoryService"/>
 		<property name="listenerRegistry" ref="extensionLoadingListenerRegistry"/>
 		<property name="graphingDatabaseService" ref="graphingDatabaseService"/>
