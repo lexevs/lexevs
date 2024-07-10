@@ -60,7 +60,7 @@ import org.LexGrid.util.sql.DBUtility;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.connection.SQLInterface;
 import org.lexevs.dao.database.utility.DaoUtility;
 import org.lexevs.exceptions.MissingResourceException;

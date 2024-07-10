@@ -697,9 +697,9 @@ public class VersionableEventPropertyService extends RevisableAbstractDatabaseSe
 			final String parentUid,
 			final Property property, 
 			final PropertyType propertyType) throws LBException {
-		Assert.notNull(property);
-		Assert.notNull(property.getPropertyId());
-		Assert.notNull(property.getPropertyName());
+		Assert.notNull(property,"property is null");
+		Assert.notNull(property.getPropertyId(),"property.getPropertyId is null");
+		Assert.notNull(property.getPropertyName(),"property.getPropertyName is null");
 		
 		final ParentUidReferencingId id = 
 			new ParentUidReferencingId(codingSchemeUri, version, parentUid);

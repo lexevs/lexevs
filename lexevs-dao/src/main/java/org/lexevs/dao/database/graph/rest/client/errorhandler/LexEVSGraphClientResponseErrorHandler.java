@@ -24,10 +24,10 @@ public class LexEVSGraphClientResponseErrorHandler implements ResponseErrorHandl
       throws IOException {
  
         return (
-          httpResponse.getStatusCode().series() == HttpStatus.Series.CLIENT_ERROR 
-          || httpResponse.getStatusCode().series() == HttpStatus.Series.SERVER_ERROR
-        		  || httpResponse.getStatusCode().series() ==HttpStatus.Series.INFORMATIONAL
-        				  || httpResponse.getStatusCode().series() == HttpStatus.Series.REDIRECTION);
+          httpResponse.getStatusCode().is4xxClientError()
+          || httpResponse.getStatusCode().is5xxServerError()
+        		  || httpResponse.getStatusCode().is1xxInformational()
+        				  || httpResponse.getStatusCode().is3xxRedirection());
     }
  
 
@@ -36,10 +36,10 @@ public class LexEVSGraphClientResponseErrorHandler implements ResponseErrorHandl
       throws IOException {
  
         if (httpResponse.getStatusCode()
-          .series() == HttpStatus.Series.SERVER_ERROR) {
+          .is5xxServerError()) {
             System.out.println("Graph Server Error");
         } else if (httpResponse.getStatusCode()
-          .series() == HttpStatus.Series.CLIENT_ERROR) {
+         .is4xxClientError()) {
         	System.out.println("Graph Client side Error");
             if (httpResponse.getStatusCode() == HttpStatus.NOT_FOUND) {
 					throw new IOException("Value or Vertex not found for "

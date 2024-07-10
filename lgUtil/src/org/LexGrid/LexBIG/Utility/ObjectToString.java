@@ -101,7 +101,7 @@ import org.LexGrid.versions.EntityVersion;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.Revision;
 import org.LexGrid.versions.SystemRelease;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * Class to turn LexBIG model objects into representative strings.

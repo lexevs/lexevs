@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.LexGrid.LexBIG.DataModel.InterfaceElements.ExtensionDescription;
 import org.LexGrid.LexBIG.Utility.logging.LgLoggerIF;
-import org.apache.commons.lang.ClassUtils;
+import org.apache.commons.lang3.ClassUtils;
 import org.lexevs.dao.database.schemaversion.LexGridSchemaVersion;
 import org.lexevs.system.utility.MyClassLoader;
 import org.springframework.beans.factory.FactoryBean;

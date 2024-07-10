@@ -34,8 +34,8 @@ import org.LexGrid.concepts.Presentation;
 import org.LexGrid.naming.Mappings;
 import org.LexGrid.naming.URIMap;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.apache.commons.lang.SerializationUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.SerializationUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.codednodegraph.CodedNodeGraphService.Order;
 import org.lexevs.dao.database.service.codednodegraph.CodedNodeGraphService.QualifierSort;
 import org.lexevs.dao.database.service.codednodegraph.CodedNodeGraphService.Sort;
@@ -96,7 +96,7 @@ public class DaoUtility {
 	}
 	
 	public static SortContainer mapMappingSortOptionListToSort(List<MappingSortOption> list){
-		Boolean DEFAULT_ASCENDING = new Boolean(true);
+		Boolean DEFAULT_ASCENDING = Boolean.valueOf(true);
 		String qualifierColumnAliasPrefix = "qualSort";
 		
 		SortContainer sortContainer = new SortContainer();
@@ -137,7 +137,7 @@ public class DaoUtility {
 	}
 	
 	public static SortContainer mapSortOptionListToSort(SortOptionList list){
-		Boolean DEFAULT_ASCENDING = new Boolean(true);
+		Boolean DEFAULT_ASCENDING = Boolean.valueOf(true);
 		
 		SortContainer sortContainer = new SortContainer();
 		
@@ -276,7 +276,7 @@ public class DaoUtility {
 	}
 	
 	public static String createKey(String uri, String version) {
-		Assert.noNullElements( new String[] {uri, version });
+		Assert.noNullElements( new String[] {uri, version },"uri and version needed");
 		
 		return String.valueOf( ( uri + version ).hashCode() );
 	}
@@ -410,7 +410,7 @@ public class DaoUtility {
 	 * Insert into mappings.
 	 * 
 	 * @param mappings the mappings
-	 * @param uriMap the uri map
+	 *
 	 */
 	public static List<URIMap> getAllURIMappings(final Mappings mappings) {
 		final String getPrefix = "get";

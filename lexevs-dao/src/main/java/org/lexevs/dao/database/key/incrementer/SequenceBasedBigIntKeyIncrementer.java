@@ -9,11 +9,9 @@ import javax.sql.DataSource;
 import org.lexevs.dao.database.prefix.PrefixResolver;
 import org.lexevs.dao.database.type.DatabaseType;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.support.incrementer.DB2SequenceMaxValueIncrementer;
 import org.springframework.jdbc.support.incrementer.DataFieldMaxValueIncrementer;
 import org.springframework.jdbc.support.incrementer.HsqlSequenceMaxValueIncrementer;
 import org.springframework.jdbc.support.incrementer.OracleSequenceMaxValueIncrementer;
-import org.springframework.jdbc.support.incrementer.PostgreSQLSequenceMaxValueIncrementer;
 
 /**
  * The Class SequenceBasedBigIntKeyIncrementer.
@@ -56,16 +54,8 @@ public class SequenceBasedBigIntKeyIncrementer
 				dataFieldMaxValueIncrementer = new HsqlSequenceMaxValueIncrementer(this.getDataSource(), getSequenceName());
 				break;
 			}
-			case DB2 : {
-				dataFieldMaxValueIncrementer = new DB2SequenceMaxValueIncrementer(this.getDataSource(), getSequenceName());
-				break;
-			}
 			case ORACLE : {
 				dataFieldMaxValueIncrementer = new OracleSequenceMaxValueIncrementer(this.getDataSource(), getSequenceName());
-				break;
-			}
-			case POSTGRES : {
-				dataFieldMaxValueIncrementer = new PostgreSQLSequenceMaxValueIncrementer(this.getDataSource(), getSequenceName());
 				break;
 			}
 			default : {

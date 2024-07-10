@@ -9,7 +9,7 @@ import org.LexGrid.LexBIG.claml.Meta;
 import org.LexGrid.LexBIG.claml.UsageKind;
 import org.LexGrid.commonTypes.PropertyQualifier;
 import org.LexGrid.commonTypes.Text;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import edu.mayo.informatics.lexgrid.convert.directConversions.claml.config.ClaMLConfig;
 

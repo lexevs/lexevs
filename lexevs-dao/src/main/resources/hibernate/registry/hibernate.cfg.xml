@@ -1,6 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  ~ Hibernate, Relational Persistence for Idiomatic Java
+  ~
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later.
+  ~ See the lgpl.txt file in the root directory or <http://www.gnu.org/licenses/lgpl-2.1.html>.
+  -->
 <!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration">
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 
         <hibernate-configuration>
           <session-factory>
@@ -8,7 +15,7 @@
 			<property name="hibernate.jdbc.fetch_size">100</property>
 			<property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
 			<property name="hibernate.cache.use_second_level_cache">false</property>
-			 <property name="hibernate.cache.region.factory_class">
+			<property name="hibernate.cache.region.factory_class">
 				 org.hibernate.cache.ehcache.EhCacheRegionFactory
    			</property>
     		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>

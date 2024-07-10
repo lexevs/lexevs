@@ -344,7 +344,7 @@ public class DefaultLexEvsDatabaseOperations implements LexEvsDatabaseOperations
 			}
 		}
 		
-		Assert.notNull(platform);
+		Assert.notNull(platform,"platform is null");
 
 		return actor.getSqlFromPlatform(platform, db);
 	}

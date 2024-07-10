@@ -4,7 +4,7 @@ package org.lexgrid.loader.processor.support;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.util.StringUtils;
 
 /**

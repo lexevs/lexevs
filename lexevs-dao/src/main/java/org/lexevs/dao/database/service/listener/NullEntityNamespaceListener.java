@@ -3,7 +3,7 @@ package org.lexevs.dao.database.service.listener;
 
 import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.concepts.Entity;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.locator.LexEvsServiceLocator;
 
 /**

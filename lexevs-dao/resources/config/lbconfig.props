@@ -62,7 +62,7 @@ LG_BASE_PATH=
 #
 # This path can be relative to the location of LG_BASE_PATH or absolute.
 # You may put more than one folder here by seperating the folders with a ';'.
-JAR_FILE_LOCATION=/Users/safrant/EvS/LexEVS/6.6.1/runtime
+JAR_FILE_LOCATION=../../runtime
 
 # The location of the file that will store information about
 # all loaded terminologies.
@@ -71,7 +71,7 @@ REGISTRY_FILE=registry.xml
 
 # The folder that will hold all of the generated system indexes.
 # This path can be relative to the location of LG_BASE_PATH or absolute.
-INDEX_LOCATION=/Users/safrant/EvS/LexEVS/6.6.1/resources/local_lbIndex
+INDEX_LOCATION=../lbIndex
 
 
 ############# LexGrid System performance variables
@@ -121,7 +121,7 @@ SINGLE_TABLE_MODE=false
 # !!!IMPORTANT!!!
 #  * This variable _should_ contain the database name.
 #  * The database specified must exist.
-DB_URL=jdbc:mysql://localhost:3306/lexevs
+DB_URL=jdbc:mysql://localhost:3306/monoload
 #DB_URL=jdbc:hsqldb:mem:test
 #DB_URL=jdbc:mysql://server.url/lexevs
 #DB_URL=jdbc:postgresql://server.url/lexevs
@@ -188,8 +188,8 @@ DB_DRIVER=com.mysql.jdbc.Driver
 #
 # The specified account MUST HAVE permission
 # to create and remove tables, indexes, and foreign keys in the database environment.
-DB_USER=lexevs
-DB_PASSWORD=lexevs
+DB_USER=root
+DB_PASSWORD=lexgrid
 
 ############# Password encryption
 

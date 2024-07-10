@@ -24,7 +24,7 @@ package org.apache.ddlutils.util;
  * 
  * @version $Revision: $
  */
-public class StringUtilsExt extends org.apache.commons.lang.StringUtils
+public class StringUtilsExt extends org.apache.commons.lang3.StringUtils
 {
     /**
      * Compares the two given strings in a case sensitive or insensitive manner

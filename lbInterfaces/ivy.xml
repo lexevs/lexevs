@@ -14,9 +14,9 @@
     	<dependency org="lexevs" name="lexbig-model" rev="${vBuild}" conf="default"/>
    		<dependency org="org.apache.lucene" name="lucene-core" rev="5.3.1" conf="default"/> 	
     	<dependency org="org.springframework.batch" name="spring-batch-core" rev="4.3.7" conf="default" />
-		<dependency org="org.springframework.security" name="spring-security-core" rev="5.8.5" conf="default" />
+		<dependency org="org.springframework.security" name="spring-security-core" rev="6.1.5" conf="default" />
 
- 		<dependency org="org.springframework" name="spring-core" rev="5.3.29" conf="default"/>
+ 		<dependency org="org.springframework" name="spring-core" rev="6.0.13" conf="default"/>
 <!--			<exclude org="commons-logging" name="commons-logging"/>-->
 <!--		</dependency>-->
 <!--		<dependency org="org.springframework" name="spring-aspects" rev="5.3.19" conf="default"/>-->

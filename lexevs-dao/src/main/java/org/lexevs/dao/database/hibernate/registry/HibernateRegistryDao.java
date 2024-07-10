@@ -8,15 +8,21 @@ import java.util.List;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.DetachedCriteria;
-import org.hibernate.criterion.Restrictions;
+//import org.hibernate.criterion.Criterion;
+//import org.hibernate.criterion.DetachedCriteria;
+//import org.hibernate.criterion.Restrictions;
 import org.lexevs.dao.database.access.registry.RegistryDao;
 import org.lexevs.registry.model.Registry;
 import org.lexevs.registry.model.RegistryEntry;
 import org.lexevs.registry.service.Registry.ResourceType;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
+
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import jakarta.persistence.criteria.CriteriaQuery;
+import jakarta.persistence.criteria.Root;
 
 /**
  * The Class HibernateRegistryDao.
@@ -34,6 +40,9 @@ public class HibernateRegistryDao extends org.springframework.orm.hibernate5.sup
 	
 	/** The default coding scheme prefix. */
 	private String defaultCodingSchemePrefix = "aaaa";
+	
+	@PersistenceContext
+	EntityManager entityManager;
 	
 
 	/* (non-Javadoc)
@@ -133,15 +142,26 @@ public class HibernateRegistryDao extends org.springframework.orm.hibernate5.sup
 	@SuppressWarnings("unchecked")
 	public List<RegistryEntry> getAllRegistryEntriesOfUriAndTypes(String uri,
 			ResourceType... types) {
-		DetachedCriteria criteria = DetachedCriteria.forClass(RegistryEntry.class);
+		
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 
-		Criterion typeRestriction = Restrictions.in("resourceType", types);
+		CriteriaQuery<RegistryEntry> criteria = builder.createQuery(RegistryEntry.class);
+		Root<RegistryEntry> root = criteria.from(RegistryEntry.class);
+		criteria.select(root);
+		criteria.where(builder.in(root.get("resourceType").in(types)));
+		criteria.where(builder.equal(root.get("resourceUri"),uri));
+
+		List<RegistryEntry> entries = entityManager.createQuery(criteria).getResultList();
 		
-		Criterion uriRestriction = Restrictions.eq("resourceUri", uri);
-		
-		List<RegistryEntry> entries = (List<RegistryEntry>) this.getHibernateTemplate().findByCriteria(		
-				criteria.add(Restrictions.and(uriRestriction, typeRestriction)));
-		
+//		DetachedCriteria criteria = DetachedCriteria.forClass(RegistryEntry.class);
+//
+//		Criterion typeRestriction = Restrictions.in("resourceType", types);
+//		
+//		Criterion uriRestriction = Restrictions.eq("resourceUri", uri);
+//		
+//		List<RegistryEntry> entries = (List<RegistryEntry>) this.getHibernateTemplate().findByCriteria(		
+//				criteria.add(Restrictions.and(uriRestriction, typeRestriction)));
+//		
 		return entries;
 	}
 

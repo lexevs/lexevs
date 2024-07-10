@@ -74,6 +74,7 @@ public class LexEvsServiceLocator implements ApplicationContextAware, Disposable
 		if(serviceLocator == null){
 			synchronized(MUTEX){
 				if(serviceLocator == null){
+					try{
 					AbstractRefreshableApplicationContext ctx;
 					if(applicationContextCallback != null){
 						ctx = applicationContextCallback.buildApplicationContext("classpath:" + CONTEXT_FILE);
@@ -86,6 +87,10 @@ public class LexEvsServiceLocator implements ApplicationContextAware, Disposable
 					ctx.registerShutdownHook();
 		
 					serviceLocator = (LexEvsServiceLocator) ctx.getBean(BEAN_NAME);
+					}
+					catch(NoSuchMethodError | NoClassDefFoundError e) {
+						e.printStackTrace();
+					}
 				}
 			}
 		}

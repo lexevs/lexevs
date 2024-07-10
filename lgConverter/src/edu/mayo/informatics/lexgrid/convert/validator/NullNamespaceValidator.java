@@ -7,7 +7,7 @@ import java.util.List;
 import org.LexGrid.concepts.Entity;
 import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.AssociationTarget;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import edu.mayo.informatics.lexgrid.convert.validator.error.LoadValidationError;
 import edu.mayo.informatics.lexgrid.convert.validator.error.NullNamespaceError;

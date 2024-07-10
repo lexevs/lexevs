@@ -40,9 +40,9 @@ import org.LexGrid.util.SimpleMemUsageReporter;
 import org.LexGrid.util.SimpleMemUsageReporter.Snapshot;
 import org.LexGrid.valueSets.PickListDefinition;
 import org.LexGrid.valueSets.ValueSetDefinition;
-import org.apache.commons.lang.ClassUtils;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.ClassUtils;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.lexevs.dao.database.operation.LexEvsDatabaseOperations.RootOrTail;
 import org.lexevs.dao.database.operation.LexEvsDatabaseOperations.TraverseAssociations;
 import org.lexevs.dao.database.service.exception.CodingSchemeAlreadyLoadedException;
@@ -364,7 +364,7 @@ public abstract class BaseLoader extends AbstractExtendable implements Loader{
             } catch (Exception e) {
                 status_.setState(ProcessState.FAILED);
                 md_.fatal("Failed while running the conversion", e);
-                getLogger().error("Load failed: " + (e.getCause() != null?e.getCause():e.getMessage()) + " " + ExceptionUtils.getFullStackTrace(e));
+                getLogger().error("Load failed: " + (e.getCause() != null?e.getCause():e.getMessage()) + " " + e.getStackTrace().toString());
             } finally {
                 if (status_.getState() == null || 
                         (

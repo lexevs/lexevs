@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?><!--Converted at: Mon Apr 18 08:46:17 
+	EDT 2022 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Registry">
+
+
+	<resultMap id="registryMetaData" type="registryMetaData">
+		<result property="id" column="id" />
+		<result property="lastUpdateTime" column="lastUpdateTime" />
+		<result property="lastUsedDbIdentifer"
+			column="lastUsedDBIdentifer" />
+		<result property="lastUsedHistoryIdentifer"
+			column="lastUsedHistoryIdentifer" />
+	</resultMap>
+
+	<resultMap id="registryEntry" type="registryEntry">
+		<result property="id" column="registryGuid" />
+		<result property="activationDate" column="activationDate" />
+		<result property="baseRevision" column="baseRevision" />
+		<result property="dbName" column="dbName" />
+		<result property="dbSchemaDescription"
+			column="dbSchemaDescription" />
+		<result property="dbSchemaVersion" column="dbSchemaVersion" />
+		<result property="dbUri" column="dbURI" />
+		<result property="deactivationDate" column="deactivationDate" />
+		<result property="fixedAtRevision" column="fixedAtRevision" />
+		<result property="isLocked" column="isLocked" />
+		<result property="lastUpdateDate" column="lastUpdateDate" />
+		<result property="prefix" column="prefix" />
+		<result property="stagingPrefix" column="stagingPrefix" />
+		<result property="resourceType" column="resourceType" />
+		<result property="resourceVersion" column="resourceVersion" />
+		<result property="resourceUri" column="resourceURI" />
+		<result property="status" column="status" />
+		<result property="tag" column="tag" />
+		<result property="supplementsUri" column="supplementsUri" />
+		<result property="supplementsVersion"
+			column="supplementsVersion" />
+	</resultMap>
+
+	<insert id="initRegistryMetadata"
+		parameterType="org.lexevs.dao.database.ibatis.registry.parameter.InsertOrUpdateRegistryBean">
+		INSERT INTO
+		${defaultPrefix}registryMetaData(
+		id,
+		lastUpdateTime,
+		lastUsedDBIdentifer,
+		lastUsedHistoryIdentifer
+		)VALUES(
+		#{id,jdbcType=CHAR},
+		#{lastUpdateTime,jdbcType=TIMESTAMP},
+		#{lastUsedDBIdentifer,jdbcType=VARCHAR},
+		#{lastUsedHistoryIdentife,jdbcType=VARCHAR}, )
+
+	</insert>
+
+	<update id="updateLastUpdateTime"
+		parameterType="org.lexevs.dao.database.ibatis.registry.parameter.InsertOrUpdateRegistryBean">
+		UPDATE
+		${defaultPrefix}registryMetaData registryMetaData
+		registryMetaData.lastUpdateTime
+		<set>
+			<if test="lastUpdateTime != null">
+				lastUpdateTime = #{registry.lastUpdateTime}
+			</if>
+		</set>
+		WHERE
+		id = #{registry.id}
+	</update>
+
+	<update id="updateLastUsedDbId"
+		parameterType="org.lexevs.dao.database.ibatis.registry.parameter.InsertOrUpdateRegistryBean">
+		UPDATE
+		${defaultPrefix}registryMetaData registryMetaData
+		registryMetaData.lastUsedDBIdentifer
+		<set>
+			<if test="lastUsedDBIdentifer != null">
+				lastUsedDBIdentifer = #{lastUsedDBIdentifer}
+			</if>
+		</set>
+		WHERE
+		id = #{id}
+	</update>
+
+	<select id="getRegistryMetaData"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameter"
+		resultMap="registryMetaData">
+		SELECT
+		id,
+		lastUpdateTime,
+		lastUsedDBIdentifer,
+		lastUsedHistoryIdentifer
+		FROM
+		${prefix}registryMetaData
+		WHERE
+		id = #{param1}
+	</select>
+
+
+	<delete id="deleteRegistryEntry"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameter">
+		DELETE FROM
+		${prefix}registry
+		WHERE
+		registryGuid = #{param1}
+	</delete>
+
+	<insert id="insertRegistryEntry"
+		parameterType="org.lexevs.dao.database.ibatis.registry.parameter.InsertOrUpdateRegistryEntryBean">
+		INSERT INTO ${defaultPrefix}registry(
+		registryGuid,
+		activationDate,
+		baseRevision,
+		dbName,
+		dbSchemaDescription,
+		dbSchemaVersion,
+		dbURI,
+		deactivationDate,
+		fixedAtRevision,
+		isLocked,
+		lastUpdateDate,
+		prefix,
+		stagingPrefix,
+		resourceType,
+		resourceVersion,
+		resourceURI,
+		status,
+		tag,
+		supplementsUri,
+		supplementsVersion
+
+		) VALUES (
+
+		#{id,jdbcType=VARCHAR},
+		#{activationDate,jdbcType=TIMESTAMP},
+		#{baseRevision,jdbcType=VARCHAR},
+		#{dbName,jdbcType=VARCHAR},
+		#{dbSchemaDescription,jdbcType=VARCHAR},
+		#{dbSchemaVersion,jdbcType=VARCHAR},
+		#{dbUri,jdbcType=VARCHAR},
+		#{deactivationDate,jdbcType=TIMESTAMP},
+		#{fixedAtRevision,jdbcType=VARCHAR},
+		#{isLocked,jdbcType=CHAR},
+		#{lastUpdateDate,jdbcType=TIMESTAMP},
+		#{prefix,jdbcType=VARCHAR},
+		#{stagingPrefix,jdbcType=VARCHAR},
+		#{resourceType,jdbcType=VARCHAR},
+		#{resourceVersion,jdbcType=VARCHAR},
+		#{resourceUri,jdbcType=VARCHAR},
+		#{status,jdbcType=VARCHAR},
+		#{tag,jdbcType=VARCHAR},
+		#{supplementsUri,jdbcType=VARCHAR},
+		#{supplementsVersion, jdbcType=VARCHAR}
+		)
+	</insert>
+
+
+	<update id="updateRegistryEntry"
+		parameterType="org.lexevs.dao.database.ibatis.registry.parameter.InsertOrUpdateRegistryEntryBean">
+		UPDATE
+		${defaultPrefix}registry registry
+		<set>
+			<if test="id != null">
+				registry.registryGuid = #{id},
+			</if>
+			<if test="activationDate != null">
+				registry.activationDate = #{activationDate},
+			</if>
+			<if test="baseRevision != null">
+				registry.baseRevision = #{baseRevision},
+			</if>
+			<if test="dbName != null">
+				registry.dbName = #{dbName},
+			</if>
+			<if test="dbSchemaDescription != null">
+				registry.dbSchemaDescription = #{dbSchemaDescription},
+			</if>
+			<if test="dbSchemaVersion != null">
+				registry.dbSchemaVersion = #{dbSchemaVersion},
+			</if>
+			<if test="dbUri != null">
+				registry.dbURI = #{dbUri},
+			</if>
+			<if test="deactivationDate != null">
+				registry.deactivationDate = #{deactivationDate},
+			</if>
+			<if test="fixedAtRevision != null">
+				registry.fixedAtRevision = #{fixedAtRevision},
+			</if>
+			<if test="isLocked != null">
+				registry.isLocked = #{isLocked},
+			</if>
+			<if test="lastUpdateDate != null">
+				registry.lastUpdateDate = #{lastUpdateDate},
+			</if>
+			<if test="prefix != null">
+				registry.prefix = #{prefix},
+			</if>
+			<if test="stagingPrefix != null">
+				registry.stagingPrefix = #{stagingPrefix},
+			</if>
+			<if test="resourceType != null">
+				registry.resourceType = #{resourceType},
+			</if>
+			<if test="resourceVersion != null">
+				registry.resourceVersion = #{resourceVersion},
+			</if>
+			<if test="resourceUri != null">
+				registry.resourceURI = #{resourceUri},
+			</if>
+			<if test="status != null">
+				registry.status = #{status},
+			</if>
+			<if test="tag != null">
+				registry.tag = #{tag},
+			</if>
+			<if test="supplementsUri != null">
+				registry.supplementsUri = #{supplementsUri},
+			</if>
+			<if test="supplementsVersion != null">
+				registry.supplementsVersion = #{supplementsVersion}
+			</if>
+		</set>
+		WHERE
+		registry.registryGuid = #{id}
+	</update>
+
+	<select id="getRegistryEntriesForUri"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameter"
+		resultMap="registryEntry">
+		SELECT
+		registryGuid AS id,
+		activationDate,
+		baseRevision,
+		dbName,
+		dbSchemaDescription,
+		dbSchemaVersion,
+		dbURI,
+		deactivationDate,
+		fixedAtRevision,
+		isLocked,
+		lastUpdateDate,
+		prefix,
+		stagingPrefix,
+		resourceType,
+		resourceVersion,
+		resourceURI AS resourceUri,
+		status,
+		tag,
+		supplementsUri,
+		supplementsVersion
+		FROM
+		${prefix}registry
+		WHERE
+		resourceURI = #{param1}
+	</select>
+
+	<select id="getRegistryEntryForUriAndVersion"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameterTuple"
+		resultMap="registryEntry">
+		SELECT
+		registryGuid AS id,
+		activationDate,
+		baseRevision,
+		dbName,
+		dbSchemaDescription,
+		dbSchemaVersion,
+		dbURI,
+		deactivationDate,
+		fixedAtRevision,
+		isLocked,
+		lastUpdateDate,
+		prefix,
+		stagingPrefix,
+		resourceType,
+		resourceVersion,
+		resourceURI AS resourceUri,
+		status,
+		tag,
+		supplementsUri,
+		supplementsVersion
+		FROM
+		${prefix}registry
+		WHERE
+		resourceURI = #{param1}
+		AND
+		resourceVersion = #{param2}
+	</select>
+
+
+	<select id="getRegistryEntryByUriAndTypes"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameterCollection"
+		resultType="registryEntry">
+		SELECT
+		registryGuid AS id,
+		activationDate,
+		baseRevision,
+		dbName,
+		dbSchemaDescription,
+		dbSchemaVersion,
+		dbURI,
+		deactivationDate,
+		fixedAtRevision,
+		isLocked,
+		lastUpdateDate,
+		prefix,
+		stagingPrefix,
+		resourceType,
+		resourceVersion,
+		resourceURI AS resourceUri,
+		status,
+		tag,
+		supplementsUri,
+		supplementsVersion
+		FROM
+		${prefix}registry
+		WHERE
+		resourceURI = #{param1}
+
+		AND
+		resourceType IN (
+		<foreach collection="param2" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</select>
+
+
+
+
+	<select id="getAllRegistryEntriesOfType"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameter"
+		resultMap="registryEntry">
+		SELECT *
+		FROM
+		${prefix}registry registry
+		WHERE
+		registry.resourceType = #{param1}
+	</select>
+
+	<select id="getAllRegistryEntriesOfTypeAndURI"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameter"
+		resultMap="registryEntry">
+		SELECT *
+		FROM
+		${prefix}registry registry
+		WHERE
+		registry.resourceType = #{param1}
+		AND
+		registry.resourceURI = #{param2}
+	</select>
+
+	<select id="getAllRegistryEntriesOfTypeURIAndVersion"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameterTriple"
+		resultType="registryEntry">
+		SELECT
+		registryGuid AS id,
+		activationDate,
+		baseRevision,
+		dbName,
+		dbSchemaDescription,
+		dbSchemaVersion,
+		dbURI,
+		deactivationDate,
+		fixedAtRevision,
+		isLocked,
+		lastUpdateDate,
+		prefix,
+		stagingPrefix,
+		resourceType,
+		resourceVersion,
+		resourceURI AS resourceUri,
+		status,
+		tag,
+		supplementsUri,
+		supplementsVersion
+		FROM
+		${prefix}registry registry
+		WHERE
+		registry.resourceType = #{param1}
+		AND
+		registry.resourceURI = #{param2}
+		AND
+		registry.resourceVersion = #{param3}
+	</select>
+
+	<select id="getAllRegistryEntries"
+		parameterType="org.lexevs.dao.database.ibatis.parameter.PrefixedParameter"
+		resultType="registryEntry">
+		SELECT
+		*
+		FROM
+		${prefix}registry
+	</select>
+
+</mapper>

@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 
 import org.LexGrid.concepts.Entity;
 import org.LexGrid.versions.SystemRelease;
-import org.apache.commons.lang.BooleanUtils;
+import org.apache.commons.lang3.BooleanUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.lexevs.dao.database.service.entity.VersionableEventEntityService;

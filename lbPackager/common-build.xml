@@ -153,6 +153,7 @@
   <!-- ====================================================================== -->
   <target name="test" 
           depends="compile-tests"
+  	      unless="no.tests"
   		  if="do-run-tests"
           description="Run the test cases">
     <mkdir dir="${test.reports}"/>

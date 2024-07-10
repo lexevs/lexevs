@@ -43,7 +43,7 @@ import org.LexGrid.relations.AssociationQualification;
 import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.AssociationTarget;
 import org.LexGrid.relations.Relations;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import edu.mayo.informatics.lexgrid.convert.directConversions.claml.config.ClaMLConfig;
 import edu.mayo.informatics.lexgrid.convert.directConversions.claml.interfaces.DefaultRubricProcessorImpl;
@@ -62,7 +62,7 @@ public class ClaML2LG {
 			config_ = config;
 					
 			ClaMLXMLReader reader = new ClaMLXMLReader();
-			clamlXML_ = reader.readClaMLXML(clamlXML_URI, config);
+			//clamlXML_ = reader.readClaMLXML(clamlXML_URI, config);
 			
 			CodingScheme clamlCS = new CodingScheme();
 			clamlCS.setEntities(new Entities());
