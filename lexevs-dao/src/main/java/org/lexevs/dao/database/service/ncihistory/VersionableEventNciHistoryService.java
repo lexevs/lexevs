@@ -60,8 +60,8 @@ public class VersionableEventNciHistoryService extends AbstractDatabaseService i
 	@Transactional
 	public void insertNCIChangeEvent(String codingSchemeUri,
 			NCIChangeEvent changeEvent) {
-		Assert.notNull(changeEvent);
-		Assert.notNull(changeEvent.getEditDate());
+		Assert.notNull(changeEvent,"changeEvent is null");
+		Assert.notNull(changeEvent.getEditDate(),"changeEvent.getEditDate() is null");
 
 		NciHistoryDao historyDao = this.getDaoManager().getNciHistoryDao(
 				codingSchemeUri);

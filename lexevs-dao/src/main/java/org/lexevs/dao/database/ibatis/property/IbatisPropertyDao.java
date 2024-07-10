@@ -385,7 +385,7 @@ public class IbatisPropertyDao extends AbstractIbatisDao implements PropertyDao 
 			Property property, 
 			SqlSessionTemplate sqlSessionTemplate) {
 		
-		Assert.notNull(propertyUId);
+		Assert.notNull(propertyUId,"propertyUId");
 
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeUId);
 		String historyPrefix = this.getPrefixResolver().resolvePrefixForHistoryCodingScheme(codingSchemeUId);

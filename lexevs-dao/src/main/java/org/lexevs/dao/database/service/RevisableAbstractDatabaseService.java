@@ -225,7 +225,7 @@ public abstract class RevisableAbstractDatabaseService<T extends Versionable, I 
 			EntryStateType type, 
 			ChangeDatabaseStateTemplate<I,T> template) throws LBException {
 		
-		Assert.noNullElements(new Object[] {id, revisedEntry, type, template} );
+		Assert.noNullElements(new Object[] {id, revisedEntry, type, template},"change is null" );
 		
 		String codingSchemeUri = id.getCodingSchemeUri();
 		String version = id.getCodingSchemeVersion();
@@ -236,7 +236,7 @@ public abstract class RevisableAbstractDatabaseService<T extends Versionable, I 
 		
 		String codingSchemeUId = codingSchemeDao.
 			getCodingSchemeUIdByUriAndVersion(codingSchemeUri, version);
-		Assert.notNull(codingSchemeUId);
+		Assert.notNull(codingSchemeUId,"codingSchemeUId is null");
 		
 		String entryUId = getEntryUid(id, revisedEntry);
 		Assert.notNull(entryUId, "The 'getEntryUid' method failed to produce the current Entry's Uid.");
@@ -245,7 +245,7 @@ public abstract class RevisableAbstractDatabaseService<T extends Versionable, I 
 		Assert.notNull(currentEntry, "The 'getCurrentEntry' method failed to produce the current Entry.");
 		
 		String currentEntryStateUid = this.resolveCurrentEntryStateUid(id, entryUId, type);
-		Assert.notNull(currentEntryStateUid);
+		Assert.notNull(currentEntryStateUid,"currentEntryStateUid is null");
 		
 		if(!this.isChangeTypeDependent(currentEntry) || this.isChangeTypeRemove(revisedEntry)) {
 			this.insertIntoHistory(id, currentEntry, entryUId);

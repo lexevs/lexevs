@@ -41,7 +41,7 @@ public class ErrorReportingDataSourceDecorator implements DataSource, Initializi
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		Assert.notNull(this.decoratoredDataSource);
+		Assert.notNull(this.decoratoredDataSource,"No datasource provided");
 		
 		Connection connection = null;
 		try {

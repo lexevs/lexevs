@@ -505,7 +505,7 @@ public class IbatisEntityDao extends AbstractIbatisDao implements EntityDao {
 			Entity entity, 
 			SqlSessionTemplate sqlSessionTemplate,
 			boolean cascade) {
-		Assert.notNull(entityUId);
+		Assert.notNull(entityUId,"entityUId is required to be populated to Insert an Entity.");
 
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeUId);
 
@@ -515,9 +515,9 @@ public class IbatisEntityDao extends AbstractIbatisDao implements EntityDao {
 		
 		String historyPrefix = this.getPrefixResolver().resolvePrefixForHistoryCodingScheme(codingSchemeUId);
 		
-		Assert.notNull(entityData);
+		Assert.notNull(entityData,"entityData is null");
 		
-		Assert.notNull(entityData.getEntryStateUId());
+		Assert.notNull(entityData.getEntryStateUId(),"entryStateUId is null");
 		
 		entityData.setPrefix(historyPrefix);
 		

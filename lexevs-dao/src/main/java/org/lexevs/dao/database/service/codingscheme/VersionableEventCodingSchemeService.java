@@ -282,7 +282,7 @@ public class VersionableEventCodingSchemeService extends RevisableAbstractDataba
 			String codingSchemeUri, 
 			String codingSchemeVersion,
 			URIMap uriMap){
-		Assert.hasText(uriMap.getLocalId());
+		Assert.hasText(uriMap.getLocalId(),"uriMap has no local id");
 		
 		CodingSchemeDao codingSchemeDao = getDaoManager().getCodingSchemeDao(codingSchemeUri, codingSchemeVersion);
 		String codingSchemeId = codingSchemeDao.

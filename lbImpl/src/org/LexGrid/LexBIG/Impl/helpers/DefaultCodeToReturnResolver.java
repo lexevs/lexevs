@@ -95,7 +95,7 @@ public class DefaultCodeToReturnResolver implements CodeToReturnResolver {
         ResolvedConceptReferenceList returnList = this.buildResolvedConceptReference(
                 DaoUtility.createNonTypedList(codeToReturn), restrictToProperties, restrictToPropertyTypes, filters, resolve);
    
-        Assert.state(returnList.getResolvedConceptReferenceCount() <= 1);
+        Assert.state(returnList.getResolvedConceptReferenceCount() <= 1,"resolved concept reference count exceeded");
         
         if(returnList.getResolvedConceptReferenceCount() == 1) {
             return returnList.getResolvedConceptReference(0);
