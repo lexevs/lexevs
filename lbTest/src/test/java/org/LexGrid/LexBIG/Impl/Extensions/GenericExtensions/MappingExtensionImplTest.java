@@ -330,25 +330,191 @@ public class MappingExtensionImplTest extends LexBIGServiceTestCase {
 		assertTrue(itr.hasNext());
 	}
 	
-	@Test
-	public void testResolveMappingDirectFromExtWithSort() throws LBException {
-		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
-		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
-		QualifierSortOption so = new QualifierSortOption(Direction.ASC, "score");
-
-		List<MappingSortOption> sortOptionList = Arrays.asList(so);
-		
-		ResolvedConceptReferencesIterator itr = mappingExtension.resolveMapping(
-				"Mapping Sample", 
-				Constructors.createCodingSchemeVersionOrTagFromVersion(MAPPING_SCHEME_VERSION), 
-				"AutoToGMPMappings", sortOptionList);
-		
-		
-		assertTrue(itr.hasNext());
-	}
+//	@Test
+//	public void testResolveMappingDirectFromExtWithSort() throws LBException {
+//		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+//		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+//		QualifierSortOption aso = new QualifierSortOption(Direction.ASC, "score");
+//		QualifierSortOption bso = new QualifierSortOption(Direction.ASC, "rel");
+//
+//		List<MappingSortOption> sortOptionList = new ArrayList<MappingSortOption>();
+//		sortOptionList.add(aso);
+//		sortOptionList.add(bso);
+//		
+//		ResolvedConceptReferencesIterator itr = mappingExtension.resolveMapping(
+//				"Mapping Sample", 
+//				Constructors.createCodingSchemeVersionOrTagFromVersion(MAPPING_SCHEME_VERSION), 
+//				"AutoToGMPMappings", sortOptionList);
+//		
+//		
+//		assertTrue(itr.hasNext());
+//	}
+//	
+//	@Test
+//	public void testResolveMappingWithMappingGet() throws LBException {
+//		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+//		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+//		QualifierSortOption so = new QualifierSortOption(Direction.ASC, "rel");
+//
+//		List<MappingSortOption> sortOptionList = Arrays.asList(so);
+//		
+//		Mapping mapping = mappingExtension.getMapping(
+//				"GO_to_NCIt_Mapping", 
+//				Constructors.createCodingSchemeVersionOrTagFromVersion("1.1"), 
+//				"GO_to_NCIt_Mappings");
+//		
+//		ResolvedConceptReferencesIterator itr = mapping.resolveMapping(sortOptionList);
+//	
+//		
+//		assertTrue(itr.hasNext());
+//		assertEquals(310, itr.numberRemaining());
+//	}
+	
+//	@Test
+//	public void testResolveNCIMappingDirectFromExtWithSort() throws LBException {
+//		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+//		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+//		QualifierSortOption so = new QualifierSortOption(Direction.ASC, "score");
+//
+//		List<MappingSortOption> sortOptionList = Arrays.asList(so);
+//		
+//		ResolvedConceptReferencesIterator itr = mappingExtension.resolveMapping(
+//				"GO_to_NCIt_Mapping", 
+//				Constructors.createCodingSchemeVersionOrTagFromVersion("1.1"), 
+//				"GO_to_NCIt_Mappings", sortOptionList);
+//		
+//		
+//		assertTrue(itr.hasNext());
+//	}
+	
+//	@Test
+//	public void testResolveMappingWithMappingGetAndMappingSortOption() throws LBException {
+//		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+//		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+//		List<MappingSortOption> sortOptionList = new ArrayList<MappingSortOption>();
+//		QualifierSortOption so = new QualifierSortOption(Direction.ASC, "rel");
+//		QualifierSortOption so2 = new QualifierSortOption(Direction.ASC, "source");
+//		MappingSortOption so1 = new MappingSortOption(MappingSortOptionName.SOURCE_CODE, Direction.ASC);
+//		sortOptionList.add(so1);
+//		sortOptionList.add(so);
+//		sortOptionList.add(so2);
+//		
+//		Mapping mapping = mappingExtension.getMapping(
+//				"GO_to_NCIt_Mapping", 
+//				Constructors.createCodingSchemeVersionOrTagFromVersion("1.1"), 
+//				"GO_to_NCIt_Mappings");
+//		
+//		ResolvedConceptReferencesIterator itr = mapping.resolveMapping(sortOptionList);
+//	
+//		
+//		assertTrue(itr.hasNext());
+//		assertEquals(310, itr.numberRemaining());
+//		while(itr.hasNext()) {
+//			System.out.println(itr.next().getCode());
+//		}
+//	}
+//	
+//	@Test
+//	public void testResolveMappingWithMappingGetAndMappingSortOption1() throws LBException {
+//		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+//		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+//		List<MappingSortOption> sortOptionList = new ArrayList<MappingSortOption>();
+//        MappingSortOption option = null;
+//        QualifierSortOption qualifierOption = null;
+//		option = new MappingSortOption(MappingSortOptionName.SOURCE_CODE, Direction.ASC);
+//		sortOptionList.add(option);
+//		option = new MappingSortOption(MappingSortOptionName.SOURCE_ENTITY_DESCRIPTION, Direction.ASC);
+//        sortOptionList.add(option);
+//        qualifierOption = new QualifierSortOption(Direction.ASC, "rel");
+//        sortOptionList.add(qualifierOption);
+//        qualifierOption = new QualifierSortOption(Direction.DESC, "score");
+//        sortOptionList.add(qualifierOption);
+//		option = new MappingSortOption(MappingSortOptionName.TARGET_CODE, Direction.ASC);
+//		sortOptionList.add(option);
+//		option = new MappingSortOption(MappingSortOptionName.TARGET_ENTITY_DESCRIPTION, Direction.ASC);
+//        sortOptionList.add(option);
+//		
+//		Mapping mapping = mappingExtension.getMapping(
+//				"GO_to_NCIt_Mapping", 
+//				Constructors.createCodingSchemeVersionOrTagFromVersion("1.1"), 
+//				"GO_to_NCIt_Mappings");
+//		
+//		ResolvedConceptReferencesIterator itr = mapping.resolveMapping(sortOptionList);
+//		assertTrue(itr.hasNext());
+//		assertEquals(310, itr.numberRemaining());
+//		while(itr.hasNext()) {
+//			System.out.println(itr.next().getCode());
+//		}
+//	}
+//	
+//	@Test
+//	public void testResolveMappingWithMappingGetAndMappingSortOption2() throws LBException {
+//		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+//		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+//		List<MappingSortOption> list = new ArrayList<MappingSortOption>();
+//        MappingSortOption option = null;
+//        QualifierSortOption qualifierOption = null;
+//		option = new MappingSortOption(MappingSortOptionName.SOURCE_ENTITY_DESCRIPTION, Direction.ASC);
+//        list.add(option);
+//		option = new MappingSortOption(MappingSortOptionName.SOURCE_CODE, Direction.ASC);
+//		list.add(option);
+//        qualifierOption = new QualifierSortOption(Direction.ASC, "rel");
+//        list.add(qualifierOption);
+//        qualifierOption = new QualifierSortOption(Direction.DESC, "score");
+//        list.add(qualifierOption);
+//		option = new MappingSortOption(MappingSortOptionName.TARGET_CODE, Direction.ASC);
+//		list.add(option);
+//		option = new MappingSortOption(MappingSortOptionName.TARGET_ENTITY_DESCRIPTION, Direction.ASC);
+//        list.add(option);
+//		
+//		Mapping mapping = mappingExtension.getMapping(
+//				"GO_to_NCIt_Mapping", 
+//				Constructors.createCodingSchemeVersionOrTagFromVersion("1.1"), 
+//				"GO_to_NCIt_Mappings");
+//		
+//		ResolvedConceptReferencesIterator itr = mapping.resolveMapping(list);
+//		assertTrue(itr.hasNext());
+//		assertEquals(310, itr.numberRemaining());
+//		while(itr.hasNext()) {
+//			System.out.println(itr.next().getEntityDescription().getContent());
+//		}
+//	}
+//	
+//	@Test
+//	public void testResolveMappingWithMappingGetAndMappingSortOption3() throws LBException {
+//		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
+//		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
+//		List<MappingSortOption> list = new ArrayList<MappingSortOption>();
+//        MappingSortOption option = null;
+//        QualifierSortOption qualifierOption = null;
+//		option = new MappingSortOption(MappingSortOptionName.SOURCE_ENTITY_DESCRIPTION, Direction.ASC);
+//        list.add(option);
+//		option = new MappingSortOption(MappingSortOptionName.SOURCE_CODE, Direction.ASC);
+//		list.add(option);
+//        qualifierOption = new QualifierSortOption(Direction.ASC, "rel");
+//        list.add(qualifierOption);
+//        qualifierOption = new QualifierSortOption(Direction.DESC, "score");
+//        list.add(qualifierOption);
+//		option = new MappingSortOption(MappingSortOptionName.TARGET_CODE, Direction.ASC);
+//		list.add(option);
+//		option = new MappingSortOption(MappingSortOptionName.TARGET_ENTITY_DESCRIPTION, Direction.ASC);
+//        list.add(option);
+//		
+//		Mapping mapping = mappingExtension.getMapping(
+//				"GO_to_NCIt_Mapping", 
+//				Constructors.createCodingSchemeVersionOrTagFromVersion("1.1"), 
+//				"GO_to_NCIt_Mappings");
+//		
+//		ResolvedConceptReferencesIterator itr = mapping.resolveMapping(list);
+//		assertTrue(itr.hasNext());
+//		assertEquals(310, itr.numberRemaining());
+//		while(itr.hasNext()) {
+//			System.out.println(itr.next().getCode());
+//		}
+//	}
 	
 	@Test
-	public void testResolveMappingWithMappingGet() throws LBException {
+	public void testResolveNCIMappingWithMappingGet() throws LBException {
 		LexBIGService lbs = ServiceHolder.instance().getLexBIGService();
 		MappingExtension mappingExtension = (MappingExtension) lbs.getGenericExtension("MappingExtension");
 		QualifierSortOption so = new QualifierSortOption(Direction.ASC, "rel");

@@ -1,45 +1,44 @@
 
 package org.lexevs.cache;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.Ehcache;
-import net.sf.ehcache.Element;
-import net.sf.ehcache.statistics.StatisticsGateway;
-import net.sf.ehcache.statistics.extended.ExtendedStatistics;
-import net.sf.ehcache.statistics.extended.ExtendedStatisticsImpl;
-import net.sf.ehcache.config.ConfigurationFactory;
-
+import org.ehcache.CacheManager;
+import org.ehcache.config.CacheConfiguration;
+import org.ehcache.config.builders.CacheManagerBuilder;
+import org.ehcache.core.internal.statistics.DefaultStatisticsService;
+import org.ehcache.core.spi.service.StatisticsService;
+import org.ehcache.core.statistics.CacheStatistics;
 import org.lexevs.logging.LoggerFactory;
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
 
-public class CacheRegistry implements InitializingBean, DisposableBean {
-	
-	private CacheManager cacheManager;
 
-/** The caches. */
-private Map<String,CacheWrapper<String,Object>> caches = new HashMap<String,CacheWrapper<String,Object>>();
+//Most functions moved to the AbstractMethodCachingBean;
+
+public class CacheRegistry implements InitializingBean, DisposableBean {
+	private static CacheManager cacheManager;
+
+
+	private StatisticsService statisticsService;
+	Map<String, CacheConfiguration<?, ?>> cacheConfigs;
+
 
 
 	private final ThreadLocal<Boolean> inCacheClearingState =
 		new ThreadLocal<Boolean>();
 	
 	public void afterPropertiesSet() throws Exception {
-		initializeCache();
+		//NOOP
 	}
 	
 	@Override
 	public void destroy() throws Exception {
 		LoggerFactory.getLogger().debug(
 				getCacheStatisticsStringRepresentation());
+		cacheManager.close();
 	}
 	
 	protected String getCacheStatisticsStringRepresentation() {
@@ -49,32 +48,36 @@ private Map<String,CacheWrapper<String,Object>> caches = new HashMap<String,Cach
 		
 		long hits = 0;
 		float misses = 0;
-		float memoryUsage = 0;
+		float offheapmemoryUsage = 0;
+		float onheapmemoryUsage = 0;
+        String[] keys = (String[]) cacheConfigs.keySet().toArray();
+		for(int i=0; i < keys.length; i++) {
+		 String cacheName = keys[i];
 
-		for(String cacheName : this.cacheManager.getCacheNames()) {
-			Cache cache = this.cacheManager.getCache(cacheName);
+			CacheStatistics ehCacheStat = statisticsService.getCacheStatistics(cacheName);
+			hits += ehCacheStat.getCacheHits();
+			misses += ehCacheStat.getCacheMisses();
 			
-			StatisticsGateway stats = cache.getStatistics();
-			hits += stats.cacheHitCount();
-			misses += stats.cacheHitCount();
-			
-			sb.append("\n" + cache.getStatistics().toString());
-			float cacheMemory = getMegaBytesFromBytes(cache.calculateInMemorySize());
-			memoryUsage += cacheMemory;
-			sb.append("\n - In Memory Size (MB): " + cacheMemory);
-		}
+			sb.append("\n" + statisticsService.getCacheStatistics(cacheName).getTierStatistics().values().toString());
+			float offheapcacheMemory = getMegaBytesFromBytes(statisticsService.getCacheStatistics(cacheName).getTierStatistics().get("offHeap").getAllocatedByteSize());
+			offheapmemoryUsage += offheapcacheMemory;
+			float onHeapcacheMemory = getMegaBytesFromBytes(statisticsService.getCacheStatistics(cacheName).getTierStatistics().get("OnHeap").getAllocatedByteSize());
+			onheapmemoryUsage += onHeapcacheMemory;
+			sb.append("\n - Off Heap in Memory Size (MB): " + offheapcacheMemory);
+			sb.append("\n - On Heap in Memory Size (MB): " + onHeapcacheMemory);
+
 		
 		sb.append("\n\n");
 		sb.append("\nTOTAL STATS:");
 		sb.append("\n - Total Cache Requests: " + (hits + misses));
 		sb.append("\n - Hits: " + hits);
 		sb.append("\n - Misses: " + misses);
-		sb.append("\n - Total Memory Usage (MB): " + memoryUsage);
-
+		sb.append("\n - Total Off Heap Memory Usage (MB): " + offheapmemoryUsage);
+		sb.append("\n - Total On Heap Memory Usage (MB): " + onheapmemoryUsage);
 		sb.append("\n - Cache Efficiency: " + (hits/(misses+hits)));
 		
 		sb.append("\n===============================\n");
-		
+		}
 		return sb.toString();
 	}
 	
@@ -84,122 +87,26 @@ private Map<String,CacheWrapper<String,Object>> caches = new HashMap<String,Cach
 	}
 	
 	protected void initializeCache() {
-		for(String cacheName : this.cacheManager.getCacheNames()) {
-			this.caches.put(cacheName, new EhCacheWrapper<String,Object>(cacheName, this.cacheManager));
-		}
+		this.statisticsService = new DefaultStatisticsService();
+		cacheManager = CacheManagerBuilder
+				.newCacheManagerBuilder()
+				.using(statisticsService)
+				.build();
+		cacheManager.init();
 	}
 
 	public void clearAll() {
-		for(CacheWrapper<String,Object> cache : this.caches.values()) {
-			cache.clear();
-		}
-	}
-	
-	public Map<String, CacheWrapper<String, Object>> getCaches() {
-		return Collections.unmodifiableMap(this.caches);
+		List<String> caches = cacheManager.getRuntimeConfiguration().getCacheConfigurations().keySet().stream().collect(Collectors.toList());
+		caches.stream().forEach(x -> cacheManager.getCache(x, String.class, Object.class).clear());
 	}
 
-	public CacheWrapper<String, Object> getCache(String cacheName, boolean createIfNotPresent) {
-		synchronized(caches) {
-			if(! caches.containsKey(cacheName)) {
-				if(!createIfNotPresent){
-					throw new RuntimeException("\n\n\n" +
-							"=============================================\n" +
-							"                Cache Error\n" +
-							" Cache: " + cacheName + " not found.\n" +
-					"=============================================\n\n");
-				} else {
-					if(this.cacheManager.cacheExists(cacheName)) {
-						CacheWrapper<String,Object> cacheWrapper = new EhCacheWrapper<String,Object>(cacheName,this.cacheManager);
-						this.caches.put(cacheName,cacheWrapper);
-						return cacheWrapper;
-					} else {
-						LoggerFactory.getLogger().debug("Using default cache for Cache Name: " + cacheName);
-						this.cacheManager.addCache(cacheName);
 
-						CacheWrapper<String,Object> cacheWrapper = 
-							new EhCacheWrapper<String,Object>(cacheName,this.cacheManager);
-						this.caches.put(cacheName,cacheWrapper);
-
-						return cacheWrapper;
-					}
-				}
-			}
-			return this.caches.get(cacheName);
-		}
-	}
-
-	public void setCacheManager(CacheManager cacheManager) {
-		this.cacheManager = cacheManager;
+	public void setCacheManager(CacheManager cManager) {
+		cacheManager = cManager;
 	}
 
 	public CacheManager getCacheManager() {
 		return cacheManager;
-	}
-
-	public interface CacheWrapper<K, V> 
-	{
-		public void put(K key, V value);
-
-		public V get(K key);
-		
-		public void clear();
-		
-		public int size();
-		
-		public List<V> values();
-	}
-
-	public class EhCacheWrapper<K extends Serializable, V> implements CacheWrapper<K, V> {
-		private final String cacheName;
-		private final CacheManager cacheManager;
-
-		public EhCacheWrapper(final String cacheName, final CacheManager cacheManager){
-			this.cacheName = cacheName;
-			this.cacheManager = cacheManager;
-		}
-
-		public void put(final K key, final V value){
-			getCache().put(new Element(key, value));
-		}
-
-		@SuppressWarnings("unchecked")
-		public V get(final K key){
-			Element element = getCache().get(key);
-			if (element != null) {
-				if(element.isSerializable()) {
-					return (V) element.getValue();
-				} else {
-					return (V) element.getObjectValue();
-				}
-			}
-			return null;
-		}
-		
-		public int size() {
-			return getCache().getSize();
-		}
-		
-		public void clear(){
-			getCache().removeAll();
-		}
-		
-		@SuppressWarnings("unchecked")
-		public List<V> values(){
-			List<V> returnList = new ArrayList<V>();
-			
-			List<K> keys = getCache().getKeys();
-			
-			for(K key : keys) {
-				returnList.add(this.get(key));
-			}
-			
-			return returnList;
-		}
-
-		public Ehcache getCache(){
-			return cacheManager.getEhcache(cacheName);
-		}
 	}
 	
 	public Boolean getInThreadCacheClearingState(){
@@ -209,4 +116,6 @@ private Map<String,CacheWrapper<String,Object>> caches = new HashMap<String,Cach
 	public void setInThreadCacheClearingState(boolean inThreadClearingState){
 		this.inCacheClearingState.set(inThreadClearingState);
 	}
+	
+
 }

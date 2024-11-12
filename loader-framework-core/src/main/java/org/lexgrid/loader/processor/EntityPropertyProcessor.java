@@ -27,8 +27,8 @@ public class EntityPropertyProcessor<I> extends AbstractSupportedAttributeRegist
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		Assert.notNull(propertyResolver);
-		Assert.notNull(entityKeyResolver);
+		Assert.notNull(propertyResolver,"Entity Property Resolver is Null");
+		Assert.notNull(entityKeyResolver, "Entity Key Resolver is Null");
 	}
 
 	/* (non-Javadoc)

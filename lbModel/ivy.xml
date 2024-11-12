@@ -12,5 +12,6 @@
 	</publications>
     <dependencies>
     	<dependency org="lexevs" name="lexgrid-model" rev="${vBuild}" conf="default"/>
+    	<dependency org="junit" name="junit" rev="4.13.2" force="true" conf="default" /> 
     </dependencies>
 </ivy-module>

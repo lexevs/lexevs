@@ -19,7 +19,7 @@ import org.lexevs.system.utility.MyClassLoader;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-@Cacheable(cacheName = "DelegatingSystemResourceServiceCache")
+
 public class DelegatingSystemResourceService extends SystemEventSupport implements SystemResourceService {
 	
 	/** The primary system resource service. */
@@ -200,7 +200,7 @@ public class DelegatingSystemResourceService extends SystemEventSupport implemen
 	/* (non-Javadoc)
 	 * @see org.lexevs.system.service.SystemResourceService#updateCodingSchemeResourceTag(org.LexGrid.LexBIG.DataModel.Core.AbsoluteCodingSchemeVersionReference, java.lang.String)
 	 */
-	@ClearCache(clearCaches = {"DatabaseRegistryCache","DelegatingDatabaseToXmlRegistryCache"})
+	@ClearCache
 	public void updateCodingSchemeResourceTag(AbsoluteCodingSchemeVersionReference codingScheme, String newTag) 
 		throws LBParameterException {
 		if(primarySystemResourceService.containsCodingSchemeResource(
@@ -221,7 +221,7 @@ public class DelegatingSystemResourceService extends SystemEventSupport implemen
 	/* (non-Javadoc)
 	 * @see org.lexevs.system.service.SystemResourceService#updateCodingSchemeResourceStatus(org.LexGrid.LexBIG.DataModel.Core.AbsoluteCodingSchemeVersionReference, org.LexGrid.LexBIG.DataModel.Core.types.CodingSchemeVersionStatus)
 	 */
-	@ClearCache(clearCaches = {"DatabaseRegistryCache","DelegatingDatabaseToXmlRegistryCache"})
+	@ClearCache
 	public void updateCodingSchemeResourceStatus(
 			AbsoluteCodingSchemeVersionReference codingScheme,
 			CodingSchemeVersionStatus status) throws LBParameterException {
@@ -244,7 +244,7 @@ public class DelegatingSystemResourceService extends SystemEventSupport implemen
 	/* (non-Javadoc)
 	 * @see org.lexevs.system.service.SystemResourceService#updateNonCodingSchemeResourceStatus(java.lang.String, org.LexGrid.LexBIG.DataModel.Core.types.CodingSchemeVersionStatus)
 	 */
-	@ClearCache(clearCaches = {"DatabaseRegistryCache","DelegatingDatabaseToXmlRegistryCache"})
+	@ClearCache
 	public void updateNonCodingSchemeResourceStatus(String uri,
 			CodingSchemeVersionStatus status) throws LBParameterException {
 		
@@ -322,7 +322,7 @@ public class DelegatingSystemResourceService extends SystemEventSupport implemen
 	/* (non-Javadoc)
 	 * @see org.lexevs.system.service.SystemResourceService#updateNonCodingSchemeResourceTag(java.lang.String, java.lang.String)
 	 */
-	@ClearCache(clearCaches = {"DatabaseRegistry","DelegatingDatabaseToXmlRegistry"})
+	@ClearCache
 	public void updateNonCodingSchemeResourceTag(String uri, String newTag)
 			throws LBParameterException {
 		

@@ -39,7 +39,7 @@ import org.LexGrid.relations.AssociationTarget;
 import org.LexGrid.relations.Relations;
 import org.LexGrid.util.SimpleMemUsageReporter;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import edu.mayo.informatics.resourcereader.obo.OBOAbbreviation;
 import edu.mayo.informatics.resourcereader.obo.OBOAbbreviations;

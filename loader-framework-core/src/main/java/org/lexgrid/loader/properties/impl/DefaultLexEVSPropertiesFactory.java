@@ -4,7 +4,7 @@ package org.lexgrid.loader.properties.impl;
 import java.util.Properties;
 
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.operation.LexEvsDatabaseOperations;
 import org.lexevs.dao.database.prefix.PrefixResolver;
 import org.lexevs.dao.database.utility.DaoUtility;

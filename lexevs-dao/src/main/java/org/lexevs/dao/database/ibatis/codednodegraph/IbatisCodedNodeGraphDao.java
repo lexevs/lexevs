@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.Set;
+import java.util.stream.Collectors;
+
 import javax.persistence.SecondaryTable;
 import javax.persistence.criteria.CriteriaBuilder;
 import org.LexGrid.LexBIG.DataModel.Core.ConceptReference;
@@ -38,6 +40,7 @@ import org.lexevs.dao.database.operation.LexEvsDatabaseOperations.TraverseAssoci
 import org.lexevs.dao.database.schemaversion.LexGridSchemaVersion;
 import org.lexevs.dao.database.service.codednodegraph.CodedNodeGraphService.QualifierSort;
 import org.lexevs.dao.database.service.codednodegraph.CodedNodeGraphService.Sort;
+import org.lexevs.dao.database.service.codednodegraph.model.ColumnSortType;
 import org.lexevs.dao.database.service.codednodegraph.model.CountConceptReference;
 import org.lexevs.dao.database.service.codednodegraph.model.GraphQuery.CodeNamespacePair;
 import org.lexevs.dao.database.service.codednodegraph.model.GraphQuery.QualifierNameValuePair;
@@ -753,7 +756,7 @@ private LexGridSchemaVersion supportedDatebaseVersion = LexGridSchemaVersion.par
 		if(targetCodingSchemeUid != null) {
 			targetSchemePrefix = this.getPrefixResolver().resolvePrefixForCodingScheme(targetCodingSchemeUid);
 		}
-		
+		sortList = cleanSortListOfQualifiers(sortList);
 		MappingTripleParameterBean bean = new MappingTripleParameterBean(
 				mappingSchemePrefix,
 				mappingCodingSchemeUid,
@@ -767,6 +770,12 @@ private LexGridSchemaVersion supportedDatebaseVersion = LexGridSchemaVersion.par
 		return this.getSqlSessionTemplate().selectList(GET_TRIPLE_UIDS_FOR_MAPPING_CONTAINER_SQL, bean, new RowBounds(start, pageSize));
 	}
 	
+	private List<Sort> cleanSortListOfQualifiers(List<Sort> sortList) {
+		return sortList.stream()
+				.filter(s -> s.getColumnSortType() != ColumnSortType.QUALIFIER)
+				.collect(Collectors.toList());
+	}
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@CacheMethod

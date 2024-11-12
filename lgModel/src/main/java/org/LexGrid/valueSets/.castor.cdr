@@ -1,0 +1,15 @@
+#Thu May 11 09:18:54 CDT 2023
+org.LexGrid.valueSets.PickListDefinitions=org.LexGrid.valueSets.descriptors.PickListDefinitionsDescriptor
+org.LexGrid.valueSets.EntityReference=org.LexGrid.valueSets.descriptors.EntityReferenceDescriptor
+org.LexGrid.valueSets.ValueSetDefinition=org.LexGrid.valueSets.descriptors.ValueSetDefinitionDescriptor
+org.LexGrid.valueSets.PropertyReference=org.LexGrid.valueSets.descriptors.PropertyReferenceDescriptor
+org.LexGrid.valueSets.DefinitionEntry=org.LexGrid.valueSets.descriptors.DefinitionEntryDescriptor
+org.LexGrid.valueSets.PickListEntry=org.LexGrid.valueSets.descriptors.PickListEntryDescriptor
+org.LexGrid.valueSets.PickListDefinition=org.LexGrid.valueSets.descriptors.PickListDefinitionDescriptor
+org.LexGrid.valueSets.PickListEntryNode=org.LexGrid.valueSets.descriptors.PickListEntryNodeDescriptor
+org.LexGrid.valueSets.PickListEntryNodeChoice=org.LexGrid.valueSets.descriptors.PickListEntryNodeChoiceDescriptor
+org.LexGrid.valueSets.PropertyMatchValue=org.LexGrid.valueSets.descriptors.PropertyMatchValueDescriptor
+org.LexGrid.valueSets.PickListEntryExclusion=org.LexGrid.valueSets.descriptors.PickListEntryExclusionDescriptor
+org.LexGrid.valueSets.ValueSetDefinitionReference=org.LexGrid.valueSets.descriptors.ValueSetDefinitionReferenceDescriptor
+org.LexGrid.valueSets.ValueSetDefinitions=org.LexGrid.valueSets.descriptors.ValueSetDefinitionsDescriptor
+org.LexGrid.valueSets.CodingSchemeReference=org.LexGrid.valueSets.descriptors.CodingSchemeReferenceDescriptor

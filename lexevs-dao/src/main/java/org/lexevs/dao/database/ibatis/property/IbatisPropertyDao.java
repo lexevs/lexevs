@@ -13,7 +13,7 @@ import org.LexGrid.concepts.Definition;
 import org.LexGrid.concepts.Presentation;
 import org.LexGrid.concepts.PropertyLink;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.cache.annotation.Cacheable;
 import org.lexevs.cache.annotation.ClearCache;
 import org.lexevs.dao.database.access.property.PropertyDao;
@@ -385,7 +385,7 @@ public class IbatisPropertyDao extends AbstractIbatisDao implements PropertyDao 
 			Property property, 
 			SqlSessionTemplate sqlSessionTemplate) {
 		
-		Assert.notNull(propertyUId);
+		Assert.notNull(propertyUId, "Property UID is Null");
 
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(codingSchemeUId);
 		String historyPrefix = this.getPrefixResolver().resolvePrefixForHistoryCodingScheme(codingSchemeUId);

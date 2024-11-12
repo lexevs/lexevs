@@ -164,7 +164,7 @@ public class IbatisVersionsDao extends AbstractIbatisDao implements VersionsDao 
 			return;
 		}
 
-		Assert.state(entryType != null);
+		Assert.state(entryType != null, "Entry Type is Null");
 		Assert.state(
 				!entryType.equals(EntryStateType.VALUESETDEFINITION)
 				&&
@@ -200,7 +200,7 @@ public class IbatisVersionsDao extends AbstractIbatisDao implements VersionsDao 
 			return;
 		}
 
-		Assert.state(bean.getEntryType() != null);
+		Assert.state(bean.getEntryType() != null, "Entry Type is Null");
 		Assert.state(
 				!bean.getEntryType().equals(EntryStateType.VALUESETDEFINITION)
 				&&
@@ -366,7 +366,7 @@ public class IbatisVersionsDao extends AbstractIbatisDao implements VersionsDao 
 
 	public void deleteAllEntryStateEntriesByEntryUId(String codingSchemeUId,
 			String entryUId) {
-		Assert.notNull(entryUId);
+		Assert.notNull(entryUId, "Entry UID is Null");
 
 		String prefix = this.getPrefixResolver().resolvePrefixForCodingScheme(
 				codingSchemeUId);

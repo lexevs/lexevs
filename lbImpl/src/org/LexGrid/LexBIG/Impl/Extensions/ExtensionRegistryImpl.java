@@ -19,7 +19,7 @@ import org.LexGrid.LexBIG.Extensions.Query.Search;
 import org.LexGrid.LexBIG.Extensions.Query.Sort;
 import org.LexGrid.LexBIG.Utility.logging.LgLoggerIF;
 import org.LexGrid.annotations.LgClientSideSafe;
-import org.apache.commons.lang.ClassUtils;
+import org.apache.commons.lang3.ClassUtils;
 import org.lexevs.logging.LoggerFactory;
 import org.lexevs.system.utility.MyClassLoader;
 

@@ -19,14 +19,16 @@ package org.apache.ddlutils;
  * under the License.
  */
 
-import org.apache.commons.lang.exception.NestableRuntimeException;
+import org.apache.commons.lang3.exception.CloneFailedException;
+//import org.apache.commons.lang3.exception.NestableRuntimeException;
 
 /**
  * Base class for DdlUtils exceptions.
  * 
  * @version $Revision: 289996 $
  */
-public class DdlUtilsException extends NestableRuntimeException 
+//public class DdlUtilsException extends NestableRuntimeException
+public class DdlUtilsException extends CloneFailedException
 {
     /** Constant for serializing instances of this class. */
     private static final long serialVersionUID = 5624776387174310551L;
@@ -36,7 +38,7 @@ public class DdlUtilsException extends NestableRuntimeException
      */
     public DdlUtilsException()
     {
-        super();
+        super("Error while cloning object");
     }
 
     /**

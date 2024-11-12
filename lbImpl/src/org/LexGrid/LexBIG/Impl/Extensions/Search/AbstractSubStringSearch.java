@@ -2,7 +2,7 @@
 package org.LexGrid.LexBIG.Impl.Extensions.Search;
 
 import org.LexGrid.LexBIG.Impl.Extensions.Search.query.SpanWildcardQuery;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.WildcardQuery;

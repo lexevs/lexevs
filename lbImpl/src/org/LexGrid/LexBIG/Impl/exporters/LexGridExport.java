@@ -31,7 +31,7 @@ import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.Relations;
 import org.LexGrid.valueSets.PickListDefinition;
 import org.LexGrid.valueSets.ValueSetDefinition;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.valuesets.PickListDefinitionService;
 import org.lexevs.dao.database.service.valuesets.ValueSetDefinitionService;
 import org.lexevs.locator.LexEvsServiceLocator;

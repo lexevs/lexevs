@@ -1,0 +1,23 @@
+#Thu May 11 09:24:53 CDT 2023
+org.LexGrid.LexBIG.DataModel.Collections.SortOptionList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.SortOptionListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.NCIChangeEventList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.NCIChangeEventListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.AssociationList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.AssociationListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.ModuleDescriptionList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.ModuleDescriptionListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.AssociatedConceptList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.AssociatedConceptListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.NameAndValueList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.NameAndValueListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.SortDescriptionList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.SortDescriptionListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.ConceptCodes=org.LexGrid.LexBIG.DataModel.Collections.descriptors.ConceptCodesDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.LocalNameList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.LocalNameListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.CodingSchemeVersionList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.CodingSchemeVersionListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.ResolvedConceptReferenceList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.ResolvedConceptReferenceListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.SystemReleaseList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.SystemReleaseListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.CodingSchemeTagList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.CodingSchemeTagListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.CodedNodeReferenceList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.CodedNodeReferenceListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.AbsoluteCodingSchemeVersionReferenceList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.AbsoluteCodingSchemeVersionReferenceListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.CodingSchemeRenderingList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.CodingSchemeRenderingListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.CodingSchemeSummaryList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.CodingSchemeSummaryListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.ExtensionDescriptionList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.ExtensionDescriptionListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.AssociatedDataList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.AssociatedDataListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.SupportedElementList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.SupportedElementListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.ConceptReferenceList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.ConceptReferenceListDescriptor
+org.LexGrid.LexBIG.DataModel.Collections.MetadataPropertyList=org.LexGrid.LexBIG.DataModel.Collections.descriptors.MetadataPropertyListDescriptor

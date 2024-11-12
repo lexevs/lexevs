@@ -34,7 +34,7 @@ public class DefaultRootBuilder implements RootBuilder {
 			String relationContainerName, 
 			RootOrTail rootOrTail,
 			TraverseAssociations traverse) {
-		Assert.notNull(relationContainerName);
+		Assert.notNull(relationContainerName, "Relation Container Name is Null");
 		
 		List<ConceptReference> refs;
 		
@@ -115,7 +115,7 @@ public class DefaultRootBuilder implements RootBuilder {
 	}
 	
 	private String getAssociationPredicateName(List<String> associations) {
-		Assert.notEmpty(associations);
+		Assert.notEmpty(associations, "Associations List is Empty");
 		
 		if(associations.size() > 1) {
 			return MULTI_ASSN_ROOT_PREDICATE_NAME;

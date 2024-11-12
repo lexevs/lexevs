@@ -14,21 +14,11 @@
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
 
 	<bean id="cacheConfigLocationFactory" class="org.lexevs.cache.CacheConfigLocationFactory"/>
-	
-<!--	 <bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" >-->
-<!--    	<property name="configLocation" ref="cacheConfigLocationFactory"/>-->
-<!--		<property name="shared" value="true"/>-->
-<!--    </bean>-->
-
-	<bean id="ehCacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-		<property name="configLocation" ref="cacheConfigLocationFactory"/>
-		<property name="shared" value="true"/>
-	</bean>
-	
+		
 	<bean id="methodCachingProxyAspect" 
 		class="org.lexevs.cache.MethodCachingProxy">
 		<property name="logger" ref="loggerFactory"/>
-		<property name="cacheRegistry" ref="cacheRegistry"/>
+		<!-- <property name="cacheRegistry" ref="cacheRegistry"/> -->
 	</bean>
 	
 	<bean id="cacheWrappingFactory" class="org.lexevs.cache.CacheWrappingFactory">
@@ -37,11 +27,12 @@
 	
 	<bean id="methodCachingInterceptor" class="org.lexevs.cache.MethodCachingInterceptor">
 		<property name="logger" ref="loggerFactory"/>
-		<property name="cacheRegistry" ref="cacheRegistry"/>
+		<!-- <property name="cacheRegistry" ref="cacheRegistry"/> -->
 	</bean>
 	
 	<bean id="cacheRegistry" class="org.lexevs.cache.CacheRegistry">
-		<property name="cacheManager" ref="ehCacheManager"/>
 	</bean>
+	
+	
 	
 </beans>

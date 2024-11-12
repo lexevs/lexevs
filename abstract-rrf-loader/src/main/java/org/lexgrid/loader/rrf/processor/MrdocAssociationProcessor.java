@@ -144,7 +144,7 @@ public class MrdocAssociationProcessor extends CodingSchemeIdAwareProcessor impl
 	 * @return the relation name
 	 */
 	private String getRelationName(List<Mrdoc> items){
-		Assert.notEmpty(items);
+		Assert.notEmpty(items, "Relation Name List is Empty");
 		return items.get(0).getValue();
 	}
 

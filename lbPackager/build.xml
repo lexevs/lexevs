@@ -164,7 +164,7 @@ You may obtain a copy of the License at
 			<fileset dir="${pkg-extlib}" id="extLib">
 				<include name="**/*.jar"/>
 			</fileset>
-			
+
 			<!-- We should be able to use IVY for these
 			<fileset dir="${icu4j.libs.dir}" id="icu4j">
 				<include name="*"/>
@@ -174,15 +174,15 @@ You may obtain a copy of the License at
 			</fileset>
 			<fileset dir="${jena.libs.dir}" id="jena">
 				<include name="*.jar"/>
-			</fileset>			
+			</fileset>
 			<fileset dir="${prefuse.libs.dir}" id="prefuse">
 				<include name="*.jar"/>
 			</fileset>
 			<fileset dir="${castor.libs.dir}" id="castor">
 				<include name="castor-1.3.1.jar"/>
 				<include name="castor-1.3.1-core.jar"/>
-			</fileset>			
-			
+			</fileset>
+
 			<fileset dir="${junit.libs.dir}" id="junit">
 				<include name="junit-4.4.jar"/>
 			</fileset>
@@ -201,40 +201,40 @@ You may obtain a copy of the License at
 				<include name="*.jar"/>
 				<include name="*.txt"/>
 			</fileset>
-						
+
 			<fileset dir="${c3p0.libs.dir}" id="c3p0">
 				<include name="*"/>
-			</fileset>				
+			</fileset>
 			<fileset dir="${args4j.libs.dir}" id="args4j">
 				<include name="*"/>
-			</fileset>					
+			</fileset>
 			<fileset dir="${dom4j.libs.dir}" id="dom4j">
 				<include name="*"/>
-			</fileset>						
+			</fileset>
 			<fileset dir="${ehcache.libs.dir}" id="ehcache">
 				<include name="*"/>
-			</fileset>					
+			</fileset>
 			<fileset dir="${hibernate.libs.dir}" id="hibernate">
 				<include name="*"/>
-			</fileset>					
+			</fileset>
 			<fileset dir="${javax.libs.dir}" id="javax">
 				<include name="*"/>
-			</fileset>						
+			</fileset>
 			<fileset dir="${jettison.libs.dir}" id="jettison">
 				<include name="*"/>
-			</fileset>					
+			</fileset>
 			<fileset dir="${jta.libs.dir}" id="jta">
 				<include name="*"/>
-			</fileset>					
+			</fileset>
 			<fileset dir="${slf4j.libs.dir}" id="slf4j">
 				<include name="*"/>
-			</fileset>						
+			</fileset>
 			<fileset dir="${xstream.libs.dir}" id="xstream">
 				<include name="*"/>
-			</fileset>	
+			</fileset>
 			<fileset dir="${javassist.libs.dir}" id="javassist">
 				<include name="*"/>
-			</fileset>	
+			</fileset>
 			<fileset dir="${apache.libs.dir}" id="jakarta-apache">
 				<include name="commons/**/*.jar"/>
 				<include name="commons/**/*.license.txt"/>
@@ -262,7 +262,7 @@ You may obtain a copy of the License at
 				<include name="looks-2.1.3.jar"/>
 				<include name="orphanNodesAlg.jar"/>
 			</fileset>
-			
+
 			<fileset dir="${data.libs.dir}" id="data">
 				<include name="BlankAccessDB.jar"/>
 			</fileset>
@@ -297,12 +297,12 @@ You may obtain a copy of the License at
 <!--				<include name="restricted-license/mysql-connector-java-5.1.6-bin.jar"/>-->
 <!--			</fileset>-->
 <!--		</path>-->
-		
-		
-		
-		
+
+
+
+
 	</target>
-	
+
 <!--	<target name="init-bda">-->
 <!--		<property file="bda.properties"/>-->
 <!--	</target>-->
@@ -342,6 +342,7 @@ You may obtain a copy of the License at
 		<delete dir="${temp.dir}"/>
 		<delete dir="${pack.dir}"/>
 		<delete dir="${basedir}/lib"/>
+
 		<!-- Create the directory structure for a new build -->
 		<mkdir dir="${basedir}/lib"/>
 		<mkdir dir="${dist.dir}"/>
@@ -400,17 +401,7 @@ You may obtain a copy of the License at
 		
 	</target>
 	
-<!--	<target name="copyaway" depends="init" >-->
-<!--	 <copy todir="c:\temp" flatten="true" verbose="true">-->
-<!--	    <path refid="master.classpath"/>-->
-<!--	 	<fileset refid="hibernate"/>-->
-<!--	 </copy>-->
-<!--		-->
-<!--		<path id="test.classpath">-->
-<!--			<fileset refid="hibernate"/>-->
-<!--			<fileset refid="core.eclipse.support"/>-->
-<!--		</path>-->
-<!--	</target>-->
+
 
 	
 	<target name="predef" depends="init" description="copy predefined content to the build directory">
@@ -431,25 +422,11 @@ You may obtain a copy of the License at
 			<path refid="dependencies.path"/>
 		</copy>
 		
-<!--		<copy todir="${pkg-extlib}/sqlDrivers">-->
-<!--			<fileset dir="${sql.libs.dir}">-->
-<!--				<include name="*.jar"/>-->
-<!--				<include name="*.txt"/>-->
-<!--				<include name="*.html"/>-->
-<!--			</fileset>-->
-<!--		</copy>-->
-<!--		-->
-<!--		<copy todir="${pkg-extlib}/guiLibraries">-->
-<!--			<fileset dir ="${gui.libs.dir}"/>-->
-<!--		</copy>-->
+
 		
 	</target>	
 	
-<!--	<target name="predef-cbio" depends="predef" description="copy predefined content specific to cBIO projects">-->
-<!--		<copy toFile="${pkg-resources-config}/lbconfig.props" file="${file.dir}/config-lexbio.props" overwrite="true"/>-->
-<!--		&lt;!&ndash;copy toFile="${pkg-root}/readme.txt" file="${file.dir}/readme-lexbio.txt" overwrite="true"/&ndash;&gt;-->
-<!--		<copy toFile="${basedir}/langsel-image.png" file="${file.dir}/langsel-image-lexbio.png" overwrite="true"/>-->
-<!--	</target>	-->
+
 
 	<target name="lgModel" description="packages the LexGrid model.">
 		<antcall target="common-project-build">
@@ -1056,7 +1033,7 @@ java -Xmx1000M -XX:MaxPermSize=256M -Djava.library.path=linux/ -cp lbGUI.jar:lin
     </target>
 
 	<target name="build-lexbig" depends="
-		build-lexbig-jar, javadoc"/>
+		build-lexbig-jar"/>
 	
 	<target name="deploy" description="build and deploy externally">
 		<fail message="Property &quot;ncimvn.password&quot; needs to be set to deploy.&#xa;

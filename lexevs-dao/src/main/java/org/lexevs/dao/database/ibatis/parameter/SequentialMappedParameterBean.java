@@ -15,7 +15,7 @@ public class SequentialMappedParameterBean extends HashMap<String,Object>{
 	private static final long serialVersionUID = 4510691698169582467L;
 
 	public SequentialMappedParameterBean(Object... parameters) {
-		Assert.notNull(parameters);
+		Assert.notNull(parameters, "Sequential Mapped Parameters are Null");
 
 		int currentIndex = 1;
 		

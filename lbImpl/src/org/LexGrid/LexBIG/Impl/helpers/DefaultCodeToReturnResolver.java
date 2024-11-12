@@ -17,7 +17,7 @@ import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.PropertyType;
 import org.LexGrid.annotations.LgProxyClass;
 import org.LexGrid.commonTypes.EntityDescription;
 import org.LexGrid.concepts.Entity;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.DaoManager;
 import org.lexevs.dao.database.access.codingscheme.CodingSchemeDao;
 import org.lexevs.dao.database.access.entity.EntityDao;
@@ -95,7 +95,7 @@ public class DefaultCodeToReturnResolver implements CodeToReturnResolver {
         ResolvedConceptReferenceList returnList = this.buildResolvedConceptReference(
                 DaoUtility.createNonTypedList(codeToReturn), restrictToProperties, restrictToPropertyTypes, filters, resolve);
    
-        Assert.state(returnList.getResolvedConceptReferenceCount() <= 1);
+        Assert.state(returnList.getResolvedConceptReferenceCount() <= 1, "Resolved Concept Reference Count is Greater than One");
         
         if(returnList.getResolvedConceptReferenceCount() == 1) {
             return returnList.getResolvedConceptReference(0);

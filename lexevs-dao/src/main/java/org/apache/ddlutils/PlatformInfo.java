@@ -24,6 +24,7 @@ import java.sql.Types;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.apache.commons.logging.Log;
@@ -209,8 +210,8 @@ public class PlatformInfo
         _typesWithPrecisionAndScale.add(new Integer(Types.DECIMAL));
         _typesWithPrecisionAndScale.add(new Integer(Types.NUMERIC));
 
-        _supportedOnUpdateActions.addAll(CascadeActionEnum.getEnumList());
-        _supportedOnDeleteActions.addAll(CascadeActionEnum.getEnumList());
+        _supportedOnUpdateActions.addAll(List.of(CascadeActionEnum.values()));
+        _supportedOnDeleteActions.addAll(List.of(CascadeActionEnum.values()));
     }
 
     // properties influencing the definition of columns

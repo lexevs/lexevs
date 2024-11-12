@@ -8,7 +8,7 @@ import java.util.List;
 import org.LexGrid.LexBIG.Exceptions.LBException;
 import org.LexGrid.LexBIG.Exceptions.LBRevisionException;
 import org.LexGrid.versions.Revision;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.revision.RevisionDao;
 import org.lexevs.dao.database.access.systemRelease.SystemReleaseDao;
 import org.lexevs.dao.database.ibatis.AbstractIbatisDao;

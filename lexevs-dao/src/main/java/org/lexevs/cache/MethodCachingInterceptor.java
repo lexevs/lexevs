@@ -32,4 +32,10 @@ public class MethodCachingInterceptor extends AbstractMethodCachingBean<MethodIn
 	public Object invoke(MethodInvocation methodInvocation) throws Throwable {
 		return this.doCacheMethod(methodInvocation);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	protected Class<Object> getReturnType(MethodInvocation jointPoint) {
+		return (Class<Object>) jointPoint.getMethod().getReturnType();
+	}
 }

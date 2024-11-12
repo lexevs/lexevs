@@ -4,9 +4,12 @@ package org.lexevs.cache;
 import java.lang.reflect.Method;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+
+import com.google.common.primitives.Primitives;
 
 /**
  * The Class MethodCachingProxy.
@@ -16,8 +19,7 @@ import org.aspectj.lang.reflect.MethodSignature;
 @Aspect
 public class MethodCachingProxy extends AbstractMethodCachingBean<ProceedingJoinPoint> {
 	
-	@Around("@within(org.lexevs.cache.annotation.Cacheable) && " +
-	"( @annotation(org.lexevs.cache.annotation.CacheMethod) || @annotation(org.lexevs.cache.annotation.ClearCache) )")
+	@Around("( @annotation(org.lexevs.cache.annotation.CacheMethod) || @annotation(org.lexevs.cache.annotation.ClearCache) )")
 	public Object cacheMethod(ProceedingJoinPoint pjp) throws Throwable {
 		return super.doCacheMethod(pjp);
 	}
@@ -42,5 +44,12 @@ public class MethodCachingProxy extends AbstractMethodCachingBean<ProceedingJoin
 	@Override
 	protected Object proceed(ProceedingJoinPoint joinPoint) throws Throwable {
 		return joinPoint.proceed();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	protected Class<Object> getReturnType(ProceedingJoinPoint jointPoint) {
+		Signature sig = jointPoint.getSignature();
+		return Primitives.wrap(((MethodSignature)sig).getReturnType());
 	}
 }

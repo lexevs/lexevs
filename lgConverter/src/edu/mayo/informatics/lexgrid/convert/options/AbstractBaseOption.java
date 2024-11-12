@@ -62,7 +62,7 @@ public abstract class AbstractBaseOption<T> {
      * @see org.LexGrid.LexBIG.Extensions.Load.options.Option#getOptionValue()
      */
     public T getOptionValue() {
-        Assert.notNull("Option " + optionName + " has not been set and has no default value");
+        Assert.notNull(optionName, "Option has not been set and has no default value");
         return optionValue;
     }
 

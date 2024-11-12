@@ -49,7 +49,7 @@ import org.LexGrid.versions.ChangedEntry;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.Revision;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.exolab.castor.xml.Marshaller;
 import org.lexevs.dao.database.service.codingscheme.CodingSchemeService;
 import org.lexevs.dao.database.service.entity.EntityService;

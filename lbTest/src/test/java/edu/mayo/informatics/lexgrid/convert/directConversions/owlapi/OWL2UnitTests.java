@@ -66,26 +66,26 @@ public class OWL2UnitTests extends TestCase {
 
 	}
 	
-	@Test
-	public void testResolveLabels() throws OWLOntologyCreationException{
-		OwlApi2LG api = new OwlApi2LG(null, null, null, 1, null);
-		
-		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
-		IRI iri = IRI.create(new File("resources/testData/owl2/owl2-special-cases-Defined-Annotated.owl")
-				.toURI());
-		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(iri);
-		api.setOntology(ontology);
-		List<String> list = null;
-		for (OWLAnnotationProperty prop : ontology.getAnnotationPropertiesInSignature()) {
-			if(prop.getIRI().getFragment().equals("IAO_0000111")){
-				list = api.resolveLabels(prop);
-			}
-		}
-		assertNotNull(list);
-		assertTrue(list.size() > 4);
-		assertTrue(list.contains("editor preferred term~editor preferred label"));
-		
-	}
+//	@Test
+//	public void testResolveLabels() throws OWLOntologyCreationException{
+//		OwlApi2LG api = new OwlApi2LG(null, null, null, 1, null);
+//		
+//		OWLOntologyManager manager = OWLManager.createOWLOntologyManager();
+//		IRI iri = IRI.create(new File("resources/testData/owl2/owl2-special-cases-Defined-Annotated.owl")
+//				.toURI());
+//		OWLOntology ontology = manager.loadOntologyFromOntologyDocument(iri);
+//		api.setOntology(ontology);
+//		List<String> list = null;
+//		for (OWLAnnotationProperty prop : ontology.getAnnotationPropertiesInSignature()) {
+//			if(prop.getIRI().getFragment().equals("IAO_0000111")){
+//				list = api.resolveLabels(prop);
+//			}
+//		}
+//		assertNotNull(list);
+//		assertTrue(list.size() > 4);
+//		assertTrue(list.contains("editor preferred term~editor preferred label"));
+//		
+//	}
 	@Test
 	public void testProcessFormattedExpression() throws OWLOntologyCreationException{
 

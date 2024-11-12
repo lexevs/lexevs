@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>lexevs.loader</groupId>
   <artifactId>loader-framework</artifactId>
@@ -76,9 +78,9 @@
     	<scope>test</scope>
     </dependency>
     <dependency>
-    	<groupId>c3p0</groupId>
+    	<groupId>com.mchange</groupId>
     	<artifactId>c3p0</artifactId>
-    	<version>0.9.1.2</version>
+    	<version>0.9.5.5</version>
     </dependency>
     <dependency>
     	<groupId>javax.transaction</groupId>
@@ -88,7 +90,7 @@
     <dependency>
     	<groupId>commons-lang</groupId>
     	<artifactId>commons-lang</artifactId>
-    	<version>2.4</version>
+    	<version>2.6</version>
     	<scope>provided</scope>
     </dependency>
     <dependency>
@@ -105,7 +107,7 @@
     <dependency>
     	<groupId>commons-codec</groupId>
     	<artifactId>commons-codec</artifactId>
-    	<version>1.10</version>
+    	<version>1.15</version>
     	<scope>provided</scope>
     </dependency>
     <dependency>
@@ -119,15 +121,15 @@
 <!--    	<version>5.3.19</version>-->
 <!--    </dependency>-->
     <dependency>
-    	<groupId>hsqldb</groupId>
+    	<groupId>org.hsqldb</groupId>
     	<artifactId>hsqldb</artifactId>
-    	<version>1.8.0.7</version>
+    	<version>2.7.1</version>
         <scope>test</scope>
     </dependency>
     <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
-        <version>5.3.19</version>
+        <version>5.3.29</version>
 	</dependency> 
     <dependency>
     	<groupId>org.apache.lucene</groupId>
@@ -138,7 +140,7 @@
     <dependency>
     	<groupId>commons-pool</groupId>
     	<artifactId>commons-pool</artifactId>
-    	<version>1.4</version>
+    	<version>1.6</version>
     	<scope>provided</scope>
     </dependency>
     <!-- dependency>
@@ -151,7 +153,7 @@
     <dependency>
     	<groupId>org.easymock</groupId>
     	<artifactId>easymock</artifactId>
-    	<version>2.4</version>
+    	<version>5.1.0</version>
     	<scope>test</scope>
     </dependency>
     <dependency>
@@ -161,9 +163,9 @@
     	<scope>test</scope>
     </dependency>
      <dependency>
-    	<groupId>net.sf.ehcache</groupId>
+    	<groupId>org.ehcache</groupId>
     	<artifactId>ehcache</artifactId>
-    	<version>2.10.9.2</version>
+    	<version>3.10.8</version>
     	<exclusions>
 			<exclusion>
 	          <groupId>log4j</groupId>
@@ -193,7 +195,7 @@
     <dependency>
     	<groupId>args4j</groupId>
     	<artifactId>args4j</artifactId>
-    	<version>2.0.12</version>
+    	<version>2.33</version>
     </dependency>
     <dependency>
     	<groupId>commons-io</groupId>
@@ -214,7 +216,7 @@
     <dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-test</artifactId>
-    	<version>5.3.19</version>
+    	<version>5.3.29</version>
     	<scope>test</scope>
     </dependency>
     <!-- dependency>
@@ -248,18 +250,19 @@
 				<enabled>true</enabled>
 			</releases>
 			<snapshots>
-				<enabled>false</enabled>
+				<enabled>true</enabled>
 			</snapshots>
+		</repository>
+
+		<repository>
+			<id>nci.maven.public</id>
+			<name>NCI Maven public passthrough</name>
+			<url>https://ncimvn.nci.nih.gov/nexus/content/repositories/public</url>
 		</repository>
 		<repository>
 			<id>nci.maven.thirdparty</id>
 			<name>NCI Maven 3rd Party Repository</name>
 			<url>https://ncimvn.nci.nih.gov/nexus/content/repositories/LexEVS3rdParty</url>
-		</repository>
-		<repository>
-			<id>nci.maven.public</id>
-			<name>NCI Maven public passthrough</name>
-			<url>https://ncimvn.nci.nih.gov/nexus/content/repositories/public</url>
 		</repository>
 	</repositories>
 </project>

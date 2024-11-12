@@ -1,0 +1,3 @@
+#Thu May 11 09:24:51 CDT 2023
+org.LexGrid.LexBIG.DataModel.Core.types.CodingSchemeVersionStatus=org.LexGrid.LexBIG.DataModel.Core.types.descriptors.CodingSchemeVersionStatusDescriptor
+org.LexGrid.LexBIG.DataModel.Core.types.LogLevel=org.LexGrid.LexBIG.DataModel.Core.types.descriptors.LogLevelDescriptor

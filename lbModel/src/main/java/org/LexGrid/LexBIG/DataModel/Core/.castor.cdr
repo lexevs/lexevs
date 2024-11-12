@@ -1,0 +1,16 @@
+#Thu May 11 09:24:51 CDT 2023
+org.LexGrid.LexBIG.DataModel.Core.ConceptReference=org.LexGrid.LexBIG.DataModel.Core.descriptors.ConceptReferenceDescriptor
+org.LexGrid.LexBIG.DataModel.Core.ReferenceLink=org.LexGrid.LexBIG.DataModel.Core.descriptors.ReferenceLinkDescriptor
+org.LexGrid.LexBIG.DataModel.Core.SupportedElement=org.LexGrid.LexBIG.DataModel.Core.descriptors.SupportedElementDescriptor
+org.LexGrid.LexBIG.DataModel.Core.AssociatedConcept=org.LexGrid.LexBIG.DataModel.Core.descriptors.AssociatedConceptDescriptor
+org.LexGrid.LexBIG.DataModel.Core.CodingSchemeSummary=org.LexGrid.LexBIG.DataModel.Core.descriptors.CodingSchemeSummaryDescriptor
+org.LexGrid.LexBIG.DataModel.Core.NameAndValue=org.LexGrid.LexBIG.DataModel.Core.descriptors.NameAndValueDescriptor
+org.LexGrid.LexBIG.DataModel.Core.LogEntry=org.LexGrid.LexBIG.DataModel.Core.descriptors.LogEntryDescriptor
+org.LexGrid.LexBIG.DataModel.Core.ResolvedConceptReference=org.LexGrid.LexBIG.DataModel.Core.descriptors.ResolvedConceptReferenceDescriptor
+org.LexGrid.LexBIG.DataModel.Core.CodingSchemeVersionOrTag=org.LexGrid.LexBIG.DataModel.Core.descriptors.CodingSchemeVersionOrTagDescriptor
+org.LexGrid.LexBIG.DataModel.Core.AssociatedData=org.LexGrid.LexBIG.DataModel.Core.descriptors.AssociatedDataDescriptor
+org.LexGrid.LexBIG.DataModel.Core.Association=org.LexGrid.LexBIG.DataModel.Core.descriptors.AssociationDescriptor
+org.LexGrid.LexBIG.DataModel.Core.AbsoluteCodingSchemeVersionReference=org.LexGrid.LexBIG.DataModel.Core.descriptors.AbsoluteCodingSchemeVersionReferenceDescriptor
+org.LexGrid.LexBIG.DataModel.Core.CodedNodeReference=org.LexGrid.LexBIG.DataModel.Core.descriptors.CodedNodeReferenceDescriptor
+org.LexGrid.LexBIG.DataModel.Core.MetadataProperty=org.LexGrid.LexBIG.DataModel.Core.descriptors.MetadataPropertyDescriptor
+org.LexGrid.LexBIG.DataModel.Core.ResolvedCodedNodeReference=org.LexGrid.LexBIG.DataModel.Core.descriptors.ResolvedCodedNodeReferenceDescriptor

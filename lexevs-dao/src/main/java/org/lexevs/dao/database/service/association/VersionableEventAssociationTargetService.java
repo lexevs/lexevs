@@ -437,7 +437,7 @@ public class VersionableEventAssociationTargetService
 		if(source == null || source.getTargetCount() == 0) {
 			return null;
 		}
-		Assert.state(source.getTargetCount() <= 1);
+		Assert.state(source.getTargetCount() <= 1, "Source Target Count is Greater than One");
 		
 		return source.getTarget(0);
 	}

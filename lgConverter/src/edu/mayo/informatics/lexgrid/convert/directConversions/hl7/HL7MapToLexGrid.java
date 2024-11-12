@@ -43,7 +43,7 @@ import org.LexGrid.custom.concepts.EntityFactory;
 import org.LexGrid.custom.relations.RelationsUtil;
 import org.LexGrid.util.sql.DBUtility;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.xml.serialize.OutputFormat;
 import org.apache.xml.serialize.XMLSerializer;
 import org.lexevs.logging.messaging.impl.CachingMessageDirectorImpl;

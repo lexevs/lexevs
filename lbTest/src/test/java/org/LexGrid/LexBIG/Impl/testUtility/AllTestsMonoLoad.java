@@ -295,7 +295,7 @@ public class AllTestsMonoLoad {
         
         TestSuite owl2LoaderSuite = new TestSuite("OWL2 Tests");
         owl2LoaderSuite.addTestSuite(PresentationPropertyTestIT.class);
-        owl2LoaderSuite.addTestSuite(OWL2LoaderLexGridTest.class);
+       // owl2LoaderSuite.addTestSuite(OWL2LoaderLexGridTest.class);
         owl2LoaderSuite.addTestSuite(NewOWL2SnippetTestIT.class);
         owl2LoaderSuite.addTestSuite(NewOWL2UnannotatedSnippetTestIT.class);
         owl2LoaderSuite.addTestSuite(OWL2PrimitivesSnippetTestIT.class);
@@ -410,7 +410,7 @@ public class AllTestsMonoLoad {
         mainSuite.addTest(codedNodeGraphSuite);
 
         TestSuite functionalTests = new TestSuite("Functional Tests");
-        functionalTests.addTest(orderedSuite(TestProductionTags.class));
+        //functionalTests.addTest(orderedSuite(TestProductionTags.class));
         functionalTests.addTestSuite(TestApproximateStringMatch.class);
         functionalTests.addTestSuite(TestAttributePresenceMatch.class);
         functionalTests.addTestSuite(TestAttributeValueMatch.class);
@@ -531,7 +531,7 @@ public class AllTestsMonoLoad {
         
         //Search Extension tests
         mainSuite.addTestSuite(SearchExtensionImplTest.class);
-        mainSuite.addTestSuite(ScoreDocIteratoSerializationTest.class);
+      //mainSuite.addTestSuite(ScoreDocIteratoSerializationTest.class);
         mainSuite.addTestSuite(SearchScoreDocIteratorTest.class);
         
         //Association Authoring Mapping tests

@@ -1,0 +1,11 @@
+#Thu May 11 09:24:56 CDT 2023
+org.LexGrid.LexBIG.DataModel.InterfaceElements.ProcessStatus=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.ProcessStatusDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.ModuleDescription=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.ModuleDescriptionDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.SystemReleaseDetail=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.SystemReleaseDetailDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.SortOption=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.SortOptionDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.ExportStatus=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.ExportStatusDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.RenderingDetail=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.RenderingDetailDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.SortDescription=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.SortDescriptionDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.LoadStatus=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.LoadStatusDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.ExtensionDescription=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.ExtensionDescriptionDescriptor
+org.LexGrid.LexBIG.DataModel.InterfaceElements.CodingSchemeRendering=org.LexGrid.LexBIG.DataModel.InterfaceElements.descriptors.CodingSchemeRenderingDescriptor

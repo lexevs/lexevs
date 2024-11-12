@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.sql.DataSource;
 
 import org.LexGrid.LexBIG.Utility.logging.LgLoggerIF;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.system.constants.SystemVariables;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.jdbc.support.JdbcUtils;
@@ -41,7 +41,7 @@ public class ErrorReportingDataSourceDecorator implements DataSource, Initializi
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		Assert.notNull(this.decoratoredDataSource);
+		Assert.notNull(this.decoratoredDataSource, "Data Source is Null");
 		
 		Connection connection = null;
 		try {

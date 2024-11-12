@@ -11,7 +11,7 @@ import org.LexGrid.LexBIG.Extensions.Query.Filter;
 import org.LexGrid.LexBIG.Impl.pagedgraph.query.DefaultGraphQueryBuilder;
 import org.LexGrid.LexBIG.Impl.pagedgraph.root.RootsResolver.ResolveDirection;
 import org.LexGrid.LexBIG.Utility.ServiceUtility;
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.lexevs.dao.database.service.codednodegraph.CodedNodeGraphService;
 import org.lexevs.dao.database.service.codednodegraph.model.GraphQuery;
 import org.lexevs.dao.database.service.codednodegraph.model.GraphQuery.CodeNamespacePair;

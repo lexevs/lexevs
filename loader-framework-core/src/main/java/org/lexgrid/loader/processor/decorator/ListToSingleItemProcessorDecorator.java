@@ -29,7 +29,7 @@ public class ListToSingleItemProcessorDecorator<I,O> implements ItemProcessor<Li
 	 * @see org.springframework.batch.item.ItemProcessor#process(java.lang.Object)
 	 */
 	public O process(List<I> items) throws Exception {
-		Assert.notEmpty(items);
+		Assert.notEmpty(items, "Decroated Item is Null");
 		return decoratedItemProcessor.process(items.get(0));
 		
 	}

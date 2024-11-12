@@ -18,7 +18,7 @@ import org.LexGrid.valueSets.ValueSetDefinition;
 import org.LexGrid.valueSets.ValueSetDefinitions;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.association.model.Node;
 import org.lexevs.dao.database.access.revision.RevisionDao;
 import org.lexevs.dao.database.access.valuesets.VSEntryStateDao;

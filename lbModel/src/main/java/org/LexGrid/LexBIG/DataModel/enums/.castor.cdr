@@ -1,0 +1,5 @@
+#Thu May 11 09:25:00 CDT 2023
+org.LexGrid.LexBIG.DataModel.enums.ActiveOption=org.LexGrid.LexBIG.DataModel.enums.descriptors.ActiveOptionDescriptor
+org.LexGrid.LexBIG.DataModel.enums.SearchDesignationOption=org.LexGrid.LexBIG.DataModel.enums.descriptors.SearchDesignationOptionDescriptor
+org.LexGrid.LexBIG.DataModel.enums.HierarchyPathResolveOption=org.LexGrid.LexBIG.DataModel.enums.descriptors.HierarchyPathResolveOptionDescriptor
+org.LexGrid.LexBIG.DataModel.enums.PropertyType=org.LexGrid.LexBIG.DataModel.enums.descriptors.PropertyTypeDescriptor

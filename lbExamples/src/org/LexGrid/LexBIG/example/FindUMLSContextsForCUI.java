@@ -31,7 +31,7 @@ import org.LexGrid.LexBIG.Utility.Iterators.ResolvedConceptReferencesIterator;
 import org.LexGrid.commonTypes.PropertyQualifier;
 import org.LexGrid.concepts.Entity;
 import org.LexGrid.concepts.Presentation;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * NOTE: This example is intended to run only against code systems

@@ -11,7 +11,7 @@ import org.LexGrid.LexBIG.DataModel.Collections.AbsoluteCodingSchemeVersionRefer
 import org.LexGrid.LexBIG.Exceptions.LBException;
 import org.LexGrid.valueSets.ValueSetDefinition;
 import org.apache.commons.codec.digest.DigestUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexgrid.valuesets.impl.LexEVSValueSetDefinitionServicesImpl;
 
 public class ValueSetResolutionMD5Generator {

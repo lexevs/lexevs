@@ -43,7 +43,7 @@ public class DatabaseRegistry extends RegistryEventSupport implements Registry {
 	 * @throws LBParameterException the LB parameter exception
 	 */
 	@Transactional
-	@ClearCache(clearCaches = {"DelegatingDatabaseToXmlRegistryCache","DelegatingSystemResourceServiceCache"})
+	@ClearCache
 	public void activate(AbsoluteCodingSchemeVersionReference codingScheme)
 			throws LBInvocationException, LBParameterException {
 		RegistryEntry entry = registryDao.getRegistryEntryForUriAndVersion(
@@ -59,7 +59,7 @@ public class DatabaseRegistry extends RegistryEventSupport implements Registry {
 	 * @see org.lexevs.registry.service.Registry#addNewItem(org.lexevs.registry.model.RegistryEntry)
 	 */
 	@Transactional
-	@ClearCache(clearCaches = {"DelegatingDatabaseToXmlRegistryCache","DelegatingSystemResourceServiceCache"})
+	@ClearCache
 	public void addNewItem(RegistryEntry entry)
 			throws Exception {
 		
@@ -168,7 +168,7 @@ public class DatabaseRegistry extends RegistryEventSupport implements Registry {
 	 * @see org.lexevs.registry.service.Registry#updateEntry(org.lexevs.registry.model.RegistryEntry)
 	 */
 	@Transactional
-	@ClearCache(clearCaches = {"DelegatingDatabaseToXmlRegistryCache","DelegatingSystemResourceServiceCache"})
+	@ClearCache
 	public void updateEntry(
 			RegistryEntry entry){
 		this.registryDao.updateRegistryEntry(entry);
@@ -211,7 +211,7 @@ public class DatabaseRegistry extends RegistryEventSupport implements Registry {
 	 * @see org.lexevs.registry.service.Registry#removeEntry(org.lexevs.registry.model.RegistryEntry)
 	 */
 	@Transactional
-	@ClearCache(clearCaches = {"DelegatingDatabaseToXmlRegistryCache","DelegatingSystemResourceServiceCache"})
+	//@ClearCache(clearCaches = {"DelegatingDatabaseToXmlRegistryCache","DelegatingSystemResourceServiceCache"})
 	public void removeEntry(RegistryEntry entry) throws LBParameterException {
 		registryDao.deleteRegistryEntry(entry);	
 	}

@@ -17,7 +17,7 @@ import org.lexevs.locator.LexEvsServiceLocator;
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-@Cacheable(cacheName = "testCache")
+
 public class TestCacheBean {
 	
 	@Resource
@@ -54,6 +54,12 @@ public class TestCacheBean {
 		return cs;
 	}
 	
+	@CacheMethod
+	public boolean getPrimativeBooleanValue(
+			boolean arg){
+		return arg;
+	}
+	
 	/**
 	 * Gets the value not cachable.
 	 * 
@@ -75,6 +81,12 @@ public class TestCacheBean {
 	/**
 	 * Test clear.
 	 */
+	@ClearCache(clearAll=true)
+	public void testClearAll(){}
+	
+	/**
+	 * Test clear.
+	 */
 	@ClearCache
 	public void testClearWithNestedCache(){
 		if(this.cacheWrappingFactory == null){
@@ -83,8 +95,9 @@ public class TestCacheBean {
 		TestNestedCacheBean bean = cacheWrappingFactory.wrapForCaching(new TestNestedCacheBean());
 		bean.getNestedValue("1", "2");
 	}
+
 	
-	@Cacheable(cacheName = "testCache")
+
 	public static class TestNestedCacheBean {
 		
 		@CacheMethod

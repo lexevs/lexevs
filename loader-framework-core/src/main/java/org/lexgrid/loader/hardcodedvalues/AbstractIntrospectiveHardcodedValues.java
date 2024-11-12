@@ -25,8 +25,8 @@ public abstract class AbstractIntrospectiveHardcodedValues extends SupportedAttr
 	
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		Assert.notNull(codingSchemeIdSetter);
-		Assert.notNull(databaseServiceManager);
+		Assert.notNull(codingSchemeIdSetter, "Coding Scheme Id Setter Is Null");
+		Assert.notNull(databaseServiceManager, "Database Service Manager is Null");
 	}
 
 	/* (non-Javadoc)

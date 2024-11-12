@@ -1,7 +1,7 @@
 
 package org.lexgrid.loader.umls.reader.support;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexgrid.loader.rrf.data.property.MrsatUtility;
 import org.lexgrid.loader.rrf.model.Mrsat;
 

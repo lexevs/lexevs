@@ -31,7 +31,7 @@ public class DelegatingDatabaseToXmlRegistry implements Registry {
 	/* (non-Javadoc)
 	 * @see org.lexevs.registry.service.Registry#addNewItem(org.lexevs.registry.model.RegistryEntry)
 	 */         
-	@ClearCache(clearCaches = {"DatabaseRegistryCache","DelegatingSystemResourceServiceCache"})
+	@ClearCache
 	public void addNewItem(RegistryEntry entry) throws Exception {
 	    databaseRegistry.addNewItem(entry);
 	}
@@ -176,7 +176,7 @@ public class DelegatingDatabaseToXmlRegistry implements Registry {
 	/* (non-Javadoc)
 	 * @see org.lexevs.registry.service.Registry#removeEntry(org.lexevs.registry.model.RegistryEntry)
 	 */
-	@ClearCache(clearCaches = {"DatabaseRegistryCache","DelegatingSystemResourceServiceCache"})
+	@ClearCache
 	public void removeEntry(RegistryEntry entry) throws LBParameterException {
 		databaseRegistry.removeEntry(entry);
 	}
@@ -184,7 +184,7 @@ public class DelegatingDatabaseToXmlRegistry implements Registry {
 	/* (non-Javadoc)
 	 * @see org.lexevs.registry.service.Registry#updateEntry(org.lexevs.registry.model.RegistryEntry)
 	 */
-	@ClearCache(clearCaches = {"DatabaseRegistryCache","DelegatingSystemResourceServiceCache"})
+	@ClearCache
 	public void updateEntry(RegistryEntry entry) throws LBParameterException {
 		if(entry.getResourceType().equals(ResourceType.CODING_SCHEME)) {
 			
@@ -215,7 +215,7 @@ public class DelegatingDatabaseToXmlRegistry implements Registry {
 	 * 
 	 * @throws LBParameterException the LB parameter exception
 	 */
-	@ClearCache(clearCaches = {"DatabaseRegistryCache","DelegatingSystemResourceServiceCache"})
+	@ClearCache
 	public void updateCodingSchemeEntryTag(
 			AbsoluteCodingSchemeVersionReference codingScheme, String newTag)
 			throws LBParameterException {

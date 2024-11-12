@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 import org.LexGrid.util.sql.sqlReconnect.WrappedConnection;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * This class holds many utility type methods for common DB related tasks -

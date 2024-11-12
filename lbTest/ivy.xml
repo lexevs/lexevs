@@ -14,7 +14,7 @@
 		<dependency org="org.apache.lucene" name="lucene-test-framework" rev="5.3.1"  conf="default"/>
 		<dependency org="org.apache.lucene" name="lucene-codecs" rev="5.3.1" conf="default"/>
 		<dependency org="com.google.code.gson" name="gson" rev="2.10" conf="default"/>
-		<dependency org="com.carrotsearch.randomizedtesting" name="randomizedtesting-runner" rev="2.1.13" conf="default"/>
+		<dependency org="com.carrotsearch.randomizedtesting" name="randomizedtesting-runner" rev="2.8.1" conf="default"/>
 		<dependency org="lexevs" name="lexbig-impl" rev="${vBuild}" conf="default"/>
 		<dependency org="lexevs" name="lexgrid-converter" rev="${vBuild}" conf="default,test"/>
 		<dependency org="lexevs" name="lexevs-dao" rev="${vBuild}" conf="default,test" />
@@ -26,10 +26,20 @@
 		<dependency org="lexevs" name="umls-loader" rev="${vBuild}" conf="default"/>
 		<dependency org="lexevs" name="loader-framework-core" rev="${vBuild}" conf="default"/>
 		<dependency org="lexevs" name="abstract-rrf-loader" rev="${vBuild}"  conf="default"/>
-		<dependency org="commons-cli" name="commons-cli" rev="1.2" conf="default"/>
+		<dependency org="commons-cli" name="commons-cli" rev="1.5.0" conf="default"/>
 		<dependency org="org.apache.ant" name="ant-launcher" rev="1.10.13" conf="default"/>
-		<dependency org="org.springframework" name="spring-test" rev="5.3.19" conf="default" />
-		<dependency org="org.springframework" name="spring-tx" rev="5.3.19" conf="default" />
-		<dependency org="org.springframework" name="spring-jdbc" rev="5.3.19" conf="default" />
+		<!-- https://mvnrepository.com/artifact/jakarta.xml.bind/jakarta.xml.bind-api -->
+		<dependency org="jakarta.xml.bind" name="jakarta.xml.bind-api" rev="3.0.1" conf="default"/>         
+		<!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
+		<dependency org="com.sun.xml.bind" name="jaxb-impl" rev="3.0.1" conf="default"/>
+		<!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-core -->
+		<dependency org="com.sun.xml.bind" name="jaxb-core" rev="3.0.1" conf="default"/>
+		
+		
+
+		<dependency org="org.springframework" name="spring-test" rev="6.0.13" conf="default" />
+		<dependency org="org.springframework" name="spring-tx" rev="6.0.13" conf="default" />
+		<dependency org="org.springframework" name="spring-jdbc" rev="6.0.13" conf="default" />
+
    	 </dependencies>
 </ivy-module>

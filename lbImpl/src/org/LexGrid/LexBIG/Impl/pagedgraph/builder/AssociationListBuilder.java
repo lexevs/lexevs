@@ -20,7 +20,7 @@ import org.LexGrid.LexBIG.Impl.pagedgraph.model.LazyLoadableAssociatedConceptLis
 import org.LexGrid.LexBIG.Impl.pagedgraph.paging.callback.CycleDetectingCallback;
 import org.LexGrid.LexBIG.Impl.pagedgraph.utility.PagedGraphUtils;
 import org.LexGrid.LexBIG.LexBIGService.CodedNodeSet.PropertyType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.DatabaseServiceManager;
 import org.lexevs.dao.database.service.codednodegraph.CodedNodeGraphService;
 import org.lexevs.dao.database.service.codednodegraph.model.GraphQuery;

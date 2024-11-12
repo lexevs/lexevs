@@ -1,0 +1,10 @@
+#Thu May 11 09:18:45 CDT 2023
+org.LexGrid.commonTypes.Text=org.LexGrid.commonTypes.descriptors.TextDescriptor
+org.LexGrid.commonTypes.Versionable=org.LexGrid.commonTypes.descriptors.VersionableDescriptor
+org.LexGrid.commonTypes.Describable=org.LexGrid.commonTypes.descriptors.DescribableDescriptor
+org.LexGrid.commonTypes.Properties=org.LexGrid.commonTypes.descriptors.PropertiesDescriptor
+org.LexGrid.commonTypes.PropertyQualifier=org.LexGrid.commonTypes.descriptors.PropertyQualifierDescriptor
+org.LexGrid.commonTypes.VersionableAndDescribable=org.LexGrid.commonTypes.descriptors.VersionableAndDescribableDescriptor
+org.LexGrid.commonTypes.EntityDescription=org.LexGrid.commonTypes.descriptors.EntityDescriptionDescriptor
+org.LexGrid.commonTypes.Property=org.LexGrid.commonTypes.descriptors.PropertyDescriptor
+org.LexGrid.commonTypes.Source=org.LexGrid.commonTypes.descriptors.SourceDescriptor

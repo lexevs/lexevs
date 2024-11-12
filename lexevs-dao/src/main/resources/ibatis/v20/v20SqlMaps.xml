@@ -84,6 +84,8 @@
 		<!--<typeAlias alias="variablePrimaryKeyTypeHandler" type="org.lexevs.dao.database.ibatis.sqlmap.VariablePrimaryKeyTypeHandler"/>-->
 		<typeAlias alias="vsEntity" type="org.lexevs.dao.database.ibatis.entity.model.IdableEntity"/>
 		<typeAlias alias="vsProperty" type="org.LexGrid.commonTypes.Property"/>
+		<typeAlias alias="registryMetaData" type="org.lexevs.registry.model.Registry"/>
+		<typeAlias alias="registryEntry" type="org.lexevs.registry.model.RegistryEntry"/>
 	</typeAliases>
 	
 	<typeHandlers>
@@ -102,6 +104,7 @@
 			<mapper resource="ibatis/v20/codingSchemeMultiAttrib.xml"/>
 			<mapper resource="ibatis/v20/mapping.xml"/>
 			<mapper resource="ibatis/v20/entityType.xml"/>
+			<mapper resource="ibatis/v20/registry.xml"/>
 			<mapper resource="ibatis/v20/relation.xml"/>
 			<mapper resource="ibatis/v20/propertyLink.xml"/>
 			<mapper resource="ibatis/v20/entityAssnsToEntity.xml"/>

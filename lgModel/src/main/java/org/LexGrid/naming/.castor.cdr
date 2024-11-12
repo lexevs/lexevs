@@ -1,0 +1,25 @@
+#Thu May 11 09:18:50 CDT 2023
+org.LexGrid.naming.SupportedPropertyType=org.LexGrid.naming.descriptors.SupportedPropertyTypeDescriptor
+org.LexGrid.naming.SupportedNamespace=org.LexGrid.naming.descriptors.SupportedNamespaceDescriptor
+org.LexGrid.naming.SupportedConceptDomain=org.LexGrid.naming.descriptors.SupportedConceptDomainDescriptor
+org.LexGrid.naming.SupportedPropertyLink=org.LexGrid.naming.descriptors.SupportedPropertyLinkDescriptor
+org.LexGrid.naming.SupportedAssociationQualifier=org.LexGrid.naming.descriptors.SupportedAssociationQualifierDescriptor
+org.LexGrid.naming.SupportedRepresentationalForm=org.LexGrid.naming.descriptors.SupportedRepresentationalFormDescriptor
+org.LexGrid.naming.SupportedPropertyQualifierType=org.LexGrid.naming.descriptors.SupportedPropertyQualifierTypeDescriptor
+org.LexGrid.naming.SupportedProperty=org.LexGrid.naming.descriptors.SupportedPropertyDescriptor
+org.LexGrid.naming.SupportedDegreeOfFidelity=org.LexGrid.naming.descriptors.SupportedDegreeOfFidelityDescriptor
+org.LexGrid.naming.SupportedEntityType=org.LexGrid.naming.descriptors.SupportedEntityTypeDescriptor
+org.LexGrid.naming.SupportedAssociation=org.LexGrid.naming.descriptors.SupportedAssociationDescriptor
+org.LexGrid.naming.SupportedContext=org.LexGrid.naming.descriptors.SupportedContextDescriptor
+org.LexGrid.naming.SupportedHierarchy=org.LexGrid.naming.descriptors.SupportedHierarchyDescriptor
+org.LexGrid.naming.SupportedContainerName=org.LexGrid.naming.descriptors.SupportedContainerNameDescriptor
+org.LexGrid.naming.SupportedSource=org.LexGrid.naming.descriptors.SupportedSourceDescriptor
+org.LexGrid.naming.SupportedStatus=org.LexGrid.naming.descriptors.SupportedStatusDescriptor
+org.LexGrid.naming.SupportedPropertyQualifier=org.LexGrid.naming.descriptors.SupportedPropertyQualifierDescriptor
+org.LexGrid.naming.SupportedLanguage=org.LexGrid.naming.descriptors.SupportedLanguageDescriptor
+org.LexGrid.naming.SupportedDataType=org.LexGrid.naming.descriptors.SupportedDataTypeDescriptor
+org.LexGrid.naming.SupportedSortOrder=org.LexGrid.naming.descriptors.SupportedSortOrderDescriptor
+org.LexGrid.naming.SupportedSourceRole=org.LexGrid.naming.descriptors.SupportedSourceRoleDescriptor
+org.LexGrid.naming.SupportedCodingScheme=org.LexGrid.naming.descriptors.SupportedCodingSchemeDescriptor
+org.LexGrid.naming.URIMap=org.LexGrid.naming.descriptors.URIMapDescriptor
+org.LexGrid.naming.Mappings=org.LexGrid.naming.descriptors.MappingsDescriptor

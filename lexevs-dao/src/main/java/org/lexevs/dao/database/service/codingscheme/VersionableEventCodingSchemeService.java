@@ -17,7 +17,7 @@ import org.LexGrid.naming.SupportedProperty;
 import org.LexGrid.naming.URIMap;
 import org.LexGrid.relations.Relations;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.association.AssociationDao;
 import org.lexevs.dao.database.access.codingscheme.CodingSchemeDao;
 import org.lexevs.dao.database.access.property.PropertyDao;
@@ -282,7 +282,7 @@ public class VersionableEventCodingSchemeService extends RevisableAbstractDataba
 			String codingSchemeUri, 
 			String codingSchemeVersion,
 			URIMap uriMap){
-		Assert.hasText(uriMap.getLocalId());
+		Assert.hasText(uriMap.getLocalId(), "Local Id is Not Available");
 		
 		CodingSchemeDao codingSchemeDao = getDaoManager().getCodingSchemeDao(codingSchemeUri, codingSchemeVersion);
 		String codingSchemeId = codingSchemeDao.

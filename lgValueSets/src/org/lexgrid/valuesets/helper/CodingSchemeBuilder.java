@@ -11,7 +11,7 @@ import org.LexGrid.naming.Mappings;
 import org.LexGrid.naming.SupportedCodingScheme;
 import org.LexGrid.naming.SupportedLanguage;
 import org.LexGrid.naming.SupportedSource;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 
 public class CodingSchemeBuilder {

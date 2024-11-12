@@ -21,7 +21,7 @@ import org.LexGrid.naming.SupportedSource;
 import org.LexGrid.util.sql.lgTables.SQLTableConstants;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 import org.junit.Test;
 import org.lexevs.dao.test.LexEvsDbUnitTestBase;
 import org.springframework.jdbc.core.JdbcTemplate;

@@ -12,7 +12,7 @@ public class MrrelAuiPropertyIdResolver implements PropertyIdResolver<Mrrel>{
 	private Aui aui;
 	
 	public String getPropertyId(Mrrel item) {
-		Assert.notNull(aui);
+		Assert.notNull(aui, "AUI is Null in MRREL item");
 		if(aui.equals(Aui.AUI1)) {
 			return item.getAui1();
 		} else if(aui.equals(Aui.AUI2)) {

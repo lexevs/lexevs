@@ -282,7 +282,7 @@
 		<property name="vsPropertyService" ref="vsPropertyService"/>
 		<property name="daoCallbackService" ref="daoManagerDaoCallbackService"/>
 		<property name="codedNodeGraphService" ref="codedNodeGraphService"/>
-		<property name="authoringService" ref="authoringService"></property>
+		<property name="authoringService" ref="authoringService"/>
 		<property name="nciHistoryService" ref="nciHistoryService"/>
 		<property name="listenerRegistry" ref="extensionLoadingListenerRegistry"/>
 		<property name="graphingDatabaseService" ref="graphingDatabaseService"/>
@@ -479,10 +479,8 @@
      	<property name="bean" ref="resourceManager"/>
      </bean>
     
-     <bean id="transactionManager" class="org.springframework.orm.hibernate5.HibernateTransactionManager">  
-   		<property name="sessionFactory" >
-    		<ref bean="registrySessionFactory"/>
- 		 </property>
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+   		<constructor-arg><ref bean="dataSource"/></constructor-arg>
 	</bean>
 	
 	<bean id="defaultPrefixResolver" class="org.lexevs.dao.database.prefix.DefaultPrefixResolver">
@@ -491,13 +489,19 @@
 		<property name="databaseServiceManager" ref="databaseServiceManager"/>
 	</bean>
 	
-	<bean id="hibernateRegistryDao" class="org.lexevs.dao.database.hibernate.registry.HibernateRegistryDao">
+<!-- 	<bean id="ibatisRegistryDao" class="org.lexevs.dao.database.hibernate.registry.HibernateRegistryDao">
 		<property name="hibernateTemplate" ref="hibernateTemplate"/>
+	</bean> -->
+	
+	<bean id="ibatisRegistryDao" class="org.lexevs.dao.database.ibatis.registry.IbatisRegistryDao">
+		<property name="prefixResolver" ref="defaultPrefixResolver"/>
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+		<property name="primaryKeyIncrementer" ref="primaryKeyIncrementer"/>
 	</bean>
 
-	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
+<!-- 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate5.HibernateTemplate">
 		<property name="sessionFactory" ref="registrySessionFactory"/>
-	</bean>
+	</bean> -->
 	
 	<bean id="unPooledDataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource" >
 		<property name="driverClass" ref="jdbcDriverClass" />
@@ -643,7 +647,7 @@
    		<property name="prefixResolver" ref="defaultPrefixResolver"/>
    		<property name="dataSource" ref="dataSource"/>
    		<property name="databaseType" ref="databaseTypeFactory"/>
-   		<property name="transactionManager" ref="transactionManager"/>
+<!--    		<property name="transactionManager" ref="transactionManager"/> -->
    		<property name="transitivityBuilder" ref="defaultTransitivityBuilder"/>
    		<property name="rootBuilder" ref="defaultRootBuilder"/>
    		<property name="systemVariables" ref="systemVariables"/>
@@ -713,20 +717,20 @@
 		<property name="xmlRegistry" ref="xmlRegistry"/>
 	</bean>
 	
-	<bean id="registrySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+<!-- 	<bean id="registrySessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource">
 			<ref bean="dataSource" />
 		</property>
 		<property name="entityInterceptor" ref="prefixInterceptor"/>
 		<property name="configLocations" value="classpath:hibernate/registry/hibernate.cfg.xml"/>
-	</bean>
+	</bean> -->
 
 	<bean id="prefixInterceptor" class="org.lexevs.dao.database.hibernate.prefix.PrefixInterceptor">
 		<property name="prefixResolver" ref="defaultPrefixResolver"/>
 	</bean>
 	
 	<bean id="databaseRegistry" class="org.lexevs.registry.service.DatabaseRegistry">
-		<property name="registryDao" ref="hibernateRegistryDao"/>
+		<property name="registryDao" ref="ibatisRegistryDao"/>
 		<property name="nextDatabasePrefixGenerator" ref="cyclingCharDbPrefixGenerator"/>
 	</bean>
 	
@@ -776,7 +780,7 @@
 		<property name="lexGridSchemaInstalled" ref="lexGridSchemaCheckFactory"/>
 		<property name="systemVariables" ref="systemVariables"/> 
 		<property name="lexEvsDatabaseOperations" ref="defaultLexEvsDatabaseOperations"/>
-		<property name="registryDao" ref="hibernateRegistryDao"/>
+		<property name="registryDao" ref="ibatisRegistryDao"/>
 		<property name="primaryKeyIncrementer" ref="primaryKeyIncrementer"/>
 	</bean>
 	
@@ -792,8 +796,8 @@
 		<property name="systemVariables" ref="systemVariables"/>
 	</bean>
 	
-	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
-	
+	<!-- <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+	 -->
 	<bean id="databaseTypeFactory" class="org.lexevs.dao.database.type.DatabaseTypeFactory">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>

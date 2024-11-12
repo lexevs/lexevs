@@ -3,8 +3,7 @@ package org.lexgrid.loader.rrf.staging.cache.interceptor;
 
 import java.io.Serializable;
 
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.Element;
+import org.ehcache.Cache;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
@@ -33,7 +32,7 @@ public class MrconsoStagingCacheInterceptor implements MethodInterceptor {
 		
 		 String cacheKey = getCacheKey(callingClassName, methodName, invocation.getArguments());
 
-		 Element element = cache.get(cacheKey);
+		 Object element = cache.get(cacheKey);
 		 if (element == null) {
 			 log.debug("calling intercepted method");
 			 Object result = null;
@@ -45,13 +44,13 @@ public class MrconsoStagingCacheInterceptor implements MethodInterceptor {
 
 			 //cache method result
 			 log.debug("caching result");
-			 element = new Element(cacheKey, (Serializable) result);
-			 cache.put(element);
+			// element = new Element(cacheKey, (Serializable) result);
+			 cache.put(cacheKey, result);
 		 } else {
 			 log.debug("cache hit");
 		 }
 		 
-		 return element.getValue();
+		 return element;
 	 }
 
 	/**

@@ -1886,40 +1886,28 @@
             -->
             AND
             targetEntity.codingSchemeGuid = #{targetCodingSchemeUid}
-            )
+            ) 
         </if>
-
-
-  <if test="sortList != null and sortList.size > 0">
-  			LEFT JOIN ${prefix}entityAssnQuals quals ON 
-            <foreach collection="sortList" item="item" index="index" 
-            open="(eate.entityAssnsGuid = quals.referenceGuid AND" separator="AND" close=")" >
-                <if test="item.getColumnSortType().getName() == &quot;QUALIFIER&quot; and item.getQualifierName() != null">
-                    quals.qualifierName = #{item.qualifierName}
-                </if> 
-            </foreach>
-        </if>    
-
-        WHERE
-        rel.codingSchemeGuid = #{mappingCodingSchemeUid}
-        AND
-        rel.containerName = #{relationsContainerName}
-    </sql>
+        
+        
+		WHERE
+			rel.codingSchemeGuid = #{mappingCodingSchemeUid}
+		AND
+			rel.containerName = #{relationsContainerName}
+  </sql>
 
     <sql id="getTripleUidsForMappingContainerPost">
-        <if test="sortList != null and sortList.size > 0 and sortList.get(0).getColumnSortType().getName() == &quot;QUALIFIER&quot;">
+        <if test="sortList != null and sortList.size > 0">
         ORDER BY
-            <foreach collection="sortList" item="item">
-			<if test="item.getColumnSortType().getName() == &quot;QUALIFIER&quot;">
-                <if test="item.getQualifierName() !=null">
-                    ${item.columnSortType.mappingColumn}
-                    ${item.order}
-                </if>
-                <if test="item.qualifierName ==null">
-                    ${item.getTableAlias().columnSortType.mappingColumn}
-                    ${item.order}
-                </if>
-			</if>
+            <foreach collection="sortList" item="item" separator=",">
+            <choose>
+            <when test="item.getColumnSortType().getName() == &quot;QUALIFIER&quot;">
+            <!-- DO NOTHING NO SORTS ON QUALIFIERS -->
+            </when>
+            <otherwise>
+                    ${item.columnSortType.mappingColumn} ${item.order.name()}
+            </otherwise>
+            </choose>
             </foreach>
         </if>
     </sql>

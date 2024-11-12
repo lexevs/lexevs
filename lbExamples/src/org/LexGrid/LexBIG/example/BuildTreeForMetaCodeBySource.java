@@ -35,7 +35,7 @@ import org.LexGrid.commonTypes.Property;
 import org.LexGrid.commonTypes.PropertyQualifier;
 import org.LexGrid.commonTypes.Source;
 import org.LexGrid.concepts.Presentation;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * NOTE: This example is intended to run only against code systems

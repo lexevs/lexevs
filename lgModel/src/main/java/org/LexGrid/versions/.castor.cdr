@@ -1,0 +1,8 @@
+#Thu May 11 09:18:56 CDT 2023
+org.LexGrid.versions.EntityVersion=org.LexGrid.versions.descriptors.EntityVersionDescriptor
+org.LexGrid.versions.Revision=org.LexGrid.versions.descriptors.RevisionDescriptor
+org.LexGrid.versions.EditHistory=org.LexGrid.versions.descriptors.EditHistoryDescriptor
+org.LexGrid.versions.CodingSchemeVersion=org.LexGrid.versions.descriptors.CodingSchemeVersionDescriptor
+org.LexGrid.versions.ChangedEntry=org.LexGrid.versions.descriptors.ChangedEntryDescriptor
+org.LexGrid.versions.SystemRelease=org.LexGrid.versions.descriptors.SystemReleaseDescriptor
+org.LexGrid.versions.EntryState=org.LexGrid.versions.descriptors.EntryStateDescriptor

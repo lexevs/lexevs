@@ -20,7 +20,7 @@ import org.LexGrid.LexBIG.DataModel.NCIHistory.types.ChangeType;
 import org.LexGrid.LexBIG.Utility.logging.LgMessageDirectorIF;
 import org.LexGrid.commonTypes.EntityDescription;
 import org.LexGrid.versions.SystemRelease;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.ncihistory.NciHistoryService;
 import org.lexevs.locator.LexEvsServiceLocator;
 

@@ -1,0 +1,14 @@
+#Thu May 11 09:18:57 CDT 2023
+org.LexGrid.LexOnt.CsmfFormalName=org.LexGrid.LexOnt.descriptors.CsmfFormalNameDescriptor
+org.LexGrid.LexOnt.CsmfEntityDescription=org.LexGrid.LexOnt.descriptors.CsmfEntityDescriptionDescriptor
+org.LexGrid.LexOnt.CsmfText=org.LexGrid.LexOnt.descriptors.CsmfTextDescriptor
+org.LexGrid.LexOnt.CsmfCodingSchemeURI=org.LexGrid.LexOnt.descriptors.CsmfCodingSchemeURIDescriptor
+org.LexGrid.LexOnt.CsmfAssociationDefinition=org.LexGrid.LexOnt.descriptors.CsmfAssociationDefinitionDescriptor
+org.LexGrid.LexOnt.CsmfDefaultLanguage=org.LexGrid.LexOnt.descriptors.CsmfDefaultLanguageDescriptor
+org.LexGrid.LexOnt.CodingSchemeManifestList=org.LexGrid.LexOnt.descriptors.CodingSchemeManifestListDescriptor
+org.LexGrid.LexOnt.CsmfSource=org.LexGrid.LexOnt.descriptors.CsmfSourceDescriptor
+org.LexGrid.LexOnt.CsmfLocalName=org.LexGrid.LexOnt.descriptors.CsmfLocalNameDescriptor
+org.LexGrid.LexOnt.CsmfCodingSchemeName=org.LexGrid.LexOnt.descriptors.CsmfCodingSchemeNameDescriptor
+org.LexGrid.LexOnt.CsmfVersion=org.LexGrid.LexOnt.descriptors.CsmfVersionDescriptor
+org.LexGrid.LexOnt.CsmfMappings=org.LexGrid.LexOnt.descriptors.CsmfMappingsDescriptor
+org.LexGrid.LexOnt.CodingSchemeManifest=org.LexGrid.LexOnt.descriptors.CodingSchemeManifestDescriptor

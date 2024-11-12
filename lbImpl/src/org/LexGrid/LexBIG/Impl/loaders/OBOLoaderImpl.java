@@ -138,7 +138,7 @@ public class OBOLoaderImpl extends BaseLoader implements OBO_Loader {
     
     private String getRelationsContainerName(CodingScheme codingScheme) {
         Relations[] relations = codingScheme.getRelations();
-        Assert.state(relations.length == 1);
+        Assert.state(relations.length == 1, "Length of Relations list is not one");
         
         return relations[0].getContainerName();
     }

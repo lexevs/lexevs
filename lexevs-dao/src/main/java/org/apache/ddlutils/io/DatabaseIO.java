@@ -39,7 +39,7 @@ import javax.xml.transform.stream.StreamSource;
 
 import org.apache.commons.betwixt.io.BeanReader;
 import org.apache.commons.betwixt.strategy.HyphenatedNameMapper;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ddlutils.model.CascadeActionEnum;
@@ -832,7 +832,7 @@ public class DatabaseIO
     private CascadeActionEnum getAttributeValueAsCascadeEnum(XMLStreamReader xmlReader, int attributeIdx) throws DdlUtilsXMLException
     {
         String            value     = xmlReader.getAttributeValue(attributeIdx);
-        CascadeActionEnum enumValue = value == null ? null : CascadeActionEnum.getEnum(value.toLowerCase());
+        CascadeActionEnum enumValue = value == null ? null : CascadeActionEnum.valueOf(value.toLowerCase());
 
         if (enumValue == null)
         {
@@ -1044,11 +1044,11 @@ public class DatabaseIO
         writeAttribute(xmlWriter, QNAME_ATTRIBUTE_NAME,          foreignKey.getName());
         if (foreignKey.getOnUpdate() != CascadeActionEnum.NONE)
         {
-            writeAttribute(xmlWriter, QNAME_ATTRIBUTE_ON_UPDATE, foreignKey.getOnUpdate().getName());
+            writeAttribute(xmlWriter, QNAME_ATTRIBUTE_ON_UPDATE, foreignKey.getOnUpdate().name());
         }
         if (foreignKey.getOnDelete() != CascadeActionEnum.NONE)
         {
-            writeAttribute(xmlWriter, QNAME_ATTRIBUTE_ON_DELETE, foreignKey.getOnDelete().getName());
+            writeAttribute(xmlWriter, QNAME_ATTRIBUTE_ON_DELETE, foreignKey.getOnDelete().name());
         }
         if (foreignKey.getReferenceCount() > 0)
         {

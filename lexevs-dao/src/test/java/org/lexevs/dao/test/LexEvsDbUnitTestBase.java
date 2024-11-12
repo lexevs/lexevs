@@ -23,13 +23,14 @@ import org.lexevs.system.service.DelegatingSystemResourceService;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * The Class LexEvsDbUnitTestBase.
  * 
  * @author <a href="mailto:kevin.peterson@mayo.edu">Kevin Peterson</a>
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(locations={"/lexevsDao-all-in-memory-test.xml"})
 public class LexEvsDbUnitTestBase extends DataSourceBasedDBTestCase {
 

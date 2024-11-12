@@ -31,12 +31,12 @@
 	    </filesystem>
    		
 		<chain name="ncimvn">
-			<url name="ncimvn-releases" m2compatible="true">
-				<ivy
-					pattern="${ncimvn.releases.repo}/[organisation]/[module]/[revision]/ivy.xml" />
-				<artifact
-					pattern="${ncimvn.releases.repo}/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />
-			</url>
+<!--			<url name="ncimvn-releases" m2compatible="true">-->
+<!--				<ivy-->
+<!--					pattern="${ncimvn.releases.repo}/[organisation]/[module]/[revision]/ivy.xml" />-->
+<!--				<artifact-->
+<!--					pattern="${ncimvn.releases.repo}/[organisation]/[module]/[revision]/[artifact]-[revision](-[classifier]).[ext]" />-->
+<!--			</url>-->
 			<url name="ncimvn-snapshots" m2compatible="true" changingPattern=".*-SNAPSHOT">
 				<ivy
 					pattern="${ncimvn.snapshots.repo}/[organisation]/[module]/[revision]/ivy.xml" />

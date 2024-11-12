@@ -28,7 +28,7 @@ import org.LexGrid.valueSets.PickListDefinition;
 import org.LexGrid.valueSets.ValueSetDefinition;
 import org.LexGrid.versions.Revision;
 import org.LexGrid.versions.SystemRelease;
-import org.apache.commons.lang.exception.ExceptionUtils;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.exolab.castor.xml.MarshalException;
 import org.exolab.castor.xml.Unmarshaller;
 import org.exolab.castor.xml.ValidationException;
@@ -94,13 +94,13 @@ public class LexGridXMLProcessor {
 
         } catch (MarshalException e) {
             messages.error("the Coding Scheme Listener detected a reading or writing problem", e);
-            messages.error(ExceptionUtils.getFullStackTrace(e));
+            messages.error(ExceptionUtils.getStackTrace(e));
         } catch (ValidationException e) {
             messages.error("Unmarshaller detected invalid xml at: " + uri.toString(), e);
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri.toString()), e);
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
         return cs;
 
@@ -147,13 +147,13 @@ public class LexGridXMLProcessor {
 
         } catch (MarshalException e) {
             messages.error("the Revision Listener detected a reading or writing problem");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (ValidationException e) {
             messages.error("Unmarshaller detected invalid xml at: " + uri);
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
             }
         return cs;
 
@@ -200,13 +200,13 @@ public class LexGridXMLProcessor {
 
         } catch (MarshalException e) {
             messages.error("the System Release Listener detected a reading or writing problem");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (ValidationException e) {
             messages.error("Unmarshaller detected invalid xml at: " + uri);
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
             }
         if (cs != null)
         {
@@ -251,13 +251,13 @@ public class LexGridXMLProcessor {
 
         } catch (MarshalException e) {
             messages.error("the Value Set Listener detected a reading or writing problem");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (ValidationException e) {
             messages.error("Unmarshaller detected invalid xml at: " + uri);
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
             }
         return vsd;
 
@@ -291,13 +291,13 @@ public class LexGridXMLProcessor {
 
         } catch (MarshalException e) {
             messages.error("the Pick List Listener detected a reading or writing problem");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (ValidationException e) {
             messages.error("Unmarshaller detected invalid xml at: " + uri);
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
             }
         return pld;
     }
@@ -340,16 +340,16 @@ public class LexGridXMLProcessor {
             xmlStreamReader.close();
         } catch (XMLStreamException e) {
             messages.error("While streaming file at " + uri.toString() + "an error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FactoryConfigurationError e) {
             messages.error("While streaming file at " + uri.toString() + "a streaming xml configuration error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FileNotFoundException e) {
             messages.error("Problem reading file at: " + (uri.toString() == null? "path appears to be null": uri.toString()));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("IO Problem reading file at: " + (uri.toString() == null? "path appears to be null": uri.toString()));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
 
         return ENTRY_POINT_NOT_FOUND;
@@ -392,16 +392,16 @@ public class LexGridXMLProcessor {
             in.close();
         } catch (XMLStreamException e) {
             messages.error("While streaming file at " + uri + "an error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FactoryConfigurationError e) {
             messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FileNotFoundException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("IO Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
         return csPropsPresent;
     }
@@ -443,16 +443,16 @@ public class LexGridXMLProcessor {
             in.close();
         } catch (XMLStreamException e) {
             messages.error("While streaming file at " + uri + "an error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FactoryConfigurationError e) {
             messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FileNotFoundException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("IO Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
         return relPropsPresent;
     }
@@ -501,16 +501,16 @@ public class LexGridXMLProcessor {
             in.close();
         } catch (XMLStreamException e) {
             messages.error("While streaming file at " + uri + "an error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FactoryConfigurationError e) {
             messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FileNotFoundException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("IO Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
         System.out.println("Scheme Present: " + schemePresent);
         return schemePresent;
@@ -561,16 +561,16 @@ public class LexGridXMLProcessor {
             in.close();
         } catch (XMLStreamException e) {
             messages.error("While streaming file at " + uri + "an error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FactoryConfigurationError e) {
             messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FileNotFoundException e) {
             messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("IO Problem reading file at: " + (uri == null? "path appears to be null": uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
         System.out.println("Scheme Present: " + schemePresent);
         return schemePresent;
@@ -627,16 +627,16 @@ public class LexGridXMLProcessor {
             in.close();
         } catch (XMLStreamException e) {
             messages.error("While streaming file at " + uri + "an error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FactoryConfigurationError e) {
             messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FileNotFoundException e) {
             messages.error("Problem reading file at: " + (uri == null ? "path appears to be null" : uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
             messages.error("IO Problem reading file at: " + (uri == null ? "path appears to be null" : uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
         System.out.println("Scheme Present: " + schemePresent);
         return schemePresent;
@@ -676,16 +676,16 @@ public int getLastRevisionElement(URI uri,  LgMessageDirectorIF messages) {
         in.close();
     } catch (XMLStreamException e) {
         messages.error("While streaming file at " + uri + "an error occured");
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (FactoryConfigurationError e) {
         messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (FileNotFoundException e) {
         messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (IOException e) {
         messages.error("IO Problem reading file at: " + (uri == null? "path appears to be null": uri));
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     }
     return lastMetaDataElement;
 }
@@ -734,19 +734,19 @@ public SystemRelease getSystemReleaseMetadata(URI uri, LgMessageDirectorIF messa
         in.close();
     } catch (XMLStreamException e) {
        messages.error("While streaming file at " + uri + "an error occured");
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (FactoryConfigurationError e) {
        messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (FileNotFoundException e) {
        messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (IOException e) {
        messages.error("IO Problem reading file at: " + (uri == null? "path appears to be null": uri));
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (ParseException e) {
         messages.error("Problems parsing the system release date --- please check your source formatting for format dd-mm-yyyy");
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     }
     return systemRelease;
 }
@@ -790,16 +790,16 @@ public HashMap<String, Boolean> surveySystemRelease(URI uri,  LgMessageDirectorI
         in.close();
     } catch (XMLStreamException e) {
        messages.error("While streaming file at " + uri + "an error occured");
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (FactoryConfigurationError e) {
        messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (FileNotFoundException e) {
        messages.error("Problem reading file at: " + (uri == null? "path appears to be null": uri));
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     } catch (IOException e) {
       messages.error("IO Problem reading file at: " + (uri == null? "path appears to be null": uri));
-                    messages.error(ExceptionUtils.getFullStackTrace(e));
+                    messages.error(ExceptionUtils.getStackTrace(e));
     }
     return systemReleaseSurvey;
 }
@@ -892,16 +892,16 @@ public HashMap<String, Boolean> surveySystemRelease(URI uri,  LgMessageDirectorI
             in.close();
         } catch (XMLStreamException e) {
             messages.error("While streaming file at " + uri + "an error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));
+            messages.error(ExceptionUtils.getStackTrace(e));
         } catch (FactoryConfigurationError e) {
          messages.error("While streaming file at " + uri + "a streaming xml configuration error occured");
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (FileNotFoundException e) {
           messages.error("Problem reading file at: " + (uri == null ? "path appears to be null" : uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         } catch (IOException e) {
           messages.error("IO Problem reading file at: " + (uri == null ? "path appears to be null" : uri));
-            messages.error(ExceptionUtils.getFullStackTrace(e));;
+            messages.error(ExceptionUtils.getStackTrace(e));;
         }
         return systemReleaseSurvey;
     }

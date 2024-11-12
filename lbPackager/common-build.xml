@@ -35,6 +35,7 @@
   <property name="settings.offline" value="false"/>
   <property name="settings.interactiveMode" value="true"/>
   <property name="lib.dir" value="lib"/>
+  <property name="target.dir" value="target"/>
 
     <!-- ******************************************************************* -->
     <!-- ** IVY TARGETS AND DEPENDENCY PATHS                              ** -->
@@ -58,6 +59,7 @@
     
     <target name="ivy:clean" depends="clean:dependencies" description="Clean">
        <!-- no-op for now -->
+        <delete dir="${target.dir}" />
     </target>
     
     <target name="clean:dependencies">
@@ -83,6 +85,7 @@
   <target name="clean" depends="clean:dependencies" description="Clean the output directory">
 <!--    <delete dir="${build.dir}"/>-->
 <!--      <delete dir="${lib.dir}" />-->
+      <delete dir="${target.dir}" />
   </target>
 
   <!-- ====================================================================== -->
@@ -150,6 +153,7 @@
   <!-- ====================================================================== -->
   <target name="test" 
           depends="compile-tests"
+  	      unless="no.tests"
   		  if="do-run-tests"
           description="Run the test cases">
     <mkdir dir="${test.reports}"/>

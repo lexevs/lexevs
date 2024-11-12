@@ -13,5 +13,6 @@
 	</publications>
     <dependencies>
     	<dependency org="lexevs" name="loader-framework-core" rev="${vBuild}" conf="default,test" />
+		<dependency org="org.ehcache" name="ehcache" rev="3.10.8" conf="default"/>
     </dependencies>
 </ivy-module>

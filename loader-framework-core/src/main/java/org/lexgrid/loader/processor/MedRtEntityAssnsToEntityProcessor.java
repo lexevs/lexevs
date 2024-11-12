@@ -10,8 +10,8 @@ import org.LexGrid.concepts.PropertyLink;
 import org.LexGrid.relations.AssociationQualification;
 import org.LexGrid.relations.AssociationSource;
 import org.LexGrid.relations.AssociationTarget;
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.DaoManager;
 import org.lexevs.dao.database.service.DatabaseServiceManager;
 import org.lexevs.dao.database.service.daocallback.DaoCallbackService.DaoCallback;
@@ -56,12 +56,12 @@ private Map<String,String> isoMap;
 
 	@Override
 	public void afterPropertiesSet() throws Exception {
-		Assert.notNull(relationResolver);
-		Assert.notNull(associationInstanceIdResolver);
-		Assert.notNull(associationPredicateKeyResolver);
-		Assert.notNull(databaseServiceManager);
-		Assert.notNull(sourcePropertyIdResolver);
-		Assert.notNull(targetPropertyIdResolver);
+		Assert.notNull(relationResolver, "Relation Resolver is Null");
+		Assert.notNull(associationInstanceIdResolver, "Association Instance Resolver is Null");
+		Assert.notNull(associationPredicateKeyResolver, "Association Predicate Key Resolver is Null");
+		Assert.notNull(databaseServiceManager, "Database Service Manager is Null");
+		Assert.notNull(sourcePropertyIdResolver, "Source Property Resolver is Null");
+		Assert.notNull(targetPropertyIdResolver, "Target Property Resolver is Null");
 	}
 
 	/* (non-Javadoc)

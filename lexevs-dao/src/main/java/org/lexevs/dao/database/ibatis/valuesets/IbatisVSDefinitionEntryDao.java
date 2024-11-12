@@ -7,7 +7,7 @@ import org.LexGrid.LexBIG.Exceptions.LBRevisionException;
 import org.LexGrid.valueSets.DefinitionEntry;
 import org.LexGrid.versions.EntryState;
 import org.LexGrid.versions.types.ChangeType;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.valuesets.VSDefinitionEntryDao;
 import org.lexevs.dao.database.access.valuesets.VSEntryStateDao;
 import org.lexevs.dao.database.access.valuesets.VSPropertyDao;

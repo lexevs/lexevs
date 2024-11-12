@@ -39,7 +39,7 @@ public class LexGridSchemaCheckFactory implements FactoryBean, InitializingBean 
 	public void afterPropertiesSet() throws Exception {
 		LexGridSchemaCheck schemaCheck = new CountBasedLexGridSchemaCheck(dataSource, systemVariables);
 		
-		Assert.notNull(schemaCheck);
+		Assert.notNull(schemaCheck, "Schema Check is Null");
 		
 		isSchemaLoaded = schemaCheck.isCommonLexGridSchemaInstalled();
 	}

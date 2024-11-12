@@ -2,7 +2,7 @@
 package org.lexgrid.loader.processor;
 
 import org.LexGrid.relations.AssociationQualification;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.utility.DaoUtility;
 import org.lexgrid.loader.dao.template.SupportedAttributeTemplate;
 import org.lexgrid.loader.data.DataUtils;

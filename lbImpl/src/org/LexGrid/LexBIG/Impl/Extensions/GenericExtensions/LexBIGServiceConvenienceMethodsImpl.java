@@ -69,7 +69,7 @@ import org.LexGrid.naming.SupportedProperty;
 import org.LexGrid.relations.AssociationEntity;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.collections.map.LRUMap;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.DaoManager;
 import org.lexevs.dao.database.access.association.model.graphdb.GraphDbTriple;
 import org.lexevs.dao.database.access.codednodegraph.CodedNodeGraphDao;

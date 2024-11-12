@@ -17,7 +17,7 @@ import org.LexGrid.LexBIG.DataModel.NCIHistory.NCIChangeEvent;
 import org.LexGrid.versions.CodingSchemeVersion;
 import org.LexGrid.versions.EntityVersion;
 import org.LexGrid.versions.SystemRelease;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.access.ncihistory.NciHistoryDao;
 import org.lexevs.dao.database.service.AbstractDatabaseService;
 import org.springframework.transaction.annotation.Transactional;
@@ -60,8 +60,8 @@ public class VersionableEventNciHistoryService extends AbstractDatabaseService i
 	@Transactional
 	public void insertNCIChangeEvent(String codingSchemeUri,
 			NCIChangeEvent changeEvent) {
-		Assert.notNull(changeEvent);
-		Assert.notNull(changeEvent.getEditDate());
+		Assert.notNull(changeEvent, "Change Event is Null");
+		Assert.notNull(changeEvent.getEditDate(), "Change Event Edit Date is Null");
 
 		NciHistoryDao historyDao = this.getDaoManager().getNciHistoryDao(
 				codingSchemeUri);

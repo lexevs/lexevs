@@ -105,7 +105,7 @@ import org.LexGrid.codingSchemes.CodingScheme;
 import org.LexGrid.naming.Mappings;
 import org.LexGrid.util.assertedvaluesets.AssertedValueSetParameters;
 import org.LexGrid.util.assertedvaluesets.AssertedValueSetServices;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.lexevs.dao.database.service.DatabaseServiceManager;
 import org.lexevs.dao.database.service.valuesets.AssertedValueSetService;
 import org.lexevs.dao.database.service.valuesets.AssertedValueSetServiceImpl;
@@ -737,6 +737,20 @@ public class LexBIGServiceImpl implements LexBIGService {
 
         } catch (Exception e) {
             getLogger().warn(LexTreeExt.getName() + " is not on the classpath or could not be loaded as an Extension.",e);
+        }
+        
+        //MetaBrowser Extension 
+        ExtensionDescription MetaBrowserExt = new ExtensionDescription();
+        MetaBrowserExt.setDescription("MetaBrowser Relationship Utility Extension");
+        MetaBrowserExt.setExtensionBaseClass("org.LexGrid.lexevs.metabrowser.MetaBrowserService");
+        MetaBrowserExt.setExtensionClass("org.LexGrid.lexevs.metabrowser.impl.MetaBrowserServiceImpl");
+        MetaBrowserExt.setVersion("1.0");
+        MetaBrowserExt.setName("metabrowser-extension");
+        try {
+            ExtensionRegistryImpl.instance().registerGenericExtension(MetaBrowserExt);
+
+        } catch (Exception e) {
+            getLogger().warn(MetaBrowserExt.getName() + " is not on the classpath or could not be loaded as an Extension.",e);
         }
         
     }

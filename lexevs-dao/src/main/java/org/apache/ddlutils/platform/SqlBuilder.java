@@ -30,7 +30,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import org.apache.commons.collections.map.ListOrderedMap;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.ddlutils.DdlUtilsException;
@@ -1976,21 +1976,21 @@ public abstract class SqlBuilder
         if (action != getPlatformInfo().getDefaultOnDeleteAction())
         {
             print(" ON DELETE ");
-            switch (action.getValue())
+            switch (action )
             {
-                case CascadeActionEnum.VALUE_CASCADE:
+                case CASCADE:
                     print("CASCADE");
                     break;
-                case CascadeActionEnum.VALUE_SET_NULL:
+                case SET_NULL:
                     print("SET NULL");
                     break;
-                case CascadeActionEnum.VALUE_SET_DEFAULT:
+                case SET_DEFAULT:
                     print("SET DEFAULT");
                     break;
-                case CascadeActionEnum.VALUE_RESTRICT:
+                case RESTRICT:
                     print("RESTRICT");
                     break;
-                case CascadeActionEnum.VALUE_NONE:
+                case NONE:
                     print("NO ACTION");
                     break;
                 default:
@@ -2026,21 +2026,21 @@ public abstract class SqlBuilder
         if (action != getPlatformInfo().getDefaultOnUpdateAction())
         {
             print(" ON UPDATE ");
-            switch (action.getValue())
+            switch (action)
             {
-                case CascadeActionEnum.VALUE_CASCADE:
+                case CASCADE:
                     print("CASCADE");
                     break;
-                case CascadeActionEnum.VALUE_SET_NULL:
+                case SET_NULL:
                     print("SET NULL");
                     break;
-                case CascadeActionEnum.VALUE_SET_DEFAULT:
+                case SET_DEFAULT:
                     print("SET DEFAULT");
                     break;
-                case CascadeActionEnum.VALUE_RESTRICT:
+                case RESTRICT:
                     print("RESTRICT");
                     break;
-                case CascadeActionEnum.VALUE_NONE:
+                case NONE:
                     print("NO ACTION");
                     break;
                 default:

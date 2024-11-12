@@ -1,0 +1,9 @@
+#Thu May 11 09:18:52 CDT 2023
+org.LexGrid.relations.AssociationQualification=org.LexGrid.relations.descriptors.AssociationQualificationDescriptor
+org.LexGrid.relations.Relations=org.LexGrid.relations.descriptors.RelationsDescriptor
+org.LexGrid.relations.AssociationEntity=org.LexGrid.relations.descriptors.AssociationEntityDescriptor
+org.LexGrid.relations.AssociationPredicate=org.LexGrid.relations.descriptors.AssociationPredicateDescriptor
+org.LexGrid.relations.AssociationSource=org.LexGrid.relations.descriptors.AssociationSourceDescriptor
+org.LexGrid.relations.AssociationData=org.LexGrid.relations.descriptors.AssociationDataDescriptor
+org.LexGrid.relations.AssociationTarget=org.LexGrid.relations.descriptors.AssociationTargetDescriptor
+org.LexGrid.relations.AssociatableElement=org.LexGrid.relations.descriptors.AssociatableElementDescriptor

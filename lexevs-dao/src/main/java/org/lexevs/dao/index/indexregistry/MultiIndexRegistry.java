@@ -4,7 +4,7 @@ package org.lexevs.dao.index.indexregistry;
 import org.LexGrid.LexBIG.DataModel.Core.AbsoluteCodingSchemeVersionReference;
 import org.LexGrid.LexBIG.Exceptions.LBParameterException;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.search.Filter;
 import org.lexevs.dao.database.utility.DaoUtility;
 import org.lexevs.dao.index.lucenesupport.BaseLuceneIndexTemplate;
